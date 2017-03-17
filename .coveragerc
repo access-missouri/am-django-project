@@ -1,0 +1,12 @@
+[run]
+include =
+    am/*.py
+
+omit =
+    */tests/*.py
+    */migrations/*.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    add_introspection_rules

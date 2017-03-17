@@ -1,0 +1,9 @@
+*.pyc
+.DS_Store
+.env
+.coverage
+.tox
+.cache
+.build
+.static
+settings_local.py
