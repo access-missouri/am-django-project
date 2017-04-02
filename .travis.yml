@@ -10,8 +10,8 @@ python:
   - "3.5"
 
 env:
-  - DJANGO_VERSION=1.10
-  - DJANGO_VERSION=1.11rc1
+  - DJANGO_VERSION=1.10 DATABASE_SETTINGS='settings_local.py'
+  - DJANGO_VERSION=1.11rc1 DATABASE_SETTINGS='settings_local.py'
 
 install:
  - pip install -r requirements.txt
