@@ -7,7 +7,6 @@ configparser
 beautifulsoup4==4.5.3
 html5lib
 requests
-six
 
 # for testing
 flake8
@@ -15,4 +14,3 @@ flake8_docstrings
 coverage
 python-coveralls
 coveralls
-
