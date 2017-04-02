@@ -11,7 +11,7 @@ python:
 
 env:
   - DJANGO_VERSION=1.10
-  - DJANGO_VERSION=1.11b
+  - DJANGO_VERSION=1.11rc1
 
 install:
  - pip install -r requirements.txt
@@ -24,9 +24,9 @@ before_script:
 
 script:
   - flake8 am
-  - python example/manage.py migrate
-  - coverage run manage.py test house_scraper
-  - coverage run manage.py test senate_scraper
+  - python am/manage.py migrate
+  - coverage run am/manage.py test house_scraper
+  - coverage run am/manage.py test senate_scraper
 
 after_success:
   - coveralls
