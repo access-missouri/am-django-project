@@ -21,13 +21,14 @@ install:
 before_script:
   - psql -c 'create database access_mo_django;' -U postgres
   - psql -c "CREATE EXTENSION postgis;" -U postgres -d access_mo_django
+  - cd am
   - cp am/settings_local.py.template am/settings_local.py
 
 script:
   - flake8 am
-  - python am/manage.py migrate
-  - coverage run am/manage.py test house_scraper
-  - coverage run am/manage.py test senate_scraper
+  - python manage.py migrate
+  - coverage run manage.py test house_scraper
+  - coverage run manage.py test senate_scraper
 
 after_success:
   - coveralls
