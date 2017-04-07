@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'opencivicdata.apps.BaseConfig',
+    'senate_scraper',
 ]
 
 MIDDLEWARE = [
