@@ -6,9 +6,9 @@ Scrape data from the Senate Clerk website and load into OCD models.
 from django.core.management.base import BaseCommand
 from senate_scraper.scrapers import (
     BillListScraper,
-    BillDetailsScraper,
-    BillActionsScraper,
-    parse_query_str,
+    # BillDetailsScraper,
+    # BillActionsScraper,
+    # parse_query_str,
 )
 
 
@@ -23,7 +23,7 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-        list_params = {'SessionType': 'R',}
+        list_params = {'SessionType': 'R', }
         bill_list = BillListScraper(params=list_params)
 
         print '%s bills' % len(bill_list.bill_urls)

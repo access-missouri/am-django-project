@@ -29,7 +29,10 @@ class BaseScraper(object):
         Initials an object for scraping a page.
         """
         self.sleep_count = sleep_count
-        self.url_base = "http://senate.mo.gov/"
+
+        # Right now, there's '17info' in this URL --
+        # this could change in the future...
+        self.url_base = "http://senate.mo.gov/17info/BTS_Web"
         self.url_path = url_path
         self.params = params
         self._response = None
