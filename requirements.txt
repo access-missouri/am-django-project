@@ -1,4 +1,4 @@
-Django==1.10
+Django==1.11
 # Next two lines can be consolidated to 'opencivicdata-django'
 # after OCD releases Python 2 compatible packages
 -e git+https://github.com/california-civic-data-coalition/python-opencivicdata-django.git@HEAD#egg=opencivicdata-django
