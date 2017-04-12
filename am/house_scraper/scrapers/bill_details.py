@@ -21,7 +21,7 @@ class BillDetailsScraper(BaseScraper):
             **kwargs: Arbitrary keyword arguments.
         """
         super(BillDetailsScraper, self).__init__(
-            url_path="/BillContent.aspx",
+            url_path="BillContent.aspx",
             params=params,
             **kwargs
         )
