@@ -25,15 +25,15 @@ class Command(BaseCommand):
         """
         bill_list = BillListScraper()
 
-        print '%s bills' % len(bill_list.bill_urls)
-        print '============================'
+        print('%s bills' % len(bill_list.bill_urls))
+        print('============================')
 
         for url in bill_list.bill_urls:
             params = parse_query_str(url)
             bill_details = BillDetailsScraper(params)
             bill_actions = BillActionsScraper(params)
-            print '{bill} ({year}{code})'.format(**bill_details.params)
-            print bill_details.description
+            print('{bill} ({year}{code})'.format(**bill_details.params))
+            print(bill_details.description)
             for action in bill_actions.actions_list:
-                print action
-            print '--------------------------------'
+                print(action)
+            print('--------------------------------')
