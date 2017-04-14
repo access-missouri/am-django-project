@@ -103,6 +103,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, ".static")
 
 try:
-    from settings_local import *  # NOQA
+    from .settings_local import *  # NOQA
 except ImportError:
     pass
