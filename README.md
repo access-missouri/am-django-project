@@ -2,7 +2,7 @@ am-django-project
 =================
 
 [![Build Status](https://travis-ci.org/access-missouri/am-django-project.svg?branch=master)](https://travis-ci.org/access-missouri/am-django-project)
-[![Coverage Status](https://coveralls.io/repos/access-missouri/am-django-project/badge.png?branch=master)](https://coveralls.io/r/opencivicdata/access-missouri/am-django-project?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/access-missouri/am-django-project/badge.svg?branch=master)](https://coveralls.io/github/access-missouri/am-django-project?branch=master)
 
 Integration hub for all Access Missouri data sets (built in Django).
 
