@@ -14,7 +14,7 @@ from django.conf import settings
 def parse_query_str(url):
     """
     Parse the query string part out of a url into key/value pairs.
-`
+
     Return a dict.
     """
     query_str = urlparse(url).query
@@ -28,12 +28,9 @@ class BaseScraper(object):
 
     def __init__(self, url_path=None, params=None, sleep_count=1):
         """
-        Initialize a basic object for scraping a page.
+        Initializes an object for scraping a page.
         """
         self.sleep_count = sleep_count
-
-        # Right now, there's '17info' in this URL --
-        # this could change in the future...
         self.url_base = "http://senate.mo.gov/17info/BTS_Web/"
         self.url_path = url_path
         self.params = params
@@ -42,7 +39,8 @@ class BaseScraper(object):
         self.cache_dir = os.path.join(
             settings.BASE_DIR,
             'senate_scraper',
-            '.cache')
+            '.cache',
+        )
 
     def _request(self):
         full_url = urljoin(self.url_base, self.url_path)
@@ -53,7 +51,7 @@ class BaseScraper(object):
 
     def save_to_cache(self, content):
         """
-        Save response content to a local cache.
+        Save content of response to a local cache.
         """
         os.path.exists(self.cache_dir) or os.makedirs(self.cache_dir)
         with open(self.cache_file_path, 'wb') as f:
@@ -103,10 +101,9 @@ class BaseScraper(object):
         """
         if not self._soup:
             content = self.read_from_cache()
-            print "content"
             print content
             if not content:
                 content = self.response.content
-                self._soup = BeautifulSoup(self.response.content, 'html5lib')
-        print self._soup
+            self._soup = BeautifulSoup(content, 'html5lib')
+
         return self._soup
