@@ -29,7 +29,6 @@ class Command(BaseCommand):
         print '%s bills' % len(bill_list.bill_urls)
         print '============================'
 
-
         for url in bill_list.bill_urls:
             params = parse_query_str(url)
             bill_details = BillDetailsScraper(params)

@@ -6,6 +6,7 @@ Unittests for senate's bill_list scraper.
 from unittest import TestCase
 from senate_scraper.scrapers import BillListScraper
 
+
 class SenateBillListWellFormattedTest(TestCase):
     """
     Test basic senate bill list parsing in an ideal scenario.

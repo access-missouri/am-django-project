@@ -1,0 +1,135 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+	<HEAD>
+		<title id="title">SB13 - Adopts the Compact for a Balanced Budget</title>
+		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+	</HEAD>
+	<body id="body" text="black" vLink="#000000" aLink="#000000" link="#000000" bgProperties="fixed">
+		<font face="arial">
+			<form name="Form1" method="post" action="./Bill.aspx?BillID=57095388&amp;SessionType=R" id="Form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQxMDc3NTQ2MGRkLCvG5LDMlsw2HfEtFlQ4wgBumSm2e+UEIL3GDsiv/7k=" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DFDEEE3A" />
+				<TABLE id="Table5" cellSpacing="1" cellPadding="1" width="100%" border="0">
+					<TR>
+						<TD>
+							<TABLE id="Table1" cellSpacing="1" cellPadding="1" width="100%" border="3">
+								<TR>
+									<TD style="WIDTH: 139px" noWrap align="left"><span id="lblBillNum"><b><font color="Black" size="5">SB 13</font></b></span></TD>
+									<TD><span id="lblBriefDesc"><font color="Black" size="5">Adopts the Compact for a Balanced Budget</font></span></TD>
+								</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD style="HEIGHT: 7px"><img id="Image3" src="http://www.senate.mo.gov/06info/graphics/bl_bar.gif" border="0" height="2" width="110%" /></TD>
+					</TR>
+					<TR>
+						<TD>
+							<TABLE id="Table3" cellSpacing="1" cellPadding="1" width="100%" border="3">
+								<TR>
+									<TD style="WIDTH: 155px"><STRONG><FONT face="Arial" color="black" size="4">Sponsor:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px"><a id="hlSponsor" href="http://www.senate.mo.gov/17web/mem30"><i><font color="Black">Dixon</font></i></a></TD>
+									<TD style="WIDTH: 163px"><a id="hlCoSponsors"><i><font face="Arial" color="Black"></font></i></a></TD>
+									<TD></TD>
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px"><STRONG><FONT color="black" size="4">LR Number:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px"><span id="lblLRNum"><font face="Arial" color="Black">0308S.01I</font></span></TD>
+									<TD noWrap colspan="2">
+                                        <a id="hlFiscalNote" href="http://www.moga.mo.gov/oversight/over20171/fiscover/fSB0013.htm"><i><font color="Black">Fiscal Notes</font></i></a></TD>
+									
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px"><STRONG><FONT color="black" size="4">Committee:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px"><a id="hlCommittee" href="http://www.senate.mo.gov/JUDI"><font face="Arial" color="Black">Judiciary and Civil and Criminal Jurisprudence</font></a></TD>
+									<TD style="WIDTH: 163px"></TD>
+									<TD></TD>
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px; HEIGHT: 24px"><STRONG><FONT color="black" size="4">Last Action:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px; HEIGHT: 24px"><span id="lblLastAction"><font face="Arial" color="Black">4/18/2017 - Informal Calendar S Bills for Perfection--SB 13-Dixon</font></span></TD>
+									<TD style="WIDTH: 163px; HEIGHT: 24px" noWrap><FONT face="Arial" color="black" size="4"><STRONG>Journal 
+												Page: </STRONG></FONT>
+									</TD>
+									<TD style="HEIGHT: 24px" noWrap><span id="lblJrnPage"><font face="Arial" color="Black"></font></span></TD>
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px"></TD>
+									<TD colspan="3"><a id="hlVetoLetter"><i><font color="Black"> </font></i></a></TD>
+									
+								</TR><TR>
+									<TD style="WIDTH: 155px"><STRONG><FONT color="black" size="4">Title:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px"><span id="lblBillTitle"><font face="Arial" color="Black"></font></span></TD>
+									<TD style="WIDTH: 163px"><FONT face="Arial" color="black" size="4"><STRONG>Calendar 
+												Position:</STRONG></FONT></TD>
+									<TD><span id="lblCalendarPos"><font face="Arial" color="Black"></font></span></TD>
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px"><STRONG><FONT color="black" size="4">Effective Date:</FONT></STRONG></TD>
+									<TD style="WIDTH: 558px"><span id="lblEffDate"><font face="Arial" color="Black">Emergency Clause</font></span></TD>
+									<TD style="WIDTH: 165px"></TD>
+									<TD></TD>
+								</TR>
+								<TR>
+									<TD style="WIDTH: 155px"><span id="lblHSponsor"><b><font face="Arial" color="Black" size="4"> </font></b></span></TD>
+									<TD style="WIDTH: 558px"><a id="hlHSponsor"><i><font color="Black"> </font></i></a></TD>
+									<TD></TD>
+								</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD style="HEIGHT: 2px">
+							<P><img id="Image1" src="http://www.senate.mo.gov/06info/graphics/bl_bar.gif" border="0" height="2" width="110%" /></P>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<TABLE id="Table2" cellSpacing="1" cellPadding="1" width="80%" align="center" border="0">
+								<TR>
+									<TD align="center"><a id="hlFullBillText" href="http://www.senate.mo.gov/17info/BTS_Web/BillText.aspx?SessionType=R&amp;BillID=57095388">Full Bill Text</a></TD>
+									<TD align="center">|</TD>
+									<TD align="center"><a id="hlAllActions" href="http://www.senate.mo.gov/17info/BTS_Web/Actions.aspx?SessionType=R&amp;BillID=57095388">All Actions</a></TD>
+									<TD align="center">|</TD>
+									<TD align="center"><a id="hlAmends" href="http://www.senate.mo.gov/17info/BTS_Amendments?SessionType=R&amp;BillID=57095388">Amendments/CCRs/CCSs</a></TD>
+									<TD>|</TD>
+									<TD align="center"><a id="hlSummaries" href="http://www.senate.mo.gov/17info/BTS_Web/Summaries.aspx?SessionType=R&amp;BillID=57095388">Available Summaries</a></TD>
+									<TD align="center">|</TD>
+									<!-- <TD align="center"><a id="hlWitnesses" href="http://www.senate.mo.gov/17info/BTS_Web/Witnesses.aspx?SessionType=R&amp;BillID=57095388">Witnesses</a></TD>
+									<TD align="center">|</TD> -->
+									<TD align="center"><a id="hlHomePage" href="http://www.senate.mo.gov">Senate Home Page</a></TD>
+									<TD align="center">|</TD>
+									<TD align="center"><a id="hlBillList" href="http://www.senate.mo.gov/17info/BTS_Web/BillList.aspx?SessionType=R">List of 2017 Senate Bills</a></TD>
+								</TR>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD style="HEIGHT: 3px"><img id="Image2" src="http://www.senate.mo.gov/06info/graphics/bl_bar.gif" border="0" height="2" width="110%" /></TD>
+					</TR>
+					<TR>
+						<TD>
+							<P align="center"><STRONG><FONT face="Arial" color="black" size="4">Current Bill Summary</FONT></STRONG>
+							</P>
+						</TD>
+					</TR>
+					<TR>
+						<TD><BR>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<P align="left"><span id="lblSummary"><font color="Black">	SB 13 - This act adopts the Compact for a Balanced Budget in Missouri.  The goal of the compact is the adoption of the Balanced Budget Amendment to the United States Constitution.<P><P>	Once three-fourths of the states have adopted the compact, the legislatures of the member states will be deemed to have called for a convention under Article V of the United States Constitution to propose amendments.  Delegates to the convention will be the Governor, Speaker of the House of Representatives and the President Pro Tempore of the Senate.  Delegates are limited in their authority to only debating and ratifying the Balanced Budget Amendment.<P><P>	After the constitutional convention has adopted the Balanced Budget Amendment and Congress has referred the amendment to the state legislatures for ratification, each member state to the compact will be deemed to have ratified the amendment.<P><P>	The Balanced Budget Amendment limits federal spending to revenue received by the federal government plus amounts borrowed under the debt limit.  A debt limit is established which will be equal to 105% of the federal debt at the time of ratification of the amendment.  The debt limit may be increased, but only for specific line items which must be approved by a majority of the state legislatures.  When outstanding debt exceeds 98% of the debt limit, the President shall impound expenditures in an amount to keep debt below the limit.  Congress may override an impoundment by designating a different impoundment. <P><P>	The Balanced Budget Amendment would prohibit any new or increased taxes from being passed by Congress unless approved by two-thirds of the entire body of each chamber of Congress.  This prohibition would not apply to a replacement of the income tax with a new sales tax or to a limitation on any tax exemption, deduction, or credit.<P><P>	This act is identical to SCS/SBs 662 & 587 (2016) and SB 433 (2015).<P><P>	This act contains an emergency clause.<P>JOSHUA NORBERG</font></span></P>
+						</TD>
+					</TR>
+				</TABLE>
+				<INPUT id="_a1" type="hidden" value="1">
+			</form>
+		</font>
+	</body>
+</HTML>
