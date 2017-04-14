@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'opencivicdata.apps.BaseConfig',
     'senate_scraper',
 ]
 
