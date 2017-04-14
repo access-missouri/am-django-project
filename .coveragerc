@@ -1,11 +1,11 @@
 [run]
+source = am
 include =
     am/*.py
 
 omit =
     */tests/*.py
     */migrations/*.py
-    */site-packages/*
 
 [report]
 exclude_lines =
