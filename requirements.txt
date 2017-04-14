@@ -3,6 +3,7 @@ configparser
 beautifulsoup4==4.5.3
 html5lib
 requests
+psycopg2
 
 # for testing
 flake8
