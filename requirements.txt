@@ -1,13 +1,8 @@
-Django==1.10
-# Next two lines can be consolidated to 'opencivicdata-django'
-# after OCD releases Python 2 compatible packages
--e git+https://github.com/california-civic-data-coalition/python-opencivicdata-django.git@HEAD#egg=opencivicdata-django
--e git+https://github.com/california-civic-data-coalition/python-opencivicdata-divisions.git@HEAD#egg=opencivicdata-divisions
+Django==1.11
 configparser
 beautifulsoup4==4.5.3
 html5lib
 requests
-six
 
 # for testing
 flake8
@@ -15,4 +10,3 @@ flake8_docstrings
 coverage
 python-coveralls
 coveralls
-

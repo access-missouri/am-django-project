@@ -77,8 +77,7 @@ class SenateBillDetailWellFormattedTest(TestCase):
         """
         Check that we get an array of sponsor surname strings.
         """
-        self.assertEqual(self.bill.sponsors,
-            ['Dixon'])
+        self.assertEqual(self.bill.sponsors, ['Dixon'])
 
     def test_bill_summary(self):
         """
@@ -94,7 +93,7 @@ class SenateBillDetailWellFormattedTest(TestCase):
         Check that a URL for bill actions has been successfully interpreted.
         """
         self.assertEqual(
-            'http://www.senate.mo.gov/17info/BTS_Web/Actions.aspx?SessionType=R&BillID=57095388',
+            'http://www.senate.mo.gov/17info/BTS_Web/Actions.aspx?SessionType=R&BillID=57095388', # noqa
             self.bill.actions_url)
 
     def test_bill_amendments_url(self):
@@ -102,7 +101,7 @@ class SenateBillDetailWellFormattedTest(TestCase):
         Check that the amendments URL gets parsed.
         """
         self.assertEqual(
-            'http://www.senate.mo.gov/17info/BTS_Amendments?SessionType=R&BillID=57095388',
+            'http://www.senate.mo.gov/17info/BTS_Amendments?SessionType=R&BillID=57095388', # noqa
             self.bill.amendments_url)
 
     def test_bill_full_text_url(self):
@@ -110,7 +109,7 @@ class SenateBillDetailWellFormattedTest(TestCase):
         Check that the full text URL gets parsed.
         """
         self.assertEqual(
-            'http://www.senate.mo.gov/17info/BTS_Web/BillText.aspx?SessionType=R&BillID=57095388',
+            'http://www.senate.mo.gov/17info/BTS_Web/BillText.aspx?SessionType=R&BillID=57095388', # noqa
             self.bill.full_text_url)
 
     def test_bill_committee_url(self):

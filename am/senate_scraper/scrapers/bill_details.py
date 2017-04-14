@@ -95,6 +95,9 @@ class BillDetailsScraper(BaseScraper):
 
     @property
     def sponsors(self):
+        """
+        Get an array of bill sponsor surnames.
+        """
         return [a.text.strip() for a in self.soup.find_all('a', id='hlSponsor')]
 
     @property
