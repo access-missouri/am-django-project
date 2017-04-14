@@ -43,6 +43,15 @@ class BillDetailsScraperTest(TestCase):
             session=requests.session(),
         )
 
+    def test_bill_description(self):
+        """
+        Confirm extraction of sponsor's name.
+        """
+        self.assertEquals(
+            self.bill_details.description,
+            "Appropriates money to the Board of Fund Commissioners",
+        )
+
     def test_bill_sponsor_name(self):
         """
         Confirm extraction of sponsor's name.
