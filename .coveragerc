@@ -1,5 +1,4 @@
 [run]
-source = am
 include =
     am/*.py
 
