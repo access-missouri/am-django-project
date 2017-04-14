@@ -6,7 +6,7 @@ Local development settings that override settings.py.
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'access_mo_django',
         'USER': 'postgres',
         'PASSWORD': '',

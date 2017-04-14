@@ -20,7 +20,6 @@ install:
 
 before_script:
   - psql -c 'create database access_mo_django;' -U postgres
-  - psql -c "CREATE EXTENSION postgis;" -U postgres -d access_mo_django
   - cd am
   - cp am/settings_local.py.template am/settings_local.py
 
