@@ -101,7 +101,6 @@ class BaseScraper(object):
         """
         if not self._soup:
             content = self.read_from_cache()
-            print content
             if not content:
                 content = self.response.content
             self._soup = BeautifulSoup(content, 'html5lib')
