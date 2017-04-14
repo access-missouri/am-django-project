@@ -26,14 +26,17 @@ class BaseScraper(object):
     Base class with properties and classes common to all Scraper subclasses.
     """
 
-    def __init__(self, url_path=None, params=None, sleep_count=1):
+    def __init__(
+        self, url_path=None, params=None, session=None, sleep_count=1
+    ):
         """
         Initializes an object for scraping a page.
         """
-        self.sleep_count = sleep_count
         self.url_base = "http://house.mo.gov/"
         self.url_path = url_path
         self.params = params
+        self.session = session
+        self.sleep_count = sleep_count
         self._response = None
         self._soup = None
         self.cache_dir = os.path.join(
@@ -44,7 +47,11 @@ class BaseScraper(object):
 
     def _request(self):
         full_url = urljoin(self.url_base, self.url_path)
-        self._response = requests.get(full_url, params=self.params)
+        # make the request through the session, if provided
+        if self.session:
+            self._response = self.session.get(full_url, params=self.params)
+        else:
+            self._response = requests.get(full_url, params=self.params)
         sleep(self.sleep_count)
         self.save_to_cache(self._response.content)
         return self._response

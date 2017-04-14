@@ -3,13 +3,13 @@
 """
 Unittests for bill_list scraper.
 """
+import os
+import re
+from django.conf import settings
 from unittest import TestCase
 from house_scraper.scrapers import BillListScraper
-# import sys
-# if sys.version_info.major == 3 and sys.version_info.minor >= 3:
-#     from unittest.mock import patch, PropertyMock
-# else:
-#     from mock import patch, PropertyMock, MagicMock
+import requests
+import requests_mock
 
 
 class BillListScraperTest(TestCase):
@@ -18,19 +18,24 @@ class BillListScraperTest(TestCase):
     """
 
     @classmethod
-    def setUp(self):
+    @requests_mock.Mocker()
+    def setUp(self, m):
         """
         Set up test case.
         """
-        self.bill_list = BillListScraper()
-        sample_markup_path = self.bill_list.cache_file_path.replace(
-            '.cache/',
-            'tests/sample_markup/'
+        sample_markup_path = os.path.join(
+            settings.BASE_DIR,
+            'house_scraper',
+            'tests/sample_markup/billlist.aspx'
         )
         with open(sample_markup_path, 'rb') as f:
-            self.bill_list.save_to_cache(
-                f.read()
-            )
+            content = f.read()
+
+        # Mock responses for requests that pass any non-empty string as a URL.
+        pattern = re.compile(r'.+')
+        m.get(pattern, content=content)
+
+        self.bill_list = BillListScraper(session=requests.session())
 
     def test_bill_urls_count(self):
         """
