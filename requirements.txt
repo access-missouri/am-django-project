@@ -4,7 +4,6 @@ beautifulsoup4==4.5.3
 html5lib
 requests
 psycopg2
-six
 
 # for testing
 flake8
