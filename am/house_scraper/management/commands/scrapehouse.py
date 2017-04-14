@@ -3,6 +3,7 @@
 """
 Scrape data from the House Clerk website and load into OCD models.
 """
+import requests
 from django.core.management.base import BaseCommand
 from house_scraper.scrapers import (
     BillListScraper,
@@ -23,17 +24,21 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-        bill_list = BillListScraper()
+        with requests.Session() as session:
+            bill_list = BillListScraper(session=session)
 
-        print('%s bills' % len(bill_list.bill_urls))
-        print('============================')
+            print('%s bills' % len(bill_list.bill_urls))
+            print('============================')
 
-        for url in bill_list.bill_urls:
-            params = parse_query_str(url)
-            bill_details = BillDetailsScraper(params)
-            bill_actions = BillActionsScraper(params)
-            print('{bill} ({year}{code})'.format(**bill_details.params))
-            print(bill_details.description)
-            for action in bill_actions.actions_list:
-                print(action)
-            print('--------------------------------')
+            for url in bill_list.bill_urls:
+                params = parse_query_str(url)
+                bill_details = BillDetailsScraper(params, session=session)
+                bill_actions = BillActionsScraper(params, session=session)
+                print('{bill} ({year}{code})'.format(**bill_details.params))
+                print(bill_details.response.url)
+                print(bill_details.description)
+                print(bill_details.sponsor['name'])
+                print(bill_details.sponsor['url'])
+                for action in bill_actions.actions_list:
+                    print(action)
+                print('--------------------------------')

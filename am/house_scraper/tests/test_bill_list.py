@@ -71,7 +71,7 @@ class BillListScraperBadMarkupTest(TestCase):
         m.get(pattern, content=content)
 
         self.bill_list = BillListScraper(session=requests.session())
-    
+
     def test_bill_list_not_found(self):
         """
         Test that an exception is raised when tag containing bill urls not found.

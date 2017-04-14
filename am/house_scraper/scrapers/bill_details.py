@@ -3,6 +3,7 @@
 """
 Scraper for requesting, caching and parsing http://house.mo.gov/BillContent.aspx.
 """
+import re
 from house_scraper.scrapers import BaseScraper
 
 
@@ -32,3 +33,16 @@ class BillDetailsScraper(BaseScraper):
         Return the text of the bill's description.
         """
         return self.soup.find('div', class_='BillDescription').text.strip()
+
+    @property
+    def sponsor(self):
+        """
+        Return the name and url for the bill's sponsor as a dict.
+        """
+        tag = self.soup.find(
+            'a', href=re.compile(r'/member\.aspx\?district=\d+&year=\d+')
+        )
+        return {
+            'name': tag.text.strip(),
+            'url': tag['href'].strip(),
+        }
