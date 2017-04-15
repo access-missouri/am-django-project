@@ -26,8 +26,8 @@ before_script:
 script:
   - flake8 am
   - python manage.py migrate
-  - coverage run manage.py test house_scraper
-  - coverage run manage.py test senate_scraper
+  - coverage run --source='.' manage.py test house_scraper
+  - coverage run --source='.' manage.py test senate_scraper
 
 after_success:
   - coveralls
