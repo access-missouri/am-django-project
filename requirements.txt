@@ -1,9 +1,9 @@
 Django==1.11
+psycopg2
 configparser
 beautifulsoup4==4.5.3
 html5lib
 requests
-psycopg2
 
 # for testing
 flake8
@@ -11,3 +11,4 @@ flake8_docstrings
 coverage
 python-coveralls
 coveralls
+requests_mock

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'senate_scraper',
+    'house_scraper',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,7 @@ WSGI_APPLICATION = 'am.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('db_name'),
         'USER': os.getenv('db_user'),
         'PASSWORD': os.getenv('db_password'),
