@@ -17,7 +17,7 @@ class SenateBillDetailWellFormattedTest(TestCase):
         """
         Set up test case.
         """
-        list_params = {'SessionType': 'R', 'BillID': 57095388}
+        list_params = {'BillID': 57095388, 'SessionType': 'R'}
         self.bill = BillDetailsScraper(params=list_params)
         sample_markup_path = self.bill.cache_file_path.replace(
             '.cache/',
