@@ -21,7 +21,7 @@ install:
 
 before_script:
   - psql -c 'create database access_mo_django;' -U postgres
-  - cp am/am/settings_local.py.template am/settings_local.py
+  - cp am/am/settings_local.py.template am/am/settings_local.py
 
 script:
   - make test
