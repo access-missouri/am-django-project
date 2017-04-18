@@ -20,13 +20,10 @@ install:
 
 before_script:
   - psql -c 'create database access_mo_django;' -U postgres
-  - cp am/settings_local.py.template am/settings_local.py
+  - cp am/am/settings_local.py.template am/settings_local.py
 
 script:
-  - flake8 am
-  - python manage.py migrate
-  - coverage run --source='.' am/manage.py test house_scraper
-  - coverage run --source='.' am/manage.py test senate_scraper
+  - make test
 
 after_success:
   - coveralls
