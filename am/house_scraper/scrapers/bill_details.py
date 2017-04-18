@@ -28,6 +28,17 @@ class BillDetailsScraper(BaseScraper):
         )
 
     @property
+    def cache_file_path(self):
+        """
+        Returns the full path to a cached version of the page's content.
+        """
+        return '{0}/{1}?bill={bill}&year={year}&code={code}'.format(
+            self.cache_dir,
+            self.url_path,
+            **self.params
+        )
+
+    @property
     def description(self):
         """
         Return the text of the bill's description.

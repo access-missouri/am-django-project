@@ -80,16 +80,12 @@ class BaseScraper(object):
     def cache_file_path(self):
         """
         Returns the full path to a cached version of the page's content.
+
+        This property should be implemented on each subclass.
         """
-        file_path = os.path.join(
-            self.cache_dir,
-            self.url_path,
+        raise Exception(
+            "%s has not implemented .cache_file_path." % self.__class__.__name__
         )
-        if self.params:
-            file_path += "?%s" % '&'.join(
-                ['{0}={1}'.format(k, v) for k, v in self.params.items()]
-            )
-        return file_path
 
     @property
     def response(self):
