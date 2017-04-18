@@ -120,3 +120,23 @@ class BillDetailsScraper(BaseScraper):
             return datetime.strptime(eff_date_text, '%B %, %Y').date()
         except ValueError:
             return None
+
+    @property
+    def fiscal_notes_url(self):
+        """
+        Return string URL for the bill's fiscal notes page, or None if doesn't exist.
+        """
+        try:
+            return self.soup.find('a', id='hlFiscalNote')['href']
+        except TypeError:
+            return None
+
+    @property
+    def summaries_url(self):
+        """
+        Return string URL for the bill's summaries page, or None if doesn't exist.
+        """
+        try:
+            return self.soup.find('a', id='hlSummaries')['href']
+        except TypeError:
+            return None

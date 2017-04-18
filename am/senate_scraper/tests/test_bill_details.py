@@ -120,3 +120,21 @@ class SenateBillDetailWellFormattedTest(TestCase):
             self.bill.committee_url,
             u'http://www.senate.mo.gov/JUDI',
         )
+
+    def test_fiscal_notes_url(self):
+        """
+        Check that the fiscal notes URL is properly scraped if present.
+        """
+        self.assertEqual(
+            self.bill.fiscal_notes_url,
+            u'http://www.moga.mo.gov/oversight/over20171/fiscover/fSB0013.htm',
+        )
+
+    def test_summaries_url(self):
+        """
+        Check that the summaries URL is properly scraped if present.
+        """
+        self.assertEqual(
+            self.bill.summaries_url,
+            u'http://www.senate.mo.gov/17info/BTS_Web/Summaries.aspx?SessionType=R&BillID=57095388', # noqa
+        )
