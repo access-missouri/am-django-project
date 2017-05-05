@@ -4,7 +4,6 @@
 Unittests for bill_list scraper.
 """
 import os
-import re
 from django.conf import settings
 from unittest import TestCase
 from house_scraper.scrapers import BillDetailsScraper
@@ -18,8 +17,7 @@ class BillDetailsScraperTest(TestCase):
     """
 
     @classmethod
-    @requests_mock.Mocker()
-    def setUp(self, m):
+    def setUp(self):
         """
         Set up test case.
         """
@@ -30,18 +28,19 @@ class BillDetailsScraperTest(TestCase):
         with open(sample_markup_path, 'rb') as f:
             content = f.read()
 
-        # Mock responses for requests that pass any non-empty string as a URL.
-        pattern = re.compile(r'.+')
-        m.get(pattern, content=content)
-
-        self.bill_details = BillDetailsScraper(
-            {
-                'code': 'R',
-                'bill': 'HB1',
-                'year': 2017
-            },
-            session=requests.session(),
-        )
+        # Mock any GET request
+        adapter = requests_mock.Adapter()
+        adapter.register_uri('GET', requests_mock.ANY, content=content)
+        with requests.Session() as session:
+            session.mount('http://house.mo.gov', adapter)
+            self.bill_details = BillDetailsScraper(
+                {
+                    'code': 'R',
+                    'bill': 'HB1',
+                    'year': 2017
+                },
+                session=session,
+            )
 
     def test_bill_description(self):
         """
