@@ -4,7 +4,7 @@
 Scraper for requesting, caching and parsing http://house.mo.gov/BillContent.aspx.
 """
 import re
-from house_scraper.scrapers import BaseScraper
+from house_scraper.scrapers import BaseScraper, str_to_date
 
 
 class BillDetailsScraper(BaseScraper):
@@ -57,3 +57,52 @@ class BillDetailsScraper(BaseScraper):
             'name': tag.text.strip(),
             'url': tag['href'].strip(),
         }
+
+    @property
+    def proposed_effective_date(self):
+        """
+        Return the Bill's proposed effective date.
+        """
+        tag = self.soup.find(
+            'th', text='Proposed Effective Date:'
+        ).find_next_sibling('td')
+
+        return str_to_date(tag.text)
+
+    @property
+    def lr_number(self):
+        """
+        Return the Bill's LR Number.
+        """
+        tag = self.soup.find(
+            'th', text='LR Number:'
+        ).find_next_sibling('td')
+
+        return tag.text.strip()
+
+    @property
+    def last_action(self):
+        """
+        Return a dict of last action info, including keys for date and description.
+        """
+        tag = self.soup.find(
+            'th', text='Last Action:'
+        ).find_next_sibling('td')
+
+        split_text = tag.text.split(' - ')
+
+        return {
+            'date': str_to_date(split_text[0]),
+            'description': split_text[1].strip(),
+        }
+
+    @property
+    def calendar_position(self):
+        """
+        Return a string describing where the bill is on the legislative calendar.
+        """
+        tag = self.soup.find(
+            'th', text='Calendar:'
+        ).find_next_sibling('td')
+
+        return tag.text.strip()

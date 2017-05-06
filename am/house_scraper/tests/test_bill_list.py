@@ -34,7 +34,10 @@ class BillListScraperTest(TestCase):
         adapter.register_uri('GET', requests_mock.ANY, content=content)
         with requests.Session() as session:
             session.mount('http://house.mo.gov', adapter)
-            self.bill_list = BillListScraper(session=session)
+            self.bill_list = BillListScraper(
+                session=session,
+                no_cache=True,
+            )
 
     def test_bill_urls_count(self):
         """

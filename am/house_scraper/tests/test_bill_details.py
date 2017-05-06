@@ -9,6 +9,7 @@ from unittest import TestCase
 from house_scraper.scrapers import BillDetailsScraper
 import requests
 import requests_mock
+from datetime import date
 
 
 class BillDetailsScraperTest(TestCase):
@@ -40,6 +41,7 @@ class BillDetailsScraperTest(TestCase):
                     'year': 2017
                 },
                 session=session,
+                no_cache=True,
             )
 
     def test_bill_description(self):
@@ -67,4 +69,43 @@ class BillDetailsScraperTest(TestCase):
         self.assertEquals(
             self.bill_details.sponsor['url'],
             "/member.aspx?district=158&year=2017"
+        )
+
+    def test_bill_proposed_effective_date(self):
+        """
+        Confirm extraction of proposed_effective_date.
+        """
+        self.assertEquals(
+            self.bill_details.proposed_effective_date,
+            date(2017, 8, 28),
+        )
+
+    def test_bill_lr_number(self):
+        """
+        Confirm extraction of lr_number.
+        """
+        self.assertEquals(
+            self.bill_details.lr_number,
+            '0001H.02P',
+        )
+
+    def test_bill_last_action(self):
+        """
+        Confirm extraction of last action date and description.
+        """
+        self.assertEquals(
+            self.bill_details.last_action,
+            {
+                'date': date(2017, 4, 10),
+                'description': 'Public Hearing Scheduled (S)',
+            },
+        )
+
+    def test_bill_calendar_position(self):
+        """
+        Confirm extraction of calendar position for the bill.
+        """
+        self.assertEquals(
+            self.bill_details.calendar_position,
+            'Bill currently not on a House calendar',
         )
