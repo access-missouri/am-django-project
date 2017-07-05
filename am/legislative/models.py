@@ -40,6 +40,12 @@ class LegislativeSession(AMBaseModel):
         null=True,
         help_text='Date that the Legislative Session ends, if known.',
     )
+    web_session_type_code = models.CharField(
+        null=True,
+        blank=True,
+        help_text='Used by scraper - type code for params.',
+        max_length=12,
+    )
 
     def __str__(self):
         return self.name
@@ -72,20 +78,25 @@ class Bill(AMBaseModel):
     )
     lr_number = models.CharField(
         max_length=100,
+        null=True,
+        blank=True,
         help_text='Legislative Research (?) number.',
     )
     proposed_effective_date = models.DateField(
         null=True,
+        blank=True,
         help_text='Proposed date when the bill, if passed, would go into '
                   'effect.',
     )
     last_action_date = models.DateField(
         null=True,
+        blank=True,
         help_text='Date when the last action on bill happened.',
     )
     last_action_description = models.CharField(
         max_length=300,
         null=True,
+        blank=True,
         help_text="Description of the bill's last action.",
     )
     calendar_position = models.CharField(

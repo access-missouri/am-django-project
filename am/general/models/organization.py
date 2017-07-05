@@ -26,6 +26,7 @@ class Organization(AMBaseModel):
         'self',
         related_name='children',
         null=True,
+        blank=True,
         db_index=True,
         help_text='Parent Organization of the Organization.',
     )

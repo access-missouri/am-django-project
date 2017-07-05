@@ -11,6 +11,9 @@ from senate_scraper.scrapers import (
 )
 from legislative.models import Bill, LegislativeSession
 from general.models import Organization
+from senate_scraper.processors import update_senate_bill
+
+from tqdm import tqdm
 
 
 class Command(BaseCommand):
@@ -24,26 +27,12 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-        list_params = {'SessionType': 'R', }
-        bill_list = BillListScraper(params=list_params)
 
         session = LegislativeSession.objects.get(id=1)
         senate = Organization.objects.get(id=1)
 
-        for url in bill_list.bill_urls:
-            print(url)
-            params = parse_query_str(url)
-            print(params)
-            bill_details = BillDetailsScraper(params)
-            # bill_actions = BillActionsScraper(params)
+        bills = Bill.objects.filter(from_organization=senate)
 
-            bill, created = Bill.objects.get_or_create(
-                legislative_session=session,
-                identifier=params['BillID'],
-                from_organization=senate,
-                defaults={
-                    'title':bill_details.summary,
-                },
-            )
+        for bill in tqdm(bills):
+            update_senate_bill(bill=bill)
 
-            print(created)
