@@ -5,6 +5,7 @@ include =
 omit =
     */tests/*.py
     */migrations/*.py
+    */site-packages/*
 
 [report]
 exclude_lines =
