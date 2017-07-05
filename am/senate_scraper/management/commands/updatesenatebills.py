@@ -4,12 +4,12 @@
 Scrape data from the Senate Clerk website and load into OCD models.
 """
 from django.core.management.base import BaseCommand
-from senate_scraper.scrapers import (
-    BillListScraper,
-    BillDetailsScraper,
-    parse_query_str,
-)
-from legislative.models import Bill, LegislativeSession
+# from senate_scraper.scrapers import (
+#     BillListScraper,
+#     BillDetailsScraper,
+#     parse_query_str,
+# )
+from legislative.models import Bill
 from general.models import Organization
 from senate_scraper.processors import update_senate_bill
 
@@ -27,12 +27,10 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-
-        session = LegislativeSession.objects.get(id=1)
+        # session = LegislativeSession.objects.get(id=1)
         senate = Organization.objects.get(id=1)
 
         bills = Bill.objects.filter(from_organization=senate)
 
         for bill in tqdm(bills):
             update_senate_bill(bill=bill)
-

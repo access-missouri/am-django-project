@@ -42,7 +42,7 @@ class Command(BaseCommand):
                 identifier=params['BillID'],
                 from_organization=senate,
                 defaults={
-                    'title':bill_details.summary,
+                    'title': bill_details.summary,
                 },
             )
 

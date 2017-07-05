@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+"""
+Update a senate bill given either its existing model or a bill URL and session.
+"""
 from senate_scraper.scrapers import BillDetailsScraper, parse_query_str
 
 from params_from_bill import params_from_bill
+
 
 def update_senate_bill(bill=None, bill_url=None, session=None):
     """
     Update a senate bill given either its existing model or a bill URL and session.
     """
-
     url_params = {}
 
     if bill:
@@ -21,7 +23,7 @@ def update_senate_bill(bill=None, bill_url=None, session=None):
         bill.lr_number = bill_scraper.params['BillID'],
         bill.proposed_effective_date = bill_scraper.effective_date
         bill.save()
-        
+
     elif bill_url:
         url_params = parse_query_str(bill_url)
         bill_scraper = BillDetailsScraper(url_params)
