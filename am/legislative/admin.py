@@ -4,7 +4,7 @@
 Legislative models app admins.
 """
 from django.contrib import admin # NOQA
-from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillAmendment, BillSponsorship, BillTitle, BillVersion
+from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillAmendment, BillSponsorship, BillTitle, BillVersion   # NOQA
 
 # Register your models here.
 
