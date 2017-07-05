@@ -6,4 +6,5 @@
 .cache
 .build
 .static
+.idea
 settings_local.py
