@@ -7,7 +7,7 @@ cache:
 
 python:
   - "2.7"
-  - "3.5"
+  - "3.6"
 
 env:
   - DJANGO_VERSION=1.10.*
@@ -17,17 +17,15 @@ install:
  - pip install -r requirements.txt
  - pip uninstall -y Django
  - pip install -q Django==$DJANGO_VERSION
+ - pip list
 
 before_script:
   - psql -c 'create database access_mo_django;' -U postgres
-  - cd am
-  - cp am/settings_local.py.template am/settings_local.py
+  - cp am/am/settings_local.py.template am/am/settings_local.py
+  - python am/manage.py migrate
 
 script:
-  - flake8 am
-  - python manage.py migrate
-  - coverage run --source='.' manage.py test house_scraper
-  - coverage run --source='.' manage.py test senate_scraper
+  - make test
 
 after_success:
   - coveralls

@@ -3,6 +3,7 @@
 """
 Scraper for requesting, caching and parsing http://house.mo.gov/billlist.aspx.
 """
+import os
 from house_scraper.scrapers import BaseScraper
 
 
@@ -19,6 +20,13 @@ class BillListScraper(BaseScraper):
             url_path='billlist.aspx',
             **kwargs
         )
+
+    @property
+    def cache_file_path(self):
+        """
+        Returns the full path to a cached version of the page's content.
+        """
+        return os.path.join(self.cache_dir, self.url_path)
 
     @property
     def bill_urls(self):

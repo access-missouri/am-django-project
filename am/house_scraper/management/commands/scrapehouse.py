@@ -39,6 +39,7 @@ class Command(BaseCommand):
                 print(bill_details.description)
                 print(bill_details.sponsor['name'])
                 print(bill_details.sponsor['url'])
+                print(bill_details.proposed_effective_date)
                 for action in bill_actions.actions_list:
                     print(action)
                 print('--------------------------------')

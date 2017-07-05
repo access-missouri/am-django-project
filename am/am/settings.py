@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'senate_scraper',
+    'general',
+    'legislative',
     'house_scraper',
 ]
 

@@ -4,9 +4,11 @@
 Base class with properties and classes common to all Scraper subclasses.
 """
 import os
+import re
 import requests
 from requests.compat import urlparse, urljoin
 from bs4 import BeautifulSoup
+from datetime import date
 from time import sleep
 from django.conf import settings
 
@@ -21,13 +23,31 @@ def parse_query_str(url):
     return {i.split('=')[0]: i.split('=')[1] for i in query_str.split('&')}
 
 
+def str_to_date(date_str):
+    """
+    Return a date object extracted from a string in MM/DD/YYYY format.
+    """
+    match = re.match(
+        r'(?P<month>\d{,2})/(?P<day>\d{,2})/(?P<year>\d{4})',
+        date_str,
+    )
+    date_dict = dict([(k, int(v)) for k, v in match.groupdict().items()])
+
+    return date(date_dict['year'], date_dict['month'], date_dict['day'])
+
+
 class BaseScraper(object):
     """
     Base class with properties and classes common to all Scraper subclasses.
     """
 
     def __init__(
-        self, url_path=None, params=None, session=None, sleep_count=1
+        self,
+        url_path=None,
+        params=None,
+        session=None,
+        sleep_count=1,
+        no_cache=False,
     ):
         """
         Initializes an object for scraping a page.
@@ -37,6 +57,7 @@ class BaseScraper(object):
         self.params = params
         self.session = session
         self.sleep_count = sleep_count
+        self.no_cache = no_cache
         self._response = None
         self._soup = None
         self.cache_dir = os.path.join(
@@ -53,7 +74,8 @@ class BaseScraper(object):
         else:
             self._response = requests.get(full_url, params=self.params)
         sleep(self.sleep_count)
-        self.save_to_cache(self._response.content)
+        if not self.no_cache:
+            self.save_to_cache(self._response.content)
         return self._response
 
     def save_to_cache(self, content):
@@ -80,16 +102,12 @@ class BaseScraper(object):
     def cache_file_path(self):
         """
         Returns the full path to a cached version of the page's content.
+
+        This property should be implemented on each subclass.
         """
-        file_path = os.path.join(
-            self.cache_dir,
-            self.url_path,
+        raise Exception(
+            "%s has not implemented .cache_file_path." % self.__class__.__name__
         )
-        if self.params:
-            file_path += "?%s" % '&'.join(
-                ['{0}={1}'.format(k, v) for k, v in self.params.items()]
-            )
-        return file_path
 
     @property
     def response(self):
@@ -107,7 +125,10 @@ class BaseScraper(object):
         Return parsed response content as a BeautifulSoup object.
         """
         if not self._soup:
-            content = self.read_from_cache()
+            if not self.no_cache:
+                content = self.read_from_cache()
+            else:
+                content = None
             if not content:
                 content = self.response.content
             self._soup = BeautifulSoup(content, 'html5lib')
