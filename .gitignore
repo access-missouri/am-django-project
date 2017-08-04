@@ -8,3 +8,4 @@
 .static
 .idea
 settings_local.py
+.python-version
