@@ -5,7 +5,7 @@ Update a senate bill given either its existing model or a bill URL and session.
 """
 from senate_scraper.scrapers import BillDetailsScraper, parse_query_str
 
-from params_from_bill import params_from_bill
+from .params_from_bill import params_from_bill
 
 
 def update_senate_bill(bill=None, bill_url=None, session=None):
