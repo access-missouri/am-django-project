@@ -65,7 +65,8 @@ class Bill(AMBaseModel):
     )
     identifier = models.CharField(
         max_length=100,
-        help_text="Identifier for the bill, as assigned by the Clerk's office.",
+        help_text="Identifier for the bill, as assigned by the Clerk's office "
+                  "(e.g., 'HB1', 'SB2')."
     )
     from_organization = models.ForeignKey(
         Organization,
@@ -77,10 +78,10 @@ class Bill(AMBaseModel):
         help_text='The current title of the bill.',
     )
     lr_number = models.CharField(
-        max_length=100,
+        max_length=6,
         null=True,
         blank=True,
-        help_text='Legislative Research (?) number.',
+        help_text="First part of Legislative Reference number (before '.').",
     )
     proposed_effective_date = models.DateField(
         null=True,
@@ -103,6 +104,10 @@ class Bill(AMBaseModel):
         max_length=300,
         null=True,
         help_text='Current position of the bill on the legislative calendar.',
+    )
+    description = models.TextField(
+        help_text="Description of the purpose of the bill.",
+        blank=True,
     )
 
     def __str__(self):
@@ -212,6 +217,12 @@ class BillVersion(AMBaseModel):
         Bill,
         related_name='versions',
         help_text='Reference to the Bill to which the version belongs.',
+    )
+    lr_number = models.CharField(
+        max_length=4,
+        null=True,
+        blank=True,
+        help_text="Second part of Legislative Reference number (after '.').",
     )
     note = models.CharField(
         max_length=300,
