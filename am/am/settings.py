@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'general',
     'legislative',
     'house_scraper',
+    'ls_importer',
 ]
 
 MIDDLEWARE = [
