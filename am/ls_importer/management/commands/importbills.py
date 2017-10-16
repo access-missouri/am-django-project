@@ -35,6 +35,7 @@ class Command(BaseCommand):
             bill_description = bill_json['bill']['description']
             bill_progress_json = bill_json['bill']['progress']
             bill_session_json = bill_json['bill']['session']
+            bill_history_arr = bill_json['bill']['history']
 
             bill_session_name = bill_session_json['session_name']
             bill_session_type_code = ''
@@ -48,10 +49,16 @@ class Command(BaseCommand):
                 classification = bill_session_type_code,
             )
 
+            bill_object, bill_created = Bill.objects.get_or_create(
+                identifier=bill_number,
+                legislative_session=session_object,
+            )
+
             print bill_json['bill'].viewkeys()
 
             print bill_session_type_code
             print session_created
+            print bill_created
 
         json_to_bill('/Users/nathanlawrence/Desktop/HB1.json')
 
