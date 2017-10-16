@@ -32,13 +32,26 @@ class Command(BaseCommand):
 
             bill_number = bill_json['bill']['bill_number']
             bill_title = bill_json['bill']['title']
-            bill_progress = bill_json['bill']['progress']
+            bill_description = bill_json['bill']['description']
+            bill_progress_json = bill_json['bill']['progress']
             bill_session_json = bill_json['bill']['session']
 
+            bill_session_name = bill_session_json['session_name']
+            bill_session_type_code = ''
+            if "Extra" in bill_session_name:
+                bill_session_type_code = 'E'
+            else:
+                bill_session_type_code = 'R'
+
+            session_object, session_created = LegislativeSession.objects.get_or_create(
+                name = bill_session_name,
+                classification = bill_session_type_code,
+            )
 
             print bill_json['bill'].viewkeys()
 
-            print bill_session_json
+            print bill_session_type_code
+            print session_created
 
         json_to_bill('/Users/nathanlawrence/Desktop/HB1.json')
 

@@ -35,6 +35,7 @@ class LegislativeSession(AMBaseModel):
     )
     start_date = models.DateField(
         help_text='Date that the Legislative Session starts.',
+        null=True,
     )
     end_date = models.DateField(
         null=True,
