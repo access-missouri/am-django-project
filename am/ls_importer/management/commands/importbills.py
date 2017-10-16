@@ -4,15 +4,11 @@
 Import a folder full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
-from senate_scraper.scrapers import (
-    BillListScraper,
-    BillDetailsScraper,
-    parse_query_str,
-)
-from legislative.models import Bill, LegislativeSession
+from legislative.models import Bill, LegislativeSession, BillAction
 from general.models import Organization
 import json
-
+from datetime import datetime
+import os
 
 class Command(BaseCommand):
     """
@@ -54,31 +50,27 @@ class Command(BaseCommand):
                 legislative_session=session_object,
             )
 
+            action_order = 0
+            for history_item in bill_history_arr:
+                action_order += 1
+                history_item_date = datetime.strptime(history_item['date'], "%Y-%m-%d").date()
+                action, action_created = BillAction.objects.get_or_create(
+                    bill = bill_object,
+                    description = history_item['action'],
+                    date = history_item_date,
+                    defaults = {
+                        'order': action_order,
+                    }
+                )
+                if action_created:
+                    print "New action."
+                else:
+                    print "Old action."
+
             print session_created
             print bill_created
 
-        json_to_bill('/Users/nathanlawrence/Desktop/HB1.json')
-
-        # list_params = {'SessionType': 'R', }
-        # bill_list = BillListScraper(params=list_params)
-        #
-        # session = LegislativeSession.objects.get(id=1)
-        # senate = Organization.objects.get(id=1)
-        #
-        # for url in bill_list.bill_urls:
-        #     print(url)
-        #     params = parse_query_str(url)
-        #     print(params)
-        #     bill_details = BillDetailsScraper(params)
-        #     # bill_actions = BillActionsScraper(params)
-        #
-        #     bill, created = Bill.objects.get_or_create(
-        #         legislative_session=session,
-        #         identifier=params['BillID'],
-        #         from_organization=senate,
-        #         defaults={
-        #             'title': bill_details.summary,
-        #         },
-        #     )
-        #
-        #     print(created)
+        target_directory = '/Users/nathanlawrence/Desktop/Bills'
+        for file in os.listdir(target_directory):
+            if file.endswith(".json"):
+                json_to_bill(os.path.join(target_directory, file))
