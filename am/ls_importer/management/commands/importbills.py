@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Import a folder full of bill JSON from Legiscan to the database.
+Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
 from legislative.models import Bill, LegislativeSession, BillAction
@@ -9,10 +9,11 @@ from general.models import Organization
 import json
 from datetime import datetime
 import os
+from tqdm import tqdm
 
 class Command(BaseCommand):
     """
-    Import a folder full of bill JSON from Legiscan to the database.
+    Import a folder (~/bills) full of bill JSON from Legiscan to the database.
     """
 
     help = 'Import a folder full of bill JSON from Legiscan to the database.'
@@ -62,15 +63,9 @@ class Command(BaseCommand):
                         'order': action_order,
                     }
                 )
-                if action_created:
-                    print "New action."
-                else:
-                    print "Old action."
 
-            print session_created
-            print bill_created
 
-        target_directory = '/Users/nathanlawrence/Desktop/Bills'
-        for file in os.listdir(target_directory):
+        target_directory = os.path.join(os.path.expanduser("~"), 'bills')
+        for file in tqdm(os.listdir(target_directory)):
             if file.endswith(".json"):
                 json_to_bill(os.path.join(target_directory, file))
