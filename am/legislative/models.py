@@ -187,6 +187,7 @@ class BillAction(AMBaseModel):
         related_name='actions',
         help_text='Reference to the Organization that the action took place '
                   'within.',
+        null=True,
     )
     description = models.TextField(
         help_text='Description of the action.',

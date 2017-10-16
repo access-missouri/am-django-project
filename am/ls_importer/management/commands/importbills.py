@@ -54,9 +54,6 @@ class Command(BaseCommand):
                 legislative_session=session_object,
             )
 
-            print bill_json['bill'].viewkeys()
-
-            print bill_session_type_code
             print session_created
             print bill_created
 
