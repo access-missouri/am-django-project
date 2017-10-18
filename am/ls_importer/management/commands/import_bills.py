@@ -5,11 +5,11 @@ Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
 from legislative.models import Bill, LegislativeSession, BillAction
-from general.models import Organization
 import json
 from datetime import datetime
 import os
 from tqdm import tqdm
+
 
 class Command(BaseCommand):
     """
@@ -42,8 +42,8 @@ class Command(BaseCommand):
                 bill_session_type_code = 'R'
 
             session_object, session_created = LegislativeSession.objects.get_or_create(
-                name = bill_session_name,
-                classification = bill_session_type_code,
+                name=bill_session_name,
+                classification=bill_session_type_code,
             )
 
             bill_object, bill_created = Bill.objects.get_or_create(
@@ -56,14 +56,13 @@ class Command(BaseCommand):
                 action_order += 1
                 history_item_date = datetime.strptime(history_item['date'], "%Y-%m-%d").date()
                 action, action_created = BillAction.objects.get_or_create(
-                    bill = bill_object,
-                    description = history_item['action'],
-                    date = history_item_date,
-                    defaults = {
+                    bill=bill_object,
+                    description=history_item['action'],
+                    date=history_item_date,
+                    defaults={
                         'order': action_order,
                     }
                 )
-
 
         target_directory = os.path.join(os.path.expanduser("~"), 'bills')
         for file in tqdm(os.listdir(target_directory)):
