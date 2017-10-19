@@ -9,3 +9,6 @@
 .idea
 settings_local.py
 .python-version
+
+am/static/admin
+am/static/gis

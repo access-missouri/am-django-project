@@ -1,0 +1,10 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{bill.identifier}}{% endblock %}
+
+{% block body %}
+<div class="bill-details container">
+    <h1>{{bill.identifier}}</h1>
+<p class="bill-title">{{bill.title}}</p>
+</div>
+{% endblock %}
