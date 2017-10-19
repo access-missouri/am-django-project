@@ -204,7 +204,7 @@ class BillAction(AMBaseModel):
         Model options.
         """
 
-        ordering = ['order']
+        ordering = ['-date', '-order']
 
     def __str__(self):
         return '{0} action on {1}'.format(self.bill.identifier, self.date)

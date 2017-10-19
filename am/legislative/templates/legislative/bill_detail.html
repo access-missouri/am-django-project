@@ -5,6 +5,31 @@
 {% block body %}
 <div class="bill-details container">
     <h1>{{bill.identifier}}</h1>
-<p class="bill-title">{{bill.title}}</p>
+    <p class="bill-title">{{bill.title}}</p>
+
+    {% if bill.actions.all %}
+    <div class="recent-actions full-cluster">
+        <h2>Recent Actions</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Action</td>
+                <td>Chamber</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for action in bill.actions.all|slice:"5" %}
+            <tr>
+                <th scope="row">{{action.date}}</th>
+                <td>{{action.description}}</td>
+                <td>{{action.chamber}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}
