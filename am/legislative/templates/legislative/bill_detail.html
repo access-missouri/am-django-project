@@ -7,6 +7,13 @@
     <h1>{{bill.identifier}}</h1>
     <p class="bill-title">{{bill.title}}</p>
 
+    {% if bill.description %}
+    <div class="full-cluster">
+        <h2>Description</h2>
+        <p>{{bill.description}}</p>
+    </div>
+    {% endif %}
+
     {% if bill.actions.all %}
     <div class="recent-actions full-cluster">
         <h2>Recent Actions</h2>

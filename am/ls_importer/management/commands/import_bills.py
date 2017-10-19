@@ -51,6 +51,14 @@ class Command(BaseCommand):
                 legislative_session=session_object,
             )
 
+
+            bill_object.title = bill_title
+            if bill_title == bill_description:
+                bill_object.description = ""
+            else:
+                bill_object.description = bill_description
+            bill_object.save()
+
             action_order = 0
             for history_item in bill_history_arr:
                 action_order += 1
