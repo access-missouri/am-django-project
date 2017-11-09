@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Organization and related models.
+LSID-person linking class.
 """
 from __future__ import unicode_literals
 from datetime import datetime
@@ -15,7 +15,7 @@ from general.models import Person
 @python_2_unicode_compatible
 class LSIDPerson(AMBaseModel):
     """
-    A group of people, typically in a legislative or rule-making context.
+    Legiscan Person-ID Linking class.
     """
 
     lsid = models.CharField(

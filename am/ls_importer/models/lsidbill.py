@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Organization and related models.
+Legiscan Bill-ID Linking class.
 """
 from __future__ import unicode_literals
 from datetime import datetime
@@ -13,9 +13,9 @@ from legislative.models import Bill
 
 
 @python_2_unicode_compatible
-class LSIDPerson(AMBaseModel):
+class LSIDBill(AMBaseModel):
     """
-    A group of people, typically in a legislative or rule-making context.
+    Legiscan Bill-ID Linking class.
     """
 
     lsid = models.CharField(
