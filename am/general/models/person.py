@@ -49,6 +49,18 @@ class Person(AMBaseModel):
         help_text="Gender of the Person, if known.",
     )
 
+    def get_full_name(self):
+        template = '{0.last_name}, {0.suffix}, {0.first_name} "{0.nickname}" {0.middle_name}' # noqa
+        return (
+            template.format(self)
+            # remove the suffix placeholder, if empty
+            .replace(', , ', ', ')
+            # remove the nickname placeholder, if empty
+            .replace(' ""', '')
+            # remove the middle_name placeholder, if empty
+            .replace('  ', '')
+        )
+
     def __str__(self):
         template = '{0.last_name}, {0.suffix}, {0.first_name} "{0.nickname}" {0.middle_name}' # noqa
         return (
@@ -60,6 +72,7 @@ class Person(AMBaseModel):
             # remove the middle_name placeholder, if empty
             .replace('  ', '')
         )
+
 
     class Meta:
         """
