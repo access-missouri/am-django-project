@@ -4,10 +4,8 @@
 LSID-person linking class.
 """
 from __future__ import unicode_literals
-from datetime import datetime
 from general.models import AMBaseModel
 from django.db import models
-from django.db.models import Q
 from django.utils.encoding import python_2_unicode_compatible
 from general.models import Person
 
@@ -33,4 +31,3 @@ class LSIDPerson(AMBaseModel):
 
     def __str__(self):
         return self.lsid
-

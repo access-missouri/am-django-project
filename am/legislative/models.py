@@ -351,7 +351,7 @@ class BillVote(AMBaseModel):
         Model options.
         """
 
-        ordering = ['-date',]
+        ordering = ['-date', ]
 
 
 @python_2_unicode_compatible

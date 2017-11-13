@@ -50,6 +50,11 @@ class Person(AMBaseModel):
     )
 
     def get_full_name(self):
+        """
+        Gets a person object's generated full name.
+
+        :return:
+        """
         template = '{0.last_name}, {0.suffix}, {0.first_name} "{0.nickname}" {0.middle_name}' # noqa
         return (
             template.format(self)
@@ -72,7 +77,6 @@ class Person(AMBaseModel):
             # remove the middle_name placeholder, if empty
             .replace('  ', '')
         )
-
 
     class Meta:
         """

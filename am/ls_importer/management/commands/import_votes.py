@@ -4,7 +4,7 @@
 Import a folder (~/votes) full of vote JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
-from legislative.models import Bill, BillVote, PersonVote
+from legislative.models import BillVote, PersonVote
 from ls_importer.models import LSIDPerson, LSIDBill
 import json
 from datetime import datetime
@@ -23,13 +23,11 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-
         def json_to_vote(json_path):
             json_data = open(json_path)
             vote_json = json.load(json_data)['roll_call']
 
-
-            vote_ls_id = vote_json['roll_call_id']
+            # vote_ls_id = vote_json['roll_call_id']
             bill_ls_id = vote_json['bill_id']
             vote_date = datetime.strptime(vote_json['date'], "%Y-%m-%d")
             vote_issue = vote_json['desc']

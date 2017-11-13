@@ -7,7 +7,6 @@ from django.core.management.base import BaseCommand
 from general.models import Person
 from ls_importer.models import LSIDPerson
 import json
-from datetime import datetime
 import os
 from tqdm import tqdm
 
@@ -23,17 +22,16 @@ class Command(BaseCommand):
         """
         Make it happen.
         """
-
         def json_to_person(json_path):
             json_data = open(json_path)
             person_json = json.load(json_data)
             pj_unfold = person_json['person']
 
             person_ls_id = pj_unfold['people_id']
-            person_ls_role_id = pj_unfold['role_id']
-            person_role = pj_unfold['role']
-            person_ls_party_id = pj_unfold['party_id']
-            person_name = pj_unfold['name']
+            # person_ls_role_id = pj_unfold['role_id']
+            # person_role = pj_unfold['role']
+            # person_ls_party_id = pj_unfold['party_id']
+            # person_name = pj_unfold['name']
             person_first_name = pj_unfold['first_name']
             person_middle_name = pj_unfold['middle_name']
             person_last_name = pj_unfold['last_name']

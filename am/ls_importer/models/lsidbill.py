@@ -4,10 +4,8 @@
 Legiscan Bill-ID Linking class.
 """
 from __future__ import unicode_literals
-from datetime import datetime
 from general.models import AMBaseModel
 from django.db import models
-from django.db.models import Q
 from django.utils.encoding import python_2_unicode_compatible
 from legislative.models import Bill
 
