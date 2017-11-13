@@ -5,6 +5,7 @@ Import a folder (~/people) full of person JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
 from general.models import Person
+from ls_importer.models import LSIDPerson
 import json
 from datetime import datetime
 import os
@@ -48,6 +49,11 @@ class Command(BaseCommand):
                 defaults={
                     'nickname': person_nickname,
                 }
+            )
+
+            link_object, link_created = LSIDPerson.objects.get_or_create(
+                lsid=person_ls_id,
+                person=person_object,
             )
 
         target_directory = os.path.join(os.path.expanduser("~"), 'people')

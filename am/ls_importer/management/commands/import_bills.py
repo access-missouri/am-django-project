@@ -5,6 +5,7 @@ Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
 from legislative.models import Bill, LegislativeSession, BillAction
+from ls_importer.models import LSIDBill
 import json
 from datetime import datetime
 import os
@@ -28,6 +29,7 @@ class Command(BaseCommand):
             bill_json = json.load(json_data)
 
             bill_number = bill_json['bill']['bill_number']
+            bill_ls_id = bill_json['bill']['bill_id']
             bill_title = bill_json['bill']['title']
             bill_description = bill_json['bill']['description']
             bill_progress_json = bill_json['bill']['progress']
@@ -49,6 +51,11 @@ class Command(BaseCommand):
             bill_object, bill_created = Bill.objects.get_or_create(
                 identifier=bill_number,
                 legislative_session=session_object,
+            )
+
+            link_object, link_created = LSIDBill.objects.get_or_create(
+                lsid=bill_ls_id,
+                bill=bill_object,
             )
 
 
