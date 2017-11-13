@@ -40,21 +40,29 @@ class Command(BaseCommand):
             person_suffix = pj_unfold['suffix']
             person_nickname = pj_unfold['nickname']
 
+            # This try/catch structure exists
+            # to prevent edge cases where
+            # a person may be stored twice in Legiscan
+            # under slightly different names.
+            try:
+                LSIDPerson.objects.get(
+                    lsid=person_ls_id
+                )
+            except(LSIDPerson.DoesNotExist):
+                person_object, person_created = Person.objects.get_or_create(
+                    first_name=person_first_name,
+                    middle_name=person_middle_name,
+                    last_name=person_last_name,
+                    suffix=person_suffix,
+                    defaults={
+                        'nickname': person_nickname,
+                    }
+                )
 
-            person_object, person_created = Person.objects.get_or_create(
-                first_name=person_first_name,
-                middle_name=person_middle_name,
-                last_name=person_last_name,
-                suffix=person_suffix,
-                defaults={
-                    'nickname': person_nickname,
-                }
-            )
-
-            link_object, link_created = LSIDPerson.objects.get_or_create(
-                lsid=person_ls_id,
-                person=person_object,
-            )
+                link_object, link_created = LSIDPerson.objects.get_or_create(
+                    lsid=person_ls_id,
+                    person=person_object,
+                )
 
         target_directory = os.path.join(os.path.expanduser("~"), 'people')
         for file in tqdm(os.listdir(target_directory)):
