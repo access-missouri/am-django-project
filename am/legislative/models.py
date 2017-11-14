@@ -49,6 +49,11 @@ class LegislativeSession(AMBaseModel):
         max_length=12,
     )
 
+    def get_absolute_url(self):
+        return '/sessions/{}'.format(
+            self.id
+        )
+
     def __str__(self):
         return self.name
 

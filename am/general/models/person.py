@@ -55,15 +55,19 @@ class Person(AMBaseModel):
 
         :return:
         """
-        template = '{0.first_name} "{0.nickname}" {0.middle_name} {0.last_name}, {0.suffix} ' # noqa
+        template = '{0.first_name} "{0.nickname}" ${0.middle_name}$ {0.last_name}, {0.suffix} ' # noqa
         return (
             template.format(self)
             # remove the suffix placeholder, if empty
             .replace(',  ', '')
             # remove the nickname placeholder, if empty
             .replace(' ""', '')
+            # make the nickname thing work
+            .replace('"  ', '" ')
             # remove the middle_name placeholder, if empty
-            .replace('  ', '')
+            .replace('$$ ', '')
+            # remove the remaining dollars if middle_name exists
+            .replace('$', '')
         )
 
     def get_absolute_url(self):
