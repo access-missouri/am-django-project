@@ -20,6 +20,13 @@ div.breadcrumb-holder{
 
     a {
       color: #fff;
+      border-bottom-color: rgba(#fff, 0);
+
+      &:hover{
+        text-decoration: none;
+        border-bottom: 1px solid #fff;
+        transition: border-bottom-color ease-in .3s;
+      }
     }
 
     li{

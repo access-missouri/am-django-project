@@ -1,6 +1,6 @@
 {% extends 'sitewide/base.html' %}
 
-{% block title %}{{bill.identifier}}{% endblock %}
+{% block title %}Vote on {{vote.bill.identifier}}{% endblock %}
 
 {% block body %}
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{vote.bill.legislative_session.get_absolute_url}}">{{vote.bill.legislative_session}}</a></li><li><a href="{{vote.bill.get_absolute_url}}">{{vote.bill.identifier}}</a></li></ul></div>
