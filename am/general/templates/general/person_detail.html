@@ -3,6 +3,7 @@
 {% block title %}{{person.get_full_name}}{% endblock %}
 
 {% block body %}
+<div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="#">{{person.get_full_name}}</a></li></ul></div>
 <div class="person-details container">
     <h1>{{person.get_full_name}}</h1>
 

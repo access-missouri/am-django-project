@@ -18,23 +18,40 @@
           content="{% block metaimg %}{% static 'am-logo-nearblack-1400.png' %}{% endblock %}">
     {% block metablock %}
     {% endblock %}
+    <link rel="stylesheet" href="http://am-cdn-feeder.s3.amazonaws.com/dist/fonts/font-define.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>{% block title %}{% endblock %} - Access Missouri</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-inverse">
-    <div class="container">
-        <button aria-controls="amCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-sm-up pull-xs-right" data-target="#amCollapsingNavbar" data-toggle="collapse" type="button"> ☰ </button>
-        <a  class="navbar-brand"  href="/">
-            <img alt="Access Missouri Logo" class="img-navbar pull-xs-left" style="max-height: 30px; margin-right: 5px;" src="{% static 'am-logo-white-1400.png' %}">
-            <span class="brand-text hidden-sm-down">Access Missouri</span>
-        </a> <div class="collapse navbar-toggleable-xs" id="amCollapsingNavbar">
-        <div  class="nav navbar-nav"> <div class="collapse-fix">
-            <a class="nav-item nav-link active" href="/bills">Bills</a>
-        </div>
-        </div>
+<!--<nav class="navbar navbar-dark bg-inverse">-->
+    <!--<div class="container">-->
+        <!--<button aria-controls="amCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-sm-up pull-xs-right" data-target="#amCollapsingNavbar" data-toggle="collapse" type="button"> ☰ </button>-->
+        <!--<a  class="navbar-brand"  href="/">-->
+            <!--<img alt="Access Missouri Logo" class="img-navbar pull-xs-left" style="max-height: 30px; margin-right: 5px;" src="{% static 'am-logo-white-1400.png' %}">-->
+            <!--<span class="brand-text hidden-sm-down">Access Missouri</span>-->
+        <!--</a> <div class="collapse navbar-toggleable-xs" id="amCollapsingNavbar">-->
+        <!--<div  class="nav navbar-nav"> <div class="collapse-fix">-->
+            <!--<a class="nav-item nav-link active" href="/bills">Bills</a>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<nav class="am-navbar">
+<div class="nav-container">
+    <div class="nav-left">
+        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
     </div>
+
+    <div class="nav-right">
+        <ul class="nav-list">
+            <li class="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
+            <li class="nav-list-item nl-item-people"><a href="/people/">People</a></li>
+            <li class="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
+        </ul>
     </div>
+
+</div>
 </nav>
 {% block body %}
 {% endblock %}

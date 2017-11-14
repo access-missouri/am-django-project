@@ -3,6 +3,7 @@
 {% block title %}{{bill.identifier}}{% endblock %}
 
 {% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="#">{{bill.legislative_session}}</a></li></ul></div>
 <div class="bill-details container">
     <h1>{{bill.identifier}}</h1>
     <p class="bill-title">{{bill.title}}</p>
@@ -46,17 +47,20 @@
             <tr>
                 <td>Date</td>
                 <td>Vote</td>
+                <td>Passed</td>
             </tr>
             </thead>
             <tbody>
             {% for vote in bill.votes.all|slice:"5" %}
             <tr>
                 <th scope="row">{{vote.date}}</th>
-                <td>{{vote.issue}}</td>
+                <td><a href="{{vote.get_absolute_url}}">{{vote.issue}}</a></td>
+                <td>{{vote.get_passed_yes_no}}</td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
+        <p class="aff"><a href="{{bill.get_absolute_url}}/votes" class="link-legislative">View All {{bill.votes.all.count}} Votes</a></p>
     </div>
     {% endif %}
 

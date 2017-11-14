@@ -1,0 +1,39 @@
+div.bill-details{
+
+  h1 {
+    font-size: 2.8em;
+    border-left: 3px solid $am-crimson;
+    padding-left: 10px;
+  }
+
+
+  p.bill-title{
+    font-size: 2.6em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  p.aff{
+    margin-top: 1rem;
+    font-size: 1.1em;
+  }
+
+  table{
+    td {
+      a {
+        color: $gray;
+        background-color: lighten($gray, 70%);
+        padding-left: 5px;
+        padding-right: 5px;
+        border-bottom: 1px dotted lighten($am-crimson, 20%);
+
+        &:hover {
+          text-decoration: none;
+          background-color: lighten($am-crimson, 55%);
+          border-bottom: 1px dotted lighten($am-crimson, 10%);
+        }
+      }
+    }
+  }
+
+}

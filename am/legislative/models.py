@@ -113,6 +113,11 @@ class Bill(AMBaseModel):
         blank=True,
     )
 
+    def get_absolute_url(self):
+        return '/bills/{}'.format(
+            self.id,
+        )
+
     def __str__(self):
         return '{} in {}'.format(self.identifier, self.legislative_session)
 
@@ -340,6 +345,15 @@ class BillVote(AMBaseModel):
         help_text="Date the vote was taken."
     )
 
+    def get_absolute_url(self):
+        return '/bills/{}/votes/{}'.format(
+            self.bill.id,
+            self.id,
+        )
+
+    def get_passed_yes_no(self):
+        return 'Yes' if self.did_pass else 'No'
+
     def __str__(self):
         return '{} on {}'.format(
             self.issue,
@@ -362,7 +376,7 @@ class PersonVote(AMBaseModel):
 
     bill_vote = models.ForeignKey(
         BillVote,
-        related_name='votes',
+        related_name='opinions',
         help_text='Reference to the broad vote in question.',
     )
     person = models.ForeignKey(

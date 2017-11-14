@@ -12,3 +12,7 @@ settings_local.py
 
 am/static/admin
 am/static/gis
+
+node_modules
+.sass-cache
+am/package-lock.json

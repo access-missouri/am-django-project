@@ -1,0 +1,92 @@
+
+
+body{
+	font-family: $equity-reg;
+
+}
+
+a:not([href]):not([tabindex]){
+	text-decoration: none;
+}
+
+h1{
+	font-family: $advocate-reg;
+	font-size: 2.5rem;
+}
+
+h2{
+	//border-left: 1px solid lighten($gray, 20%);
+	//border-top: 1px solid lighten($gray, 20%);
+	padding-left: 5px;
+	padding-top: 3px;
+	font-family: $concourse-reg;
+	font-size: 2.2rem;
+	margin-top: 1em;
+}
+
+p {
+	font-size: 1rem;
+	line-height: 1.2em;
+}
+
+.hidden-sm-down{
+	@media screen and (max-width: $small-screen-width){
+		display: none;
+	}
+}
+
+table {
+	margin-top: 1.5em;
+	font-size: 1rem;
+	line-height: 1.2em;
+	color: $gray;
+	width: 100%;
+
+	tr{
+		border-top: 1px solid $gray-lighter;
+	}
+
+	td,th{
+		padding: 0.8em;
+		height: 1.5em;
+	}
+
+	thead{
+		font-family: $concourse-bold;
+	}
+
+
+	span.episode-player{
+		&:hover{
+			color: $project-primary;
+		}
+	}
+}
+
+a.link-legislative {
+	color: $gray;
+	background-color: lighten($gray, 70%);
+	padding-left: 5px;
+	padding-right: 5px;
+	border-bottom: 1px dotted lighten($am-crimson, 20%);
+
+	&:hover {
+		text-decoration: none;
+		background-color: lighten($am-crimson, 55%);
+		border-bottom: 1px dotted lighten($am-crimson, 10%);
+	}
+}
+
+a.link-people {
+	color: $gray;
+	background-color: lighten($gray, 70%);
+	padding-left: 5px;
+	padding-right: 5px;
+	border-bottom: 1px dotted lighten($am-blue, 20%);
+
+	&:hover {
+		text-decoration: none;
+		background-color: lighten($am-blue, 55%);
+		border-bottom: 1px dotted lighten($am-blue, 10%);
+	}
+}

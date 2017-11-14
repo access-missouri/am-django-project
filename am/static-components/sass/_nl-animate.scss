@@ -1,0 +1,36 @@
+/* Nathan's Animation Mixins
+ * By Nathan Lawrence, 2015-2017
+ */
+
+// Prefixed Keyframes
+@keyframes fadeIn {
+  from { opacity : 0; }
+  to { opacity : 1; }
+}
+
+@mixin fade-in-page-load($time, $delay){
+  opacity : 0;
+
+  // Prefixed Animations
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  -o-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  -o-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  // Prefixed Animation Timing
+  -webkit-animation-duration:$time;
+  -moz-animation-duration:$time;
+  -o-animation-duration:$time;
+  animation-duration:$time;
+
+  // Prefixed Animation Delay
+
+  -webkit-animation-delay:$delay;
+  -moz-animation-delay:$delay;
+  -o-animation-delay:$delay;
+  animation-delay:$delay;
+}

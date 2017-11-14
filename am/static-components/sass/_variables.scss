@@ -1,0 +1,49 @@
+// Base Colors
+$kbia-blue : #006AF3;
+$kbia-tf-red: #d9534f;
+$kbia-bold-purple: #613d7c;
+$sfx-green: #8dc540;
+
+$am-blue: #2b4162;
+$am-crimson: darken(crimson, 5%);
+
+$gray-dark:                 #292b2c !default;
+$gray:                      #464a4c !default;
+$gray-light:                lighten(#636c72,42%) !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
+
+
+$container-width: 1100px;
+
+
+// Project Colors
+$project-primary : $sfx-green;
+$project-background-light: #fff;
+$project-background-dark: $gray-dark;
+$project-text-light: lighten($gray, 15%);
+$project-text-dark: $gray-lightest;
+
+$project-background: $project-background-light;
+$project-text: $project-text-light;
+
+// Media Query Variables
+
+$mediumlg-screen-width: 1400px;
+$medium-screen-width: 800px;
+$small-screen-width: 600px;
+$tiny-screen-width: 500px;
+
+// Font Families
+
+
+$equity-reg: 'equity_text_a_tabregular', Georgia;
+$equity-it: 'equity_text_a_tabitalic';
+$equity-b: 'equity_text_a_tabbold';
+$advocate-reg: 'advocate_c43regular';
+$concourse-reg: 'concourse_t2_tabregular', Helvetica, Arial;
+$concourse-bold: 'concourse_t2_tabbold', Helvetica, Arial;
+$concourse-t4: 'concourse_t4_tabregular', Helvetica, Arial;
+
+$sans-serif: "Helvetica Neue", Helvetica, Arial, Akzidenz Grotesk;
+$serif: "Adobe Caslon Pro", Caslon, Georgia;
