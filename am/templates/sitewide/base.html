@@ -40,7 +40,8 @@
 <nav class="am-navbar">
 <div class="nav-container">
     <div class="nav-left">
-        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
+        <a href="/">        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
+</a>
     </div>
 
     <div class="nav-right">
@@ -58,5 +59,11 @@
 
 {% block scriptyfoot %}
 {% endblock %}
+<footer>
+    <div class="container">
+            <img alt="Access Missouri Logo" class="img-foot"  src="{% static 'am-logo-white-1400.png' %}">
+            <p class="am-t">Access Missouri</p>
+    </div>
+</footer>
 </body>
 </html>

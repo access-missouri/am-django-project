@@ -113,11 +113,13 @@ a.link-legislative {
   padding-left: 5px;
   padding-right: 5px;
   border-bottom: 1px dotted #ef4e6e;
+  transition: background-color ease-in 0.3s;
 }
 a.link-legislative:hover {
   text-decoration: none;
   background-color: #fef1f4;
   border-bottom: 1px dotted #eb1f48;
+  transition: background-color ease-in 0.3s;
 }
 
 a.link-people {
@@ -126,11 +128,13 @@ a.link-people {
   padding-left: 5px;
   padding-right: 5px;
   border-bottom: 1px dotted #4a70a9;
+  transition: background-color ease-in 0.3s;
 }
 a.link-people:hover {
   text-decoration: none;
   background-color: #c1cfe4;
   border-bottom: 1px dotted #3b5985;
+  transition: background-color ease-in 0.3s;
 }
 
 p.aff {
@@ -290,11 +294,13 @@ div.bill-details table td a {
   padding-left: 5px;
   padding-right: 5px;
   border-bottom: 1px dotted #ef4e6e;
+  transition: background-color ease-in 0.3s;
 }
 div.bill-details table td a:hover {
   text-decoration: none;
   background-color: #fef1f4;
   border-bottom: 1px dotted #eb1f48;
+  transition: background-color ease-in 0.3s;
 }
 
 div.person-details h1 {
@@ -306,4 +312,33 @@ div.person-details p.bill-title {
   font-size: 2.6em;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+footer {
+  margin-top: 5em;
+  padding-bottom: 5em;
+  background-color: #464a4c;
+}
+footer div.container {
+  color: #f7f7f9;
+}
+footer div.container img.img-foot {
+  display: block;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer div.container p.am-t {
+  margin-top: 0.4rem;
+  font-family: "concourse_t4_tabregular", Helvetica, Arial;
+  font-size: 1.3rem;
+  text-align: center;
+}
+footer div.container a {
+  border-bottom-color: rgba(247, 247, 249, 0);
+}
+footer div.container a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #f7f7f9;
+  transition: border-bottom-color ease-in 0.3s;
 }

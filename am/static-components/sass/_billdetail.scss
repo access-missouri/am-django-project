@@ -21,11 +21,13 @@ div.bill-details{
         padding-left: 5px;
         padding-right: 5px;
         border-bottom: 1px dotted lighten($am-crimson, 20%);
+        transition: background-color ease-in 0.3s;
 
         &:hover {
           text-decoration: none;
           background-color: lighten($am-crimson, 55%);
           border-bottom: 1px dotted lighten($am-crimson, 10%);
+          transition: background-color ease-in 0.3s;
         }
       }
     }
