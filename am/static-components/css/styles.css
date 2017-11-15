@@ -133,6 +133,11 @@ a.link-people:hover {
   border-bottom: 1px dotted #3b5985;
 }
 
+p.aff {
+  margin-top: 1rem;
+  font-size: 1.1em;
+}
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -278,10 +283,6 @@ div.bill-details p.bill-title {
   font-size: 2.6em;
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-div.bill-details p.aff {
-  margin-top: 1rem;
-  font-size: 1.1em;
 }
 div.bill-details table td a {
   color: #464a4c;

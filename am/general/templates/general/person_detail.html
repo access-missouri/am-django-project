@@ -14,27 +14,28 @@
     </div>
     {% endif %}
 
-    {% if bill.actions.all %}
+    {% if person.votes.all %}
     <div class="recent-actions full-cluster">
-        <h2>Recent Actions</h2>
+        <h2>Recent Votes</h2>
         <table class="table listing">
             <thead class="">
             <tr>
                 <td>Date</td>
-                <td>Action</td>
-                <td>Chamber</td>
+                <td>Bill</td>
+                <td>Question</td>
             </tr>
             </thead>
             <tbody>
-            {% for action in bill.actions.all|slice:"5" %}
+            {% for vote in person.votes.all|slice:"5" %}
             <tr>
-                <th scope="row">{{action.date}}</th>
-                <td>{{action.description}}</td>
-                <td>{{action.chamber}}</td>
+                <th scope="row">{{vote.bill_vote.date}}</th>
+                <td><a href="{{vote.bill_vote.bill.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.bill}}</a></td>
+                <td><a href="{{vote.bill_vote.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.issue}}</a></td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
+        <p class="aff"><a href="{{person.get_absolute_url}}/votes" class="link-people">View All {{person.votes.all.count}} Votes by {{person.get_full_name}}</a></p>
     </div>
     {% endif %}
 
