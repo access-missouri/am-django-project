@@ -1,0 +1,35 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{person.get_full_name}}{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="#">{{person.get_full_name}}</a></li></ul></div>
+<div class="person-details container">
+    <h1>{{person.get_full_name}}</h1>
+
+    {% if person.votes.all %}
+    <div class="recent-actions full-cluster">
+        <h2>Recent Votes</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Bill</td>
+                <td>Question</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in person.votes.all %}
+            <tr>
+                <th scope="row">{{vote.bill_vote.date}}</th>
+                <td><a href="{{vote.bill_vote.bill.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.bill}}</a></td>
+                <td><a href="{{vote.bill_vote.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.issue}}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

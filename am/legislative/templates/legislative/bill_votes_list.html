@@ -1,0 +1,36 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}All Votes on {{bill.identifier}}{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{bill.legislative_session.get_absolute_url}}">{{bill.legislative_session}}</a></li><li><a href="{{bill.get_absolute_url}}">{{bill.identifier}}</a></li></ul></div>
+<div class="bill-details container">
+    <h1>{{bill.identifier}}</h1>
+    <p class="bill-title">{{bill.title}}</p>
+
+    {% if bill.votes.all %}
+    <div class="recent-votes full-cluster">
+        <h2>All Votes on {{bill.identifier}}</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Vote</td>
+                <td>Passed</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in bill.votes.all %}
+            <tr>
+                <th scope="row">{{vote.date}}</th>
+                <td><a href="{{vote.get_absolute_url}}">{{vote.issue}}</a></td>
+                <td>{{vote.get_passed_yes_no}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

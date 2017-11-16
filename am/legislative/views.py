@@ -25,6 +25,23 @@ class BillDetailView(DetailView):
             return Bill.objects.get(id=self.kwargs['id'])
         return super(BillDetailView, self).get_objects()
 
+class BillVotesListView(DetailView):
+    """
+    View showing all of an individual bill's votes.
+    """
+
+    model = Bill
+    context_object_name = "bill"
+    template_name = 'legislative/bill_votes_list.html'
+
+    def get_object(self):
+        """
+        Retrieves object based on ID.
+        """
+        if self.kwargs['id']:
+            return Bill.objects.get(id=self.kwargs['id'])
+        return super(BillVotesListView, self).get_objects()
+
 
 class VoteDetailView(DetailView):
     """
