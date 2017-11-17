@@ -9,6 +9,7 @@ from general.models import (
     AMBaseModel,
     Organization,
     Membership,
+    Person,
 )
 from .bill import Bill
 from django.utils.encoding import python_2_unicode_compatible
@@ -176,19 +177,28 @@ class BillSponsorship(AMBaseModel):
     member = models.ForeignKey(
         Membership,
         related_name='bill_sponsorships',
-        help_text='Reference to the member who sponsored the Bill.',
+        help_text='Reference to the membership record for who sponsored the Bill.',
+        null=True,
+    )
+    person = models.ForeignKey(
+        Person,
+        related_name='bill_sponsorships',
+        help_text='The person who sponsored the bill.',
     )
     primary = models.BooleanField(
         default=False,
         help_text='Indicates the member is a primary sponsor of the Bill.',
     )
-    sponsored_at = models.DateTimeField(
+    sponsored_at = models.DateField(
         null=True,
         help_text='Date and time when the member sponsored the bill.',
     )
 
     def __str__(self):
         return '{} sponsorship of {}'.format(
-            self.member.person,
+            self.person,
             self.bill,
         )
+
+    class Meta:
+        ordering = ['-sponsored_at', 'primary',]

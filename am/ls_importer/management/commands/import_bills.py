@@ -4,8 +4,8 @@
 Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
-from legislative.models import Bill, LegislativeSession, BillAction
-from ls_importer.models import LSIDBill
+from legislative.models import Bill, LegislativeSession, BillAction, BillSponsorship
+from ls_importer.models import LSIDBill, LSIDPerson
 import json
 from datetime import datetime
 import os
@@ -34,6 +34,7 @@ class Command(BaseCommand):
             # bill_progress_json = bill_json['bill']['progress']
             bill_session_json = bill_json['bill']['session']
             bill_history_arr = bill_json['bill']['history']
+            bill_sponsors_arr = bill_json['bill']['sponsors']
 
             bill_session_name = bill_session_json['session_name']
             bill_session_type_code = ''
@@ -79,6 +80,25 @@ class Command(BaseCommand):
                     defaults={
                         'order': action_order,
                     }
+                )
+
+            for sponsorship in bill_sponsors_arr:
+                person = LSIDPerson.objects.get(lsid=sponsorship['people_id']).person
+                try:
+                    date = (datetime
+                        .strptime(bill_history_arr[-1]['date'], "%Y-%m-%d")
+                        .date())
+                except:
+                    date = None
+                primary = True if sponsorship['sponsor_type_id'] == 1 else False
+
+                sponsorship_model, sp_m_created = BillSponsorship.objects.get_or_create(
+                    bill=bill_object,
+                    person=person,
+                    defaults={
+                        'primary':primary,
+                        'sponsored_at':date,
+                    },
                 )
 
         target_directory = os.path.join(os.path.expanduser("~"), 'bills')
