@@ -11,11 +11,12 @@ from general.models import (
 )
 from .bill import Bill
 from django.utils.encoding import python_2_unicode_compatible
+from django_react_templatetags.mixins import RepresentationMixin
 
 
 
 @python_2_unicode_compatible
-class BillVote(AMBaseModel):
+class BillVote(RepresentationMixin, AMBaseModel):
     """
     The full question context of a vote on a bill.
     """
@@ -56,6 +57,15 @@ class BillVote(AMBaseModel):
 
     def get_passed_yes_no(self):
         return 'Yes' if self.did_pass else 'No'
+
+    def to_react_representation(self, context={}):
+        return {
+            'issue': self.issue,
+            'yes': self.yes,
+            'no': self.no,
+            'absent': self.absent,
+            'date': self.date,
+        }
 
     def __str__(self):
         return '{} on {}'.format(

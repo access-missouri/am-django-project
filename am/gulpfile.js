@@ -25,12 +25,12 @@ gulp.task('sass', function(){
 });
 
 gulp.task('js', function(){
-	return gulp.src('components/js/**/*.js')
+	return gulp.src('./static-components/js/**/*.js')
 		.pipe(babel({
 			presets: ['es2015', 'react']
 		}))
 		// .pipe(uglify())
-	.pipe(gulp.dest('static/js'));
+	.pipe(gulp.dest('./static/js'));
 });
 
 

@@ -2,6 +2,9 @@
 
 {% block title %}Vote on {{vote.bill.identifier}}{% endblock %}
 
+{% load react %}
+{% load static %}
+
 {% block body %}
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{vote.bill.legislative_session.get_absolute_url}}">{{vote.bill.legislative_session}}</a></li><li><a href="{{vote.bill.get_absolute_url}}">{{vote.bill.identifier}}</a></li></ul></div>
 <div class="bill-details container">
@@ -56,7 +59,14 @@
     </div>
 
 
-
+    {% react_render component="VoteDonutChart" props=vote %}
 
 </div>
+{% endblock %}
+
+{% block scriptyfoot %}
+<script src="https://npmcdn.com/prop-types@15.6.0/prop-types.min.js"></script>
+<script src="https://npmcdn.com/recharts@1.0.0-beta.2/umd/Recharts.min.js"></script>
+<script src="{% static 'react_vote_donut.js' %}"></script>
+{% react_print %}
 {% endblock %}
