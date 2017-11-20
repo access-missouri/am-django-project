@@ -15,9 +15,7 @@ var _Recharts = Recharts,
     Cell = _Recharts.Cell;
 
 
-var data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 }, { name: 'Group C', value: 300 }, { name: 'Group D', value: 200 }];
-var COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-var RADIAN = Math.PI / 180;
+var COLORS = ['#436436', '#c51236', '#aaa'];
 
 var VoteDonutChart = function (_React$Component) {
     _inherits(VoteDonutChart, _React$Component);
@@ -37,7 +35,7 @@ var VoteDonutChart = function (_React$Component) {
                 React.createElement(
                     Pie,
                     {
-                        data: data,
+                        data: [{ name: "Yes", value: this.props.yes }, { name: "No", value: this.props.no }, { name: "Absent/Leave", value: this.props.absent }],
                         cx: 420,
                         cy: 200,
                         startAngle: 180,
@@ -46,7 +44,7 @@ var VoteDonutChart = function (_React$Component) {
                         outerRadius: 80,
                         fill: '#8884d8',
                         paddingAngle: 5 },
-                    data.map(function (entry, index) {
+                    COLORS.map(function (entry, index) {
                         return React.createElement(Cell, { fill: COLORS[index % COLORS.length] });
                     })
                 )

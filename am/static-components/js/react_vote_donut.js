@@ -1,16 +1,16 @@
 const { PieChart, Pie, Sector, Cell } = Recharts;
 
-const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-{name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-const RADIAN = Math.PI / 180; 
+const COLORS = ['#436436', '#c51236', '#aaa'];
 
 class VoteDonutChart extends React.Component {
     render () {
         return (
             <PieChart width={800} height={600} onMouseEnter={this.onPieEnter}>
                 <Pie
-                data={data} 
+                data={[
+                    {name: "Yes", value: this.props.yes},
+                    {name: "No", value: this.props.no},
+                    {name: "Absent/Leave", value: this.props.absent}]} 
                 cx={420} 
                 cy={200} 
                 startAngle={180}
@@ -20,7 +20,7 @@ class VoteDonutChart extends React.Component {
                 fill="#8884d8"
                 paddingAngle={5}>
                 {
-          	        data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+          	        COLORS.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
                 }
                 </Pie>
             </PieChart>
