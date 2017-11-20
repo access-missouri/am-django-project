@@ -42,11 +42,11 @@ var VoteDonutChart = function (_React$Component) {
                         {
                             data: [{ name: "Yes", value: this.props.yes }, { name: "No", value: this.props.no }, { name: "Absent/Leave", value: this.props.absent }],
                             cx: "50%",
-                            cy: 150,
-                            startAngle: 180,
-                            endAngle: 0,
-                            innerRadius: 60,
-                            outerRadius: 100,
+                            cy: 160,
+                            startAngle: 160,
+                            endAngle: 20,
+                            innerRadius: 80,
+                            outerRadius: 120,
                             fill: '#8884d8',
                             paddingAngle: 5
                         },
