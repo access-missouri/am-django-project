@@ -308,6 +308,10 @@ div.bill-details ul.bill-sponsor-list {
 div.bill-details ul.bill-sponsor-list li {
   margin-top: 1em;
 }
+div.bill-details div.react-vote-donut-contain {
+  width: 100%;
+  height: 200px;
+}
 
 div.person-details h1 {
   font-size: 2.8em;

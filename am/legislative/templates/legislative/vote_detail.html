@@ -14,6 +14,9 @@
 
     <div class="full-cluster vote-detail">
         <h2>Vote Detail – {{vote.issue}}</h2>
+        <div class="react-vote-donut-contain">
+            {% react_render component="VoteDonutChart" props=vote %}
+        </div>
         <table class="table listing">
             <thead class="">
             <tr>
@@ -59,7 +62,7 @@
     </div>
 
 
-    {% react_render component="VoteDonutChart" props=vote %}
+    
 
 </div>
 {% endblock %}
