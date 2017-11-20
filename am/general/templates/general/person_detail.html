@@ -39,5 +39,17 @@
     </div>
     {% endif %}
 
+    {% if person.bill_sponsorships.all %}
+    <div class="bill-sponsorships full-cluster">
+        <h2>Recent Bills Sponsored</h2>
+                <ul class="bill-sponsored-list">
+            {% for sponsorship in person.bill_sponsorships.all|slice:"5" %}
+            <li><a href="{{sponsorship.bill.get_absolute_url}}"
+                   class="link-legislative">{{sponsorship.bill.identifier}}–{{sponsorship.bill.title}}{% if sponsorship.primary %} (Primary Sponsor){% endif %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}

@@ -201,4 +201,4 @@ class BillSponsorship(AMBaseModel):
         )
 
     class Meta:
-        ordering = ['-sponsored_at', 'primary',]
+        ordering = ['-sponsored_at', '-primary',]

@@ -17,8 +17,6 @@ funcsigs==1.0.2
 html5lib==0.999999999
 mccabe==0.6.1
 mock==2.0.0
--e git+https://github.com/california-civic-data-coalition/python-opencivicdata-divisions.git@cc8c0e81bc41f4c6efe44cc229cbbf9ec318f9e5#egg=opencivicdata_divisions
--e git+https://github.com/california-civic-data-coalition/python-opencivicdata-django.git@9e9d4ae2d089314b78a49f157bdb3fc5f0c4646a#egg=opencivicdata_django
 packaging==16.8
 pbr==2.0.0
 psycopg2==2.7.1

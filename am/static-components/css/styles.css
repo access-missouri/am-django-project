@@ -302,6 +302,12 @@ div.bill-details table td a:hover {
   border-bottom: 1px dotted #eb1f48;
   transition: background-color ease-in 0.3s;
 }
+div.bill-details ul.bill-sponsor-list {
+  font-size: 1.2em;
+}
+div.bill-details ul.bill-sponsor-list li {
+  margin-top: 1em;
+}
 
 div.person-details h1 {
   font-size: 2.8em;
@@ -312,6 +318,13 @@ div.person-details p.bill-title {
   font-size: 2.6em;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+div.person-details ul.bill-sponsored-list {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+div.person-details ul.bill-sponsored-list li {
+  margin-top: 0.8em;
 }
 
 footer {

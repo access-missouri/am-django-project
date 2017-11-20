@@ -64,5 +64,17 @@
     </div>
     {% endif %}
 
+    {% if bill.sponsorships.all %}
+    <div class="sponsors full-cluster">
+        <h2>Bill Sponsors</h2>
+        <ul class="bill-sponsor-list">
+            {% for sponsorship in bill.sponsorships.all %}
+            <li><a href="{{sponsorship.person.get_absolute_url}}"
+                   class="link-people">{{sponsorship.person.get_full_name}}{% if sponsorship.primary %} (Primary){% endif %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}
