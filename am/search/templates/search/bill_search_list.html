@@ -1,0 +1,46 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Search for Bills{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li></ul></div>
+<div class="bill-details container">
+    <h1>Search for Bills</h1>
+
+    <div class="full-cluster search-fields">
+        <form class="form" action="" method="get">
+            {{form.as_p}}
+            <a class="form-reset" href="{% url 'bill-search' %}">Reset</a>
+            <button type="submit" class="button-submit">Search</button>
+        </form>
+    </div>
+
+    {% if object_list %}
+    <div class="full-cluster search-results">
+        <ul class="search-results bill-search-results">
+            {% for bill in object_list %}
+            <li>
+                <h2><a class="link-legislative" href="{{bill.get_absolute_url}}">{{bill}}</a></h2>
+                <p class="bill-description">{{bill.title}}</p>
+                <p class="recent-action">{{bill.actions.all.count}} recent actions.</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if is_paginated %}
+    <div class="full-cluster pagination">
+        {% if page_obj.has_previous %}
+        {% endif %}
+        <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+        {% endif %}
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock %}

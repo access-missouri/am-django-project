@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'legislative',
     'house_scraper',
     'ls_importer',
+    'search',
 ]
 
 MIDDLEWARE = [
