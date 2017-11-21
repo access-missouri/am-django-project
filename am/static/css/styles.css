@@ -308,9 +308,45 @@ div.bill-details ul.bill-sponsor-list {
 div.bill-details ul.bill-sponsor-list li {
   margin-top: 1em;
 }
-div.bill-details div.react-vote-donut-contain {
+div.bill-details div.vote-detail div.react-vote-donut-contain {
   width: 100%;
   height: 200px;
+}
+@media screen and (min-width: 800px) {
+  div.bill-details div.vote-detail {
+    overflow: hidden;
+    *zoom: 1;
+  }
+  div.bill-details div.vote-detail div.react-vote-donut-contain {
+    margin-top: 2rem;
+    width: 50%;
+    float: left;
+    height: auto;
+  }
+  div.bill-details div.vote-detail table {
+    margin-top: 2rem;
+    width: 50%;
+    float: left;
+    height: auto;
+  }
+}
+@media screen and (min-width: 1400px) {
+  div.bill-details div.vote-detail {
+    overflow: hidden;
+    *zoom: 1;
+  }
+  div.bill-details div.vote-detail div.react-vote-donut-contain {
+    margin-top: 2rem;
+    width: 40%;
+    float: left;
+    height: auto;
+  }
+  div.bill-details div.vote-detail table {
+    margin-top: 2rem;
+    width: 60%;
+    float: left;
+    height: auto;
+  }
 }
 
 div.person-details h1 {
