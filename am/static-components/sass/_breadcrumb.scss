@@ -1,0 +1,54 @@
+$breadcrumb-height: 3rem;
+
+div.breadcrumb-holder{
+  width: 100%;
+  height: $breadcrumb-height;
+  background-color: #0c1109;
+  overflow: hidden;
+  font-family: $advocate-reg;
+
+
+  ul.breadcrumbs{
+    @include container;
+    max-width: $container-width !important;
+
+    font-size: $breadcrumb-height/3;
+
+    padding: $breadcrumb-height/3 3%;
+
+    list-style: none;
+
+    a {
+      color: #fff;
+      border-bottom-color: rgba(#fff, 0);
+
+      &:hover{
+        text-decoration: none;
+        border-bottom: 1px solid #fff;
+        transition: border-bottom-color ease-in .3s;
+      }
+    }
+
+    li{
+      display: inline;
+    }
+
+    li+li:before {
+      padding: 4px;
+      color: #fff;
+      font-family: $concourse-bold;
+      content: "\203A";
+    }
+
+
+  }
+}
+
+
+div.bch-bills{
+  background-color: $am-crimson;
+}
+
+div.bch-people{
+  background-color: $am-blue;
+}

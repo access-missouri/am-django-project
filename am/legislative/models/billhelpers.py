@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Models related to the State of Missouri's Legislative Branch.
+Models related to the State of Missouri's Legislative sessions.
 """
 from __future__ import unicode_literals
 from django.db import models
@@ -9,118 +9,10 @@ from general.models import (
     AMBaseModel,
     Organization,
     Membership,
+    Person,
 )
+from .bill import Bill
 from django.utils.encoding import python_2_unicode_compatible
-
-
-@python_2_unicode_compatible
-class LegislativeSession(AMBaseModel):
-    """
-    A session of the Misssouri State Legislature.
-    """
-
-    name = models.CharField(
-        max_length=300,
-        help_text='Full official name for the Legislative Session.',
-    )
-    SESSION_CLASSIFICATION_CHOICES = (
-        ('E', 'Extraordinary'),
-        ('R', 'Regular'),
-    )
-    classification = models.CharField(
-        max_length=100,
-        choices=SESSION_CLASSIFICATION_CHOICES,
-        help_text='Classifies the Legislative Session (e.g., "Regular" or '
-                  '"Extraordinary").',
-    )
-    start_date = models.DateField(
-        help_text='Date that the Legislative Session starts.',
-    )
-    end_date = models.DateField(
-        null=True,
-        help_text='Date that the Legislative Session ends, if known.',
-    )
-    web_session_type_code = models.CharField(
-        null=True,
-        blank=True,
-        help_text='Used by scraper - type code for params.',
-        max_length=12,
-    )
-
-    def __str__(self):
-        return self.name
-
-
-@python_2_unicode_compatible
-class Bill(AMBaseModel):
-    """
-    A proposal to be consider by a legislative body.
-    """
-
-    legislative_session = models.ForeignKey(
-        LegislativeSession,
-        related_name='bills',
-        help_text='Reference to the Legislative Session in which the Bill was '
-                  'considered.',
-    )
-    identifier = models.CharField(
-        max_length=100,
-        help_text="Identifier for the bill, as assigned by the Clerk's office "
-                  "(e.g., 'HB1', 'SB2')."
-    )
-    from_organization = models.ForeignKey(
-        Organization,
-        related_name='bills',
-        help_text='Reference to the Organization (typically a legislative '
-                  'chamber) wherein the bill originated.',
-    )
-    title = models.TextField(
-        help_text='The current title of the bill.',
-    )
-    lr_number = models.CharField(
-        max_length=6,
-        null=True,
-        blank=True,
-        help_text="First part of Legislative Reference number (before '.').",
-    )
-    proposed_effective_date = models.DateField(
-        null=True,
-        blank=True,
-        help_text='Proposed date when the bill, if passed, would go into '
-                  'effect.',
-    )
-    last_action_date = models.DateField(
-        null=True,
-        blank=True,
-        help_text='Date when the last action on bill happened.',
-    )
-    last_action_description = models.CharField(
-        max_length=300,
-        null=True,
-        blank=True,
-        help_text="Description of the bill's last action.",
-    )
-    calendar_position = models.CharField(
-        max_length=300,
-        null=True,
-        help_text='Current position of the bill on the legislative calendar.',
-    )
-    description = models.TextField(
-        help_text="Description of the purpose of the bill.",
-        blank=True,
-    )
-
-    def __str__(self):
-        return '{} in {}'.format(self.identifier, self.legislative_session)
-
-    class Meta:
-        """
-        Model options.
-        """
-
-        index_together = [
-            ['legislative_session', 'from_organization', 'identifier'],
-        ]
 
 
 @python_2_unicode_compatible
@@ -185,6 +77,7 @@ class BillAction(AMBaseModel):
         related_name='actions',
         help_text='Reference to the Organization that the action took place '
                   'within.',
+        null=True,
     )
     description = models.TextField(
         help_text='Description of the action.',
@@ -201,7 +94,7 @@ class BillAction(AMBaseModel):
         Model options.
         """
 
-        ordering = ['order']
+        ordering = ['-date', '-order']
 
     def __str__(self):
         return '{0} action on {1}'.format(self.bill.identifier, self.date)
@@ -284,19 +177,28 @@ class BillSponsorship(AMBaseModel):
     member = models.ForeignKey(
         Membership,
         related_name='bill_sponsorships',
-        help_text='Reference to the member who sponsored the Bill.',
+        help_text='Reference to the membership record for who sponsored the Bill.',
+        null=True,
+    )
+    person = models.ForeignKey(
+        Person,
+        related_name='bill_sponsorships',
+        help_text='The person who sponsored the bill.',
     )
     primary = models.BooleanField(
         default=False,
         help_text='Indicates the member is a primary sponsor of the Bill.',
     )
-    sponsored_at = models.DateTimeField(
+    sponsored_at = models.DateField(
         null=True,
         help_text='Date and time when the member sponsored the bill.',
     )
 
     def __str__(self):
         return '{} sponsorship of {}'.format(
-            self.member.person,
+            self.person,
             self.bill,
         )
+
+    class Meta:
+        ordering = ['-sponsored_at', '-primary',]

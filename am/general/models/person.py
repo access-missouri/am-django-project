@@ -49,6 +49,30 @@ class Person(AMBaseModel):
         help_text="Gender of the Person, if known.",
     )
 
+    def get_full_name(self):
+        """
+        Gets a person object's generated full name.
+
+        :return:
+        """
+        template = '{0.first_name} "{0.nickname}" ${0.middle_name}$ {0.last_name}, {0.suffix} ' # noqa
+        return (
+            template.format(self)
+            # remove the suffix placeholder, if empty
+            .replace(',  ', '')
+            # remove the nickname placeholder, if empty
+            .replace(' ""', '')
+            # make the nickname thing work
+            .replace('"  ', '" ')
+            # remove the middle_name placeholder, if empty
+            .replace('$$ ', '')
+            # remove the remaining dollars if middle_name exists
+            .replace('$', '')
+        )
+
+    def get_absolute_url(self):
+        return '/people/%i' % self.id
+
     def __str__(self):
         template = '{0.last_name}, {0.suffix}, {0.first_name} "{0.nickname}" {0.middle_name}' # noqa
         return (

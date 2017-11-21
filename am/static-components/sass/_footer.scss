@@ -1,0 +1,32 @@
+footer {
+  margin-top: 5em;
+  padding-bottom: 5em;
+  background-color: $gray;
+
+  div.container{
+    color: $project-text-dark;
+    img.img-foot{
+      display: block;
+      width: 60px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    p.am-t{
+      margin-top: 0.4rem;
+      font-family: $concourse-t4;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    a {
+      border-bottom-color: rgba($project-text-dark, 0);
+
+      &:hover{
+        text-decoration: none;
+        border-bottom: 1px solid $project-text-dark;
+        transition: border-bottom-color ease-in 0.3s;
+      }
+    }
+  }
+
+}

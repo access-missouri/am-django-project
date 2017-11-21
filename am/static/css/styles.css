@@ -1,0 +1,397 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+body {
+  font-family: "equity_text_a_tabregular", Georgia;
+}
+
+a:not([href]):not([tabindex]) {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "advocate_c43regular";
+  font-size: 2.5rem;
+}
+
+h2 {
+  padding-left: 5px;
+  padding-top: 3px;
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+  font-size: 2.2rem;
+  margin-top: 1em;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+@media screen and (max-width: 600px) {
+  .hidden-sm-down {
+    display: none;
+  }
+}
+
+table {
+  margin-top: 1.5em;
+  font-size: 1rem;
+  line-height: 1.2em;
+  color: #464a4c;
+  width: 100%;
+}
+table tr {
+  border-top: 1px solid #eceeef;
+}
+table td, table th {
+  padding: 0.8em;
+  height: 1.5em;
+}
+table thead {
+  font-family: "concourse_t2_tabbold", Helvetica, Arial;
+}
+table span.episode-player:hover {
+  color: #8dc540;
+}
+
+a.link-legislative {
+  color: #464a4c;
+  background-color: #fbfcfc;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 1px dotted #ef4e6e;
+  transition: background-color ease-in 0.3s;
+}
+a.link-legislative:hover {
+  text-decoration: none;
+  background-color: #fef1f4;
+  border-bottom: 1px dotted #eb1f48;
+  transition: background-color ease-in 0.3s;
+}
+
+a.link-people {
+  color: #464a4c;
+  background-color: #fbfcfc;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 1px dotted #4a70a9;
+  transition: background-color ease-in 0.3s;
+}
+a.link-people:hover {
+  text-decoration: none;
+  background-color: #c1cfe4;
+  border-bottom: 1px dotted #3b5985;
+  transition: background-color ease-in 0.3s;
+}
+
+p.aff {
+  margin-top: 1rem;
+  font-size: 1.1em;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px !important;
+  padding: 3%;
+}
+.container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+div.page-segment:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+a.back-link {
+  text-decoration: none;
+  color: #d3d6d9;
+}
+
+a {
+  color: #567a25;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+nav.am-navbar {
+  width: 100%;
+  height: 7rem;
+}
+nav.am-navbar div.nav-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  padding: 10px 3%;
+}
+nav.am-navbar div.nav-container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+nav.am-navbar div.nav-container div.nav-left {
+  float: left;
+}
+nav.am-navbar div.nav-container div.nav-left img {
+  height: 90px;
+}
+nav.am-navbar div.nav-container div.nav-right {
+  float: right;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list {
+  list-style: none;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li {
+  font-family: "advocate_c43regular";
+  display: inline-block;
+  margin: 35px 20px;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li a {
+  color: #464a4c;
+  font-size: 1.3em;
+  padding-bottom: 2px;
+  border-bottom: 2px solid;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li a:hover {
+  padding-bottom: 3px;
+  border-bottom-width: 4px;
+  text-decoration: none;
+  transition: border-bottom-width ease-out 0.2s, padding-bottom ease-out 0.2s;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-legislation a {
+  border-bottom-color: #c51236;
+}
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-people a {
+  border-bottom-color: #2b4162;
+}
+
+div.breadcrumb-holder {
+  width: 100%;
+  height: 3rem;
+  background-color: #0c1109;
+  overflow: hidden;
+  font-family: "advocate_c43regular";
+}
+div.breadcrumb-holder ul.breadcrumbs {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px !important;
+  font-size: 1rem;
+  padding: 1rem 3%;
+  list-style: none;
+}
+div.breadcrumb-holder ul.breadcrumbs:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div.breadcrumb-holder ul.breadcrumbs a {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0);
+}
+div.breadcrumb-holder ul.breadcrumbs a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #fff;
+  transition: border-bottom-color ease-in .3s;
+}
+div.breadcrumb-holder ul.breadcrumbs li {
+  display: inline;
+}
+div.breadcrumb-holder ul.breadcrumbs li + li:before {
+  padding: 4px;
+  color: #fff;
+  font-family: "concourse_t2_tabbold", Helvetica, Arial;
+  content: "\203A";
+}
+
+div.bch-bills {
+  background-color: #c51236;
+}
+
+div.bch-people {
+  background-color: #2b4162;
+}
+
+div.bill-details h1 {
+  font-size: 2.8em;
+  border-left: 3px solid #c51236;
+  padding-left: 10px;
+}
+div.bill-details p.bill-title {
+  font-size: 2.6em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+div.bill-details table td a {
+  color: #464a4c;
+  background-color: #fbfcfc;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 1px dotted #ef4e6e;
+  transition: background-color ease-in 0.3s;
+}
+div.bill-details table td a:hover {
+  text-decoration: none;
+  background-color: #fef1f4;
+  border-bottom: 1px dotted #eb1f48;
+  transition: background-color ease-in 0.3s;
+}
+div.bill-details ul.bill-sponsor-list {
+  font-size: 1.2em;
+}
+div.bill-details ul.bill-sponsor-list li {
+  margin-top: 1em;
+}
+div.bill-details div.vote-detail div.react-vote-donut-contain {
+  width: 100%;
+  height: 200px;
+}
+@media screen and (min-width: 800px) {
+  div.bill-details div.vote-detail {
+    overflow: hidden;
+    *zoom: 1;
+  }
+  div.bill-details div.vote-detail div.react-vote-donut-contain {
+    margin-top: 2rem;
+    width: 50%;
+    float: left;
+    height: auto;
+  }
+  div.bill-details div.vote-detail table {
+    margin-top: 2rem;
+    width: 50%;
+    float: left;
+    height: auto;
+  }
+}
+@media screen and (min-width: 1400px) {
+  div.bill-details div.vote-detail {
+    overflow: hidden;
+    *zoom: 1;
+  }
+  div.bill-details div.vote-detail div.react-vote-donut-contain {
+    margin-top: 2rem;
+    width: 40%;
+    float: left;
+    height: auto;
+  }
+  div.bill-details div.vote-detail table {
+    margin-top: 2rem;
+    width: 60%;
+    float: left;
+    height: auto;
+  }
+}
+
+div.person-details h1 {
+  font-size: 2.8em;
+  border-left: 3px solid #2b4162;
+  padding-left: 10px;
+}
+div.person-details p.bill-title {
+  font-size: 2.6em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+div.person-details ul.bill-sponsored-list {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+div.person-details ul.bill-sponsored-list li {
+  margin-top: 0.8em;
+}
+
+footer {
+  margin-top: 5em;
+  padding-bottom: 5em;
+  background-color: #464a4c;
+}
+footer div.container {
+  color: #f7f7f9;
+}
+footer div.container img.img-foot {
+  display: block;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer div.container p.am-t {
+  margin-top: 0.4rem;
+  font-family: "concourse_t4_tabregular", Helvetica, Arial;
+  font-size: 1.3rem;
+  text-align: center;
+}
+footer div.container a {
+  border-bottom-color: rgba(247, 247, 249, 0);
+}
+footer div.container a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #f7f7f9;
+  transition: border-bottom-color ease-in 0.3s;
+}

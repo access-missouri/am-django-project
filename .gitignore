@@ -9,3 +9,10 @@
 .idea
 settings_local.py
 .python-version
+
+am/static/admin
+am/static/gis
+
+node_modules
+.sass-cache
+am/package-lock.json

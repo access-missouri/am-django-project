@@ -1,0 +1,31 @@
+div.episode-list{
+  margin-top: 1rem;
+
+  table {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.2em;
+    color: $gray;
+    width: 100%;
+
+    tr{
+      border-top: 1px solid $gray-lighter;
+    }
+
+    td{
+      padding: 0.8em;
+      height: 1.5em;
+    }
+
+    td.episode-date{
+      min-width: 120px;
+    }
+
+    span.episode-player{
+      &:hover{
+        color: $project-primary;
+      }
+    }
+  }
+
+}

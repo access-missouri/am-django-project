@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon Section -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'favicon-16x16.png' %}" sizes="16x16">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="mask-icon" href="{% static 'safari-pinned-tab.svg' %}" color="#5bbad5">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+    <meta property="og:image"
+          content="{% block metaimg %}{% static 'am-logo-nearblack-1400.png' %}{% endblock %}">
+    {% block metablock %}
+    {% endblock %}
+    <link rel="stylesheet" href="http://am-cdn-feeder.s3.amazonaws.com/dist/fonts/font-define.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.production.min.js"></script>
+
+    <title>{% block title %}{% endblock %} - Access Missouri</title>
+</head>
+<body>
+<!--<nav class="navbar navbar-dark bg-inverse">-->
+    <!--<div class="container">-->
+        <!--<button aria-controls="amCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-sm-up pull-xs-right" data-target="#amCollapsingNavbar" data-toggle="collapse" type="button"> ☰ </button>-->
+        <!--<a  class="navbar-brand"  href="/">-->
+            <!--<img alt="Access Missouri Logo" class="img-navbar pull-xs-left" style="max-height: 30px; margin-right: 5px;" src="{% static 'am-logo-white-1400.png' %}">-->
+            <!--<span class="brand-text hidden-sm-down">Access Missouri</span>-->
+        <!--</a> <div class="collapse navbar-toggleable-xs" id="amCollapsingNavbar">-->
+        <!--<div  class="nav navbar-nav"> <div class="collapse-fix">-->
+            <!--<a class="nav-item nav-link active" href="/bills">Bills</a>-->
+        <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+<nav class="am-navbar">
+<div class="nav-container">
+    <div class="nav-left">
+        <a href="/">        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
+</a>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-list">
+            <li class="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
+            <li class="nav-list-item nl-item-people"><a href="/people/">People</a></li>
+            <li class="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
+        </ul>
+    </div>
+
+</div>
+</nav>
+{% block body %}
+{% endblock %}
+
+{% block scriptyfoot %}
+{% endblock %}
+<footer>
+    <div class="container">
+            <img alt="Access Missouri Logo" class="img-foot"  src="{% static 'am-logo-white-1400.png' %}">
+            <p class="am-t">Access Missouri</p>
+    </div>
+</footer>
+</body>
+</html>

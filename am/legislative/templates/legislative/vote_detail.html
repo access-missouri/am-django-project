@@ -1,0 +1,75 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Vote on {{vote.bill.identifier}}{% endblock %}
+
+{% load react %}
+{% load static %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{vote.bill.legislative_session.get_absolute_url}}">{{vote.bill.legislative_session}}</a></li><li><a href="{{vote.bill.get_absolute_url}}">{{vote.bill.identifier}}</a></li></ul></div>
+<div class="bill-details container">
+    <h1>{{vote.bill.identifier}}</h1>
+    <p class="bill-title">{{vote.bill.title}}</p>
+    <!--<p class="bill-title">{{vote.issue}}</p>-->
+
+    <div class="full-cluster vote-detail">
+        <h2>Vote Detail – {{vote.issue}}</h2>
+        <div class="react-vote-donut-contain">
+            {% react_render component="VoteDonutChart" props=vote %}
+        </div>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Type</td>
+                <td>Votes</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Yes</th>
+                <td>{{vote.yes}}</td>
+            </tr>
+            <tr>
+                <th scope="row">No</th>
+                <td>{{vote.no}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Absent/Leave</th>
+                <td>{{vote.absent}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="full-cluster vote-detail-b">
+        <h2>Who Voted</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Name</td>
+                <td>Opinion</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for opinion in vote.opinions.all %}
+            <tr>
+                <th scope="row"><a class="link-people" href="{{opinion.person.get_absolute_url}}">{{opinion.person}}</a></th>
+                <td>{{opinion.opinion}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    
+
+</div>
+{% endblock %}
+
+{% block scriptyfoot %}
+<script src="https://npmcdn.com/prop-types@15.6.0/prop-types.min.js"></script>
+<script src="https://npmcdn.com/recharts@1.0.0-beta.2/umd/Recharts.min.js"></script>
+<script src="{% static 'react_vote_donut.js' %}"></script>
+{% react_print %}
+{% endblock %}

@@ -1,0 +1,43 @@
+// Setup for Susy
+
+$total-columns: 12;
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: $gutter-width;
+
+$small : 30em;
+$medium: 47em;
+$large: 75em;
+
+// Set border-box sizing.
+@include border-box-sizing;
+
+
+.container{
+	@include container;
+
+	max-width: $container-width !important;
+
+	padding: 3%;
+}
+
+div.page-segment{
+	&:not(:first-of-type){
+		margin-top: 2rem;
+	}
+}
+
+a.back-link{
+	text-decoration: none;
+	color: $gray-light;
+}
+
+a{
+	color: darken($project-primary, 20%);
+	text-decoration: none;
+
+	&:hover{
+		text-decoration: underline;
+	}
+}
+

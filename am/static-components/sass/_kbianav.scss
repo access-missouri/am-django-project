@@ -1,0 +1,126 @@
+header.kbia-top{
+	position:fixed;
+	z-index: 50;
+	height:50px;
+	width:100%;
+	background-color: #fff;
+	border-bottom:1px solid lighten(black,90%);
+
+	img.logo{
+		max-height:100%;
+		padding-top:7px;
+		padding-bottom:5px;
+		padding-left:50px;
+
+		image-rendering: -webkit-optimize-contrast;
+	}
+}
+
+header.kbia-top-dark{
+	background-color: $project-background-dark;
+	border-bottom: 1px solid lighten($project-background-dark, 20%);
+}
+
+div.container:first-of-type{
+	padding-top:65px;
+}
+
+@media screen and (max-width: 700px){
+	header.kbia-top{
+
+		img.logo{
+			padding-left: 1rem;
+		}
+
+		a.nav-trigger-button{
+			color: black;
+		}
+
+	}
+}
+
+div.credit{
+	border-top: 1px solid lighten($gray-dark, 10%);
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	p{
+		text-align: center;
+		font-size: 0.8rem;
+		color: lighten($gray-dark, 30%);
+		line-height: 1rem;
+	}
+}
+
+
+header {
+	a.nav-trigger-button{
+		@include float-right;
+
+		border-radius: 0;
+		margin-top: 7px;
+		margin-right: 50px;
+
+		color: $project-text;
+
+		@include outline-button($project-primary);
+	}
+
+}
+
+
+div#nav-scr{
+	position: fixed;
+	z-index: 99;
+	left: 0;
+	top: 0;
+	width: 0px;
+	overflow-x: hidden;
+	height: 100%;
+}
+
+div.overlay{
+	background-color: $project-background;
+
+	.closebtn{
+		position: absolute;
+		top: 20px;
+		right: 45px;
+		font-size: 60px;
+
+		&:hover{
+			color: $project-primary !important;
+		}
+	}
+
+	a{
+		padding: 8px;
+		text-decoration: none;
+		color: $gray;
+		display: block;
+		@include transition(0.3s);
+		font-weight: lighter;
+	}
+
+	div.overlay-content{
+		position: relative;
+		top: 25%;
+		width: 100%;
+		text-align: center;
+		margin-top: 30px;
+
+		a {
+			font-size: 36px;
+
+			&:hover{
+				color: $project-primary !important;
+			}
+		}
+	}
+
+}
+
+@media print {
+	header.kbia-top{
+		display: none;
+	}
+}
