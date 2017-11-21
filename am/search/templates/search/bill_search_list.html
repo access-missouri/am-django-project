@@ -1,17 +1,27 @@
 {% extends 'sitewide/base.html' %}
 
+{% block metablock %}
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+{{ form.media }}
+{% endblock %}
+
 {% block title %}Search for Bills{% endblock %}
 
 {% block body %}
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li></ul></div>
-<div class="bill-details container">
+<div class="bill-details container bill-search">
     <h1>Search for Bills</h1>
 
     <div class="full-cluster search-fields">
         <form class="form" action="" method="get">
             {{form.as_p}}
-            <a class="form-reset" href="{% url 'bill-search' %}">Reset</a>
-            <button type="submit" class="button-submit">Search</button>
+            <div class="button-group">
+                <button type="submit" class="button-submit">Search</button>
+                <a class="form-reset link-legislative" href="{% url 'bill-search' %}">Reset</a>
+            </div>
         </form>
     </div>
 

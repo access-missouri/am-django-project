@@ -1,0 +1,93 @@
+div.bill-search{
+
+  div.search-fields{
+    margin-top: 2rem;
+    $form-font-size: 1.3rem;
+    form {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      background-color: darken($project-background-light, 2%);
+
+      font-size: $form-font-size;
+
+      p{
+        margin-top: 0.5rem;
+        line-height: 1.5em;
+      }
+
+      label {
+        font-size: $form-font-size;
+      }
+
+      input {
+        font-size: $form-font-size;
+        font-family: $equity-reg;
+      }
+
+      button {
+        font-family: $advocate-reg;
+        font-size: $form-font-size;
+        border: 1px solid $am-crimson;
+        background-color: transparent;
+        transition: background-color ease-in 0.2s,
+                    color ease-in 0.2s;
+
+        &:hover{
+          background-color: $am-crimson;
+          color: $project-text-dark;
+        }
+      }
+
+      li {
+        label {
+          font-size: 0.8em;
+        }
+        line-height: 1.2em;
+      }
+
+
+      div.button-group {
+        @include clearfix();
+        margin-top: 1rem;
+
+        button {
+          float: right;
+        }
+
+        a {
+          font-family: $advocate-reg;
+          font-size: 1rem;
+          margin: 0.5rem;
+          float: right;
+        }
+      }
+
+    }
+  }
+
+
+  div.search-results{
+    ul.bill-search-results {
+
+      li {
+        background-color: darken($project-background-light, 2%);
+        padding-bottom: 1em;
+        margin-top: 1em;
+
+        h2 {
+          padding-top: 1rem;
+          margin-bottom: 1rem;
+          font-size: 1.4rem;
+        }
+
+        p {
+          margin-top: 0.5rem;
+          margin-left: 10px;
+        }
+      }
+
+    }
+  }
+}

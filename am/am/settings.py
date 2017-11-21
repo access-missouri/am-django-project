@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'django_react_templatetags',
+    'select2',
     'senate_scraper',
     'general',
     'legislative',

@@ -395,3 +395,71 @@ footer div.container a:hover {
   border-bottom: 1px solid #f7f7f9;
   transition: border-bottom-color ease-in 0.3s;
 }
+
+div.bill-search div.search-fields {
+  margin-top: 2rem;
+}
+div.bill-search div.search-fields form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #fafafa;
+  font-size: 1.3rem;
+}
+div.bill-search div.search-fields form p {
+  margin-top: 0.5rem;
+  line-height: 1.5em;
+}
+div.bill-search div.search-fields form label {
+  font-size: 1.3rem;
+}
+div.bill-search div.search-fields form input {
+  font-size: 1.3rem;
+  font-family: "equity_text_a_tabregular", Georgia;
+}
+div.bill-search div.search-fields form button {
+  font-family: "advocate_c43regular";
+  font-size: 1.3rem;
+  border: 1px solid #c51236;
+  background-color: transparent;
+  transition: background-color ease-in 0.2s, color ease-in 0.2s;
+}
+div.bill-search div.search-fields form button:hover {
+  background-color: #c51236;
+  color: #f7f7f9;
+}
+div.bill-search div.search-fields form li {
+  line-height: 1.2em;
+}
+div.bill-search div.search-fields form li label {
+  font-size: 0.8em;
+}
+div.bill-search div.search-fields form div.button-group {
+  overflow: hidden;
+  *zoom: 1;
+  margin-top: 1rem;
+}
+div.bill-search div.search-fields form div.button-group button {
+  float: right;
+}
+div.bill-search div.search-fields form div.button-group a {
+  font-family: "advocate_c43regular";
+  font-size: 1rem;
+  margin: 0.5rem;
+  float: right;
+}
+div.bill-search div.search-results ul.bill-search-results li {
+  background-color: #fafafa;
+  padding-bottom: 1em;
+  margin-top: 1em;
+}
+div.bill-search div.search-results ul.bill-search-results li h2 {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+div.bill-search div.search-results ul.bill-search-results li p {
+  margin-top: 0.5rem;
+  margin-left: 10px;
+}
