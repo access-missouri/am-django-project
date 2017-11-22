@@ -5,6 +5,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 from .serializers import *
 from legislative.models import Bill
+from search.utils import request_params_to_filter_dict
 
 # Create your views here.
 class BillAPIViewset(viewsets.ReadOnlyModelViewSet):
@@ -26,7 +27,7 @@ class BillSearchAPIView(generics.ListAPIView):
         Optionally restricts the returned bills by search query.
         """
         queryset = Bill.objects.all()
-        title_search = self.request.query_params.get('title_search', None)
-        if title_search is not None:
-            queryset = queryset.filter(title__icontains=title_search)
+        if self.request.query_params:
+            filter_dict = request_params_to_filter_dict(self.request.query_params)
+            queryset = queryset.filter(**filter_dict)
         return queryset
