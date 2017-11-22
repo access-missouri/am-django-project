@@ -199,6 +199,7 @@ nav.am-navbar div.nav-container div.nav-left {
 }
 nav.am-navbar div.nav-container div.nav-left img {
   height: 90px;
+  z-index: 50;
 }
 nav.am-navbar div.nav-container div.nav-right {
   float: right;
@@ -228,6 +229,40 @@ nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-legislation
 }
 nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-people a {
   border-bottom-color: #2b4162;
+}
+@media screen and (max-width: 600px) {
+  nav.am-navbar div.nav-container div.nav-right .desktop {
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  nav.am-navbar div.nav-container div.nav-right .mobile {
+    display: none;
+  }
+}
+nav.am-navbar div.nav-container div.nav-right .mobile a.menu-link {
+  font-family: "advocate_c43regular";
+  display: inline-block;
+  margin: 35px 20px;
+  color: #464a4c;
+  font-size: 1.3em;
+  padding-bottom: 2px;
+  border-bottom: 2px solid;
+}
+nav.am-navbar div.nav-container div.nav-right .mobile a.menu-link:hover {
+  padding-bottom: 3px;
+  border-bottom-width: 4px;
+  text-decoration: none;
+  transition: border-bottom-width ease-out 0.2s, padding-bottom ease-out 0.2s;
+}
+
+div.nav-fs-menu {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
 }
 
 div.breadcrumb-holder {

@@ -11,6 +11,7 @@ nav.am-navbar{
       float: left;
       img{
         height: 90px;
+        z-index: 50;
       }
     }
     div.nav-right{
@@ -39,7 +40,7 @@ nav.am-navbar{
               text-decoration: none;
 
               transition: border-bottom-width ease-out 0.2s,
-                          padding-bottom ease-out 0.2s;
+              padding-bottom ease-out 0.2s;
 
             }
           }
@@ -64,7 +65,51 @@ nav.am-navbar{
 
 
       }
+
+      .desktop {
+        @media screen and (max-width: $small-screen-width){
+          display: none;
+        }
+      }
+
+      .mobile {
+        @media screen and (min-width: $small-screen-width){
+          display: none;
+        }
+
+        a.menu-link {
+          font-family: $advocate-reg;
+
+          display: inline-block;
+          margin: 35px 20px;
+
+            color: $gray;
+            font-size: 1.3em;
+
+            padding-bottom: 2px;
+            border-bottom: 2px solid;
+
+            &:hover {
+              padding-bottom: 3px;
+              border-bottom-width: 4px;
+              text-decoration: none;
+
+              transition: border-bottom-width ease-out 0.2s,
+              padding-bottom ease-out 0.2s;
+            }
+
+        }
+      }
     }
   }
+}
+
+div.nav-fs-menu {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba($project-background-light, 50);
 }
 

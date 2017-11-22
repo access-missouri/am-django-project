@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    {% load react %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,11 +49,14 @@
     </div>
 
     <div class="nav-right">
-        <ul class="nav-list">
+        <ul class="nav-list desktop">
             <li class="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
             <li class="nav-list-item nl-item-people"><a href="/people/">People</a></li>
             <li class="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
         </ul>
+        <div class="reactive-region mobile">
+            {% react_render component="SiteMenu" %}
+        </div>
     </div>
 
 </div>
@@ -60,6 +64,7 @@
 {% block body %}
 {% endblock %}
 
+<script src="{% static 'react_site_menu.js' %}"></script>
 {% block scriptyfoot %}
 {% endblock %}
 <footer>
@@ -68,5 +73,6 @@
             <p class="am-t">Access Missouri</p>
     </div>
 </footer>
+{% react_print %}
 </body>
 </html>
