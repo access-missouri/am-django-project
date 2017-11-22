@@ -12,6 +12,7 @@ from django.shortcuts import render
 class BillSearchFilter(BaseFilter):
     search_fields = {
         "search_name" : ["identifier", "title", "lr_number", "legislative_session__name",],
+        "search_sessions": { 'operator' : '__exact', 'fields' : ["legislative_session__id",] },
     }
 
 

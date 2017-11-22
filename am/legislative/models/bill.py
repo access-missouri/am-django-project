@@ -11,13 +11,18 @@ from general.models import (
 )
 from .legislativesession import LegislativeSession
 from django.utils.encoding import python_2_unicode_compatible
+from . import managers
 
 @python_2_unicode_compatible
 class Bill(AMBaseModel):
     """
     A proposal to be consider by a legislative body.
     """
+    # Model Managers
+    objects = models.Manager()
+    bills = managers.BillManager()
 
+    # Model Fields
     legislative_session = models.ForeignKey(
         LegislativeSession,
         related_name='bills',

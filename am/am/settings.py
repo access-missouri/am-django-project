@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django.contrib.postgres',
     'django_react_templatetags',
+    'rest_framework',
     'select2',
     'senate_scraper',
     'general',
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'house_scraper',
     'ls_importer',
     'search',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +127,9 @@ try:
     from .settings_local import *  # NOQA
 except ImportError:
     pass
+
+# Django REST Framework Settings
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}

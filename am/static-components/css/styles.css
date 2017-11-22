@@ -405,22 +405,25 @@ div.bill-search div.search-fields form {
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: #fafafa;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 div.bill-search div.search-fields form p {
   margin-top: 0.5rem;
   line-height: 1.5em;
 }
 div.bill-search div.search-fields form label {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  padding-top: 0.2rem;
+  font-family: "advocate_c43regular";
 }
 div.bill-search div.search-fields form input {
-  font-size: 1.3rem;
+  font-size: 1rem;
+  padding: 0.2rem;
   font-family: "equity_text_a_tabregular", Georgia;
 }
 div.bill-search div.search-fields form button {
   font-family: "advocate_c43regular";
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border: 1px solid #c51236;
   background-color: transparent;
   transition: background-color ease-in 0.2s, color ease-in 0.2s;

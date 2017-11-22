@@ -2,7 +2,7 @@ div.bill-search{
 
   div.search-fields{
     margin-top: 2rem;
-    $form-font-size: 1.3rem;
+    $form-font-size: 1.2rem;
     form {
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
@@ -19,10 +19,13 @@ div.bill-search{
 
       label {
         font-size: $form-font-size;
+        padding-top: 0.2rem;
+        font-family: $advocate-reg;
       }
 
       input {
-        font-size: $form-font-size;
+        font-size: $form-font-size - 0.2;
+        padding: 0.2rem;
         font-family: $equity-reg;
       }
 
