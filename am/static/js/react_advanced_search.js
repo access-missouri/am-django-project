@@ -88,6 +88,10 @@ var BillAdvancedSearch = function (_React$Component2) {
                 this.refs.identifier.value = queryObj['identifier'];
                 componentWillSearchOnMount = true;
             }
+            if (queryObj['title']) {
+                this.refs.title.value = queryObj['title'];
+                componentWillSearchOnMount = true;
+            }
 
             this.setState(toSetState);
 
@@ -108,6 +112,11 @@ var BillAdvancedSearch = function (_React$Component2) {
 
                     if (_queryObj['identifier']) {
                         _this3.refs.identifier.value = _queryObj['identifier'];
+                        _componentWillSearchOnMount = true;
+                    }
+
+                    if (_queryObj['title']) {
+                        _this3.refs.title.value = _queryObj['title'];
                         _componentWillSearchOnMount = true;
                     }
 
@@ -158,8 +167,6 @@ var BillAdvancedSearch = function (_React$Component2) {
             setTimeout(function () {
                 return _this4.sendSearch();
             }, 100);
-
-            console.log(this.refs);
         }
 
         // Actually submit the search as a fetch request to the server
@@ -171,14 +178,15 @@ var BillAdvancedSearch = function (_React$Component2) {
 
             var searchQuery = {};
 
-            console.log(this.state);
-
             if (this.state.page) {
                 searchQuery['page'] = this.state.page;
             }
 
             if (this.state.query['identifier']) {
                 searchQuery['identifier_search'] = this.state.query.identifier;
+            }
+            if (this.state.query['title']) {
+                searchQuery['title_search'] = this.state.query.title;
             }
 
             var requestUrl = this.state.origin + "/api/bills/" + this.createSearchQueryString(searchQuery);
@@ -193,7 +201,7 @@ var BillAdvancedSearch = function (_React$Component2) {
             }, function (error) {
                 // handle network error
             }).then(function (data) {
-                console.log(data);
+
                 _this5.setState({
                     searchResults: data['results'],
                     searchReturned: true
@@ -208,6 +216,9 @@ var BillAdvancedSearch = function (_React$Component2) {
 
             if (this.refs.identifier.value) {
                 toSetQuery['identifier'] = this.refs.identifier.value;
+            }
+            if (this.refs.title.value) {
+                toSetQuery['title'] = this.refs.title.value;
             }
 
             this.setState({
@@ -226,6 +237,7 @@ var BillAdvancedSearch = function (_React$Component2) {
             e.preventDefault();
 
             this.refs.identifier.value = '';
+            this.refs.title.value = '';
 
             this.componentRefsToQueryState();
 
@@ -261,6 +273,18 @@ var BillAdvancedSearch = function (_React$Component2) {
                             React.createElement("input", { type: "text",
                                 name: "identifier",
                                 ref: "identifier" })
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "form-group" },
+                            React.createElement(
+                                "label",
+                                { htmlFor: "title" },
+                                "Bill Description: "
+                            ),
+                            React.createElement("input", { type: "text",
+                                name: "title",
+                                ref: "title" })
                         ),
                         React.createElement(
                             "div",

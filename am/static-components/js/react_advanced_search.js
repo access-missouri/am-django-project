@@ -47,6 +47,10 @@ class BillAdvancedSearch extends React.Component {
             this.refs.identifier.value = queryObj['identifier'];
             componentWillSearchOnMount = true;
         }
+        if (queryObj['title']) {
+            this.refs.title.value = queryObj['title'];
+            componentWillSearchOnMount = true;
+        }
 
 
         this.setState(toSetState);
@@ -69,6 +73,11 @@ class BillAdvancedSearch extends React.Component {
 
                 if (queryObj['identifier']) {
                     this.refs.identifier.value = queryObj['identifier'];
+                    componentWillSearchOnMount = true;
+                }
+
+                if (queryObj['title']) {
+                    this.refs.title.value = queryObj['title'];
                     componentWillSearchOnMount = true;
                 }
 
@@ -114,7 +123,6 @@ class BillAdvancedSearch extends React.Component {
         // This has some serious code smell.
         setTimeout(() => this.sendSearch(), 100);
 
-        console.log(this.refs);
     }
 
     // Actually submit the search as a fetch request to the server
@@ -122,7 +130,6 @@ class BillAdvancedSearch extends React.Component {
 
         let searchQuery = {};
 
-        console.log(this.state);
 
         if (this.state.page){
             searchQuery['page'] = this.state.page;
@@ -130,6 +137,9 @@ class BillAdvancedSearch extends React.Component {
 
         if (this.state.query['identifier']){
             searchQuery['identifier_search'] = this.state.query.identifier;
+        }
+        if (this.state.query['title']){
+            searchQuery['title_search'] = this.state.query.title;
         }
 
         let requestUrl = (`${this.state.origin}/api/bills/${this.createSearchQueryString(searchQuery)}`);
@@ -143,8 +153,8 @@ class BillAdvancedSearch extends React.Component {
             return jsonResp;
         }, function(error) {
             // handle network error
-        }).then((data) =>{
-            console.log(data);
+        }).then((data) => {
+
             this.setState({
                 searchResults: data['results'],
                 searchReturned: true
@@ -164,6 +174,9 @@ class BillAdvancedSearch extends React.Component {
         if (this.refs.identifier.value){
             toSetQuery['identifier'] = this.refs.identifier.value;
         }
+        if (this.refs.title.value){
+            toSetQuery['title'] = this.refs.title.value;
+        }
 
         this.setState({
             query : toSetQuery
@@ -179,6 +192,7 @@ class BillAdvancedSearch extends React.Component {
         e.preventDefault();
 
         this.refs.identifier.value = '';
+        this.refs.title.value = '';
 
         this.componentRefsToQueryState();
 
@@ -205,6 +219,12 @@ class BillAdvancedSearch extends React.Component {
                             <input type="text"
                                    name="identifier"
                                    ref="identifier"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="title">Bill Description: </label>
+                            <input type="text"
+                                   name="title"
+                                   ref="title"/>
                         </div>
                         <div className="button-group">
                             <button type="submit" className="button-submit">Search</button>

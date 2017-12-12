@@ -473,6 +473,15 @@ div.bill-search div.search-fields form li {
 div.bill-search div.search-fields form li label {
   font-size: 0.8em;
 }
+div.bill-search div.search-fields form div.form-group {
+  display: flex;
+}
+div.bill-search div.search-fields form div.form-group input {
+  flex: 2;
+}
+div.bill-search div.search-fields form div.form-group label, div.bill-search div.search-fields form div.form-group input {
+  margin: 5px;
+}
 div.bill-search div.search-fields form div.button-group {
   overflow: hidden;
   *zoom: 1;

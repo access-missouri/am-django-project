@@ -50,6 +50,19 @@ div.bill-search{
         line-height: 1.2em;
       }
 
+      div.form-group{
+
+        display: flex;
+
+        input {
+          flex: 2;
+        }
+
+        label, input{
+          margin: 5px;
+        }
+      }
+
 
       div.button-group {
         @include clearfix();
