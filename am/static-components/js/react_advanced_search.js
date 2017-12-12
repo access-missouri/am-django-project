@@ -21,7 +21,8 @@ class BillAdvancedSearch extends React.Component {
         this.state =  {
             searchSubmitted: false,
             searchReturned: false,
-            searchResults: null
+            searchResults: null,
+            origin: window.location.origin
         };
 
         this.search = this.search.bind(this);
@@ -29,6 +30,7 @@ class BillAdvancedSearch extends React.Component {
         this.submit = this.submit.bind(this);
         this.resetForm = this.resetForm.bind(this);
         this.componentRefsToQueryState = this.componentRefsToQueryState.bind(this);
+        this.sendSearch = this.sendSearch.bind(this);
     }
 
     componentDidMount(){
@@ -64,11 +66,33 @@ class BillAdvancedSearch extends React.Component {
         return query;
     }
 
+    createSearchQueryString(queryObj){
+        let assignArr = [];
+
+        Object.keys(queryObj).forEach(key => {
+            assignArr.push(`${key}=${encodeURI(queryObj[key])}`);
+        });
+
+        if (assignArr){
+            return `?${assignArr.join('&')}`;
+        }
+        return '';
+    }
+
+
+    // Basic search conduct logic
     search(){
         this.componentRefsToQueryState();
 
         console.log(this.refs);
     }
+
+    // Actually submit the search as a fetch request to the server
+    sendSearch(){
+
+    }
+
+
 
     componentRefsToQueryState(){
         let toSetQuery = {};

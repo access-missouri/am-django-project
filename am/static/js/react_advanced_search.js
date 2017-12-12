@@ -55,7 +55,8 @@ var BillAdvancedSearch = function (_React$Component2) {
         _this2.state = {
             searchSubmitted: false,
             searchReturned: false,
-            searchResults: null
+            searchResults: null,
+            origin: window.location.origin
         };
 
         _this2.search = _this2.search.bind(_this2);
@@ -63,6 +64,7 @@ var BillAdvancedSearch = function (_React$Component2) {
         _this2.submit = _this2.submit.bind(_this2);
         _this2.resetForm = _this2.resetForm.bind(_this2);
         _this2.componentRefsToQueryState = _this2.componentRefsToQueryState.bind(_this2);
+        _this2.sendSearch = _this2.sendSearch.bind(_this2);
         return _this2;
     }
 
@@ -101,12 +103,35 @@ var BillAdvancedSearch = function (_React$Component2) {
             return query;
         }
     }, {
+        key: "createSearchQueryString",
+        value: function createSearchQueryString(queryObj) {
+            var assignArr = [];
+
+            Object.keys(queryObj).forEach(function (key) {
+                assignArr.push(key + "=" + encodeURI(queryObj[key]));
+            });
+
+            if (assignArr) {
+                return "?" + assignArr.join('&');
+            }
+            return '';
+        }
+
+        // Basic search conduct logic
+
+    }, {
         key: "search",
         value: function search() {
             this.componentRefsToQueryState();
 
             console.log(this.refs);
         }
+
+        // Actually submit the search as a fetch request to the server
+
+    }, {
+        key: "sendSearch",
+        value: function sendSearch() {}
     }, {
         key: "componentRefsToQueryState",
         value: function componentRefsToQueryState() {
