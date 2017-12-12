@@ -5,11 +5,11 @@ class BillAdvSearchResult extends React.Component {
     }
 
     render() {
-        <li>
-            <h2><a class="link-legislative" >{this.props.bill_identifier}</a></h2>
+        return (<li>
+            <h2><a class="link-legislative" href={`/bills/${this.props.bill_id}`}>{this.props.bill_identifier} in {this.props.bill_session_name}</a></h2>
             <p class="bill-description">{this.props.bill_title}</p>
             {/*<p class="recent-action">{this.props.} recent actions.</p>*/}
-        </li>
+        </li>);
     }
 }
 
@@ -21,7 +21,7 @@ class BillAdvancedSearch extends React.Component {
         this.state =  {
             searchSubmitted: false,
             searchReturned: false,
-            searchResults: null,
+            searchResults: [],
             origin: window.location.origin
         };
 
@@ -48,11 +48,38 @@ class BillAdvancedSearch extends React.Component {
             componentWillSearchOnMount = true;
         }
 
+
         this.setState(toSetState);
 
         if (componentWillSearchOnMount){
             this.search();
         }
+
+        // This code activates history exploration in bills search.
+        window.onpopstate = (event) => {
+            if (!window.location.search.substring(1)){
+                this.resetForm(event);
+            }
+            else {
+                let queryObj = this.parseQuery(window.location.search.substring(1));
+                let componentWillSearchOnMount = false;
+                if (queryObj['page']){
+                    toSetState['page'] = queryObj['page'];
+                }
+
+                if (queryObj['identifier']) {
+                    this.refs.identifier.value = queryObj['identifier'];
+                    componentWillSearchOnMount = true;
+                }
+
+
+                this.setState(toSetState);
+
+                if (componentWillSearchOnMount){
+                    this.search();
+                }
+            }
+        };
     }
 
 
@@ -84,11 +111,48 @@ class BillAdvancedSearch extends React.Component {
     search(){
         this.componentRefsToQueryState();
 
+        // This has some serious code smell.
+        setTimeout(() => this.sendSearch(), 100);
+
         console.log(this.refs);
     }
 
     // Actually submit the search as a fetch request to the server
     sendSearch(){
+
+        let searchQuery = {};
+
+        console.log(this.state);
+
+        if (this.state.page){
+            searchQuery['page'] = this.state.page;
+        }
+
+        if (this.state.query['identifier']){
+            searchQuery['identifier_search'] = this.state.query.identifier;
+        }
+
+        let requestUrl = (`${this.state.origin}/api/bills/${this.createSearchQueryString(searchQuery)}`);
+
+        fetch(requestUrl,{
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => {
+            let jsonResp = response.json();
+            return jsonResp;
+        }, function(error) {
+            // handle network error
+        }).then((data) =>{
+            console.log(data);
+            this.setState({
+                searchResults: data['results'],
+                searchReturned: true
+            });
+            history.pushState(this.state.query,
+                "Bill Search Results - Access Missouri",
+                `/search/bills/${this.createSearchQueryString(this.state.query)}`);
+        });
 
     }
 
@@ -117,6 +181,16 @@ class BillAdvancedSearch extends React.Component {
         this.refs.identifier.value = '';
 
         this.componentRefsToQueryState();
+
+        this.setState({
+            searchSubmitted: false,
+            searchResults: [],
+            searchReturned: false
+        });
+
+        history.pushState({},
+            "Bill Search - Access Missouri",
+            `/search/bills/`);
     }
 
     render () {
@@ -139,6 +213,26 @@ class BillAdvancedSearch extends React.Component {
                     </form>
                 </div>
 
+                {this.state.searchReturned && this.state.searchResults &&
+
+                <div className="full-cluster search-results">
+                    <ul className="search-results bill-search-results">
+                        {
+                            this.state.searchResults.map(function(result, i){
+                                return (
+                                    <BillAdvSearchResult
+                                        bill_identifier={result.identifier}
+                                        bill_title={result.title}
+                                        bill_session_name={result.legislative_session.name}
+                                        bill_id={result.id}
+                                    />
+                                );
+                            })
+                        }
+                    </ul>
+                </div>
+
+                }
 
             </div>
         )

@@ -20,7 +20,7 @@ var BillAdvSearchResult = function (_React$Component) {
     _createClass(BillAdvSearchResult, [{
         key: "render",
         value: function render() {
-            React.createElement(
+            return React.createElement(
                 "li",
                 null,
                 React.createElement(
@@ -28,8 +28,10 @@ var BillAdvSearchResult = function (_React$Component) {
                     null,
                     React.createElement(
                         "a",
-                        { "class": "link-legislative" },
-                        this.props.bill_identifier
+                        { "class": "link-legislative", href: "/bills/" + this.props.bill_id },
+                        this.props.bill_identifier,
+                        " in ",
+                        this.props.bill_session_name
                     )
                 ),
                 React.createElement(
@@ -55,7 +57,7 @@ var BillAdvancedSearch = function (_React$Component2) {
         _this2.state = {
             searchSubmitted: false,
             searchReturned: false,
-            searchResults: null,
+            searchResults: [],
             origin: window.location.origin
         };
 
@@ -71,6 +73,8 @@ var BillAdvancedSearch = function (_React$Component2) {
     _createClass(BillAdvancedSearch, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            var _this3 = this;
+
             var queryObj = this.parseQuery(window.location.search.substring(1));
 
             var componentWillSearchOnMount = false;
@@ -90,6 +94,30 @@ var BillAdvancedSearch = function (_React$Component2) {
             if (componentWillSearchOnMount) {
                 this.search();
             }
+
+            // This code activates history exploration in bills search.
+            window.onpopstate = function (event) {
+                if (!window.location.search.substring(1)) {
+                    _this3.resetForm(event);
+                } else {
+                    var _queryObj = _this3.parseQuery(window.location.search.substring(1));
+                    var _componentWillSearchOnMount = false;
+                    if (_queryObj['page']) {
+                        toSetState['page'] = _queryObj['page'];
+                    }
+
+                    if (_queryObj['identifier']) {
+                        _this3.refs.identifier.value = _queryObj['identifier'];
+                        _componentWillSearchOnMount = true;
+                    }
+
+                    _this3.setState(toSetState);
+
+                    if (_componentWillSearchOnMount) {
+                        _this3.search();
+                    }
+                }
+            };
         }
     }, {
         key: "parseQuery",
@@ -122,7 +150,14 @@ var BillAdvancedSearch = function (_React$Component2) {
     }, {
         key: "search",
         value: function search() {
+            var _this4 = this;
+
             this.componentRefsToQueryState();
+
+            // This has some serious code smell.
+            setTimeout(function () {
+                return _this4.sendSearch();
+            }, 100);
 
             console.log(this.refs);
         }
@@ -131,7 +166,41 @@ var BillAdvancedSearch = function (_React$Component2) {
 
     }, {
         key: "sendSearch",
-        value: function sendSearch() {}
+        value: function sendSearch() {
+            var _this5 = this;
+
+            var searchQuery = {};
+
+            console.log(this.state);
+
+            if (this.state.page) {
+                searchQuery['page'] = this.state.page;
+            }
+
+            if (this.state.query['identifier']) {
+                searchQuery['identifier_search'] = this.state.query.identifier;
+            }
+
+            var requestUrl = this.state.origin + "/api/bills/" + this.createSearchQueryString(searchQuery);
+
+            fetch(requestUrl, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (response) {
+                var jsonResp = response.json();
+                return jsonResp;
+            }, function (error) {
+                // handle network error
+            }).then(function (data) {
+                console.log(data);
+                _this5.setState({
+                    searchResults: data['results'],
+                    searchReturned: true
+                });
+                history.pushState(_this5.state.query, "Bill Search Results - Access Missouri", "/search/bills/" + _this5.createSearchQueryString(_this5.state.query));
+            });
+        }
     }, {
         key: "componentRefsToQueryState",
         value: function componentRefsToQueryState() {
@@ -159,6 +228,14 @@ var BillAdvancedSearch = function (_React$Component2) {
             this.refs.identifier.value = '';
 
             this.componentRefsToQueryState();
+
+            this.setState({
+                searchSubmitted: false,
+                searchResults: [],
+                searchReturned: false
+            });
+
+            history.pushState({}, "Bill Search - Access Missouri", "/search/bills/");
         }
     }, {
         key: "render",
@@ -199,6 +276,22 @@ var BillAdvancedSearch = function (_React$Component2) {
                                 "Reset"
                             )
                         )
+                    )
+                ),
+                this.state.searchReturned && this.state.searchResults && React.createElement(
+                    "div",
+                    { className: "full-cluster search-results" },
+                    React.createElement(
+                        "ul",
+                        { className: "search-results bill-search-results" },
+                        this.state.searchResults.map(function (result, i) {
+                            return React.createElement(BillAdvSearchResult, {
+                                bill_identifier: result.identifier,
+                                bill_title: result.title,
+                                bill_session_name: result.legislative_session.name,
+                                bill_id: result.id
+                            });
+                        })
                     )
                 )
             );

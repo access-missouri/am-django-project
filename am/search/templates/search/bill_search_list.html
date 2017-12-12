@@ -17,42 +17,6 @@
 
     {% react_render component="BillAdvancedSearch" %}
 
-    <div class="full-cluster search-fields">
-        <form class="form" action="" method="get">
-            {{form.as_p}}
-            <div class="button-group">
-                <button type="submit" class="button-submit">Search</button>
-                <a class="form-reset link-legislative" href="{% url 'bill-search' %}">Reset</a>
-            </div>
-        </form>
-    </div>
-
-    {% if object_list %}
-    <div class="full-cluster search-results">
-        <ul class="search-results bill-search-results">
-            {% for bill in object_list %}
-            <li>
-                <h2><a class="link-legislative" href="{{bill.get_absolute_url}}">{{bill}}</a></h2>
-                <p class="bill-description">{{bill.title}}</p>
-                <p class="recent-action">{{bill.actions.all.count}} recent actions.</p>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    {{path}}
-    {% if is_paginated %}
-    <div class="full-cluster pagination">
-        {% if page_obj.has_previous %}
-        {% endif %}
-        <span class="page-current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-        {% if page_obj.has_next %}
-        {% endif %}
-    </div>
-    {% endif %}
-
 
 </div>
 {% endblock %}

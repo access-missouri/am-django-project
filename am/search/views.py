@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from legislative.models import Bill
 from search_views.filters import BaseFilter
-from search_views.views import SearchListView
+from django.views.generic import TemplateView
 from .forms import SearchBillForm
 
 from django.shortcuts import render
@@ -16,10 +16,7 @@ class BillSearchFilter(BaseFilter):
     }
 
 
-class BillSearchListView(SearchListView):
+class BillSearchListView(TemplateView):
     model = Bill
-    paginate_by = 50
     template_name = "search/bill_search_list.html"
 
-    form_class = SearchBillForm
-    filter_class = BillSearchFilter
