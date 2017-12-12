@@ -1,5 +1,8 @@
 {% extends 'sitewide/base.html' %}
 
+{% load static %}
+{% load react %}
+
 {% block metablock %}
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -14,6 +17,8 @@
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li></ul></div>
 <div class="bill-details container bill-search">
     <h1>Search for Bills</h1>
+
+    {% react_render component="BillAdvancedSearch" %}
 
     <div class="full-cluster search-fields">
         <form class="form" action="" method="get">
@@ -53,4 +58,9 @@
 
 
 </div>
+{% endblock %}
+
+{% block scriptyfoot %}
+<script src="{% static 'react_advanced_search.js' %}"></script>
+
 {% endblock %}
