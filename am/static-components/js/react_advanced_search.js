@@ -254,6 +254,22 @@ class BillAdvancedSearch extends React.Component {
 
                 }
 
+                {
+                    this.state.searchSubmitted && !this.state.searchReturned &&
+                    <div className="loader">Loading...</div>
+                }
+
+                {
+                    this.state.searchReturned &&
+                    (this.state.searchResults.length < 1) &&
+                    <div className="no-results">
+                        <span>:(</span>
+                        <h3>It looks like we can't find that.</h3>
+                        <p>Sometimes this can happen. You may want to try a search with fewer options.</p>
+                    </div>
+
+                }
+
             </div>
         )
     }

@@ -317,6 +317,30 @@ var BillAdvancedSearch = function (_React$Component2) {
                             });
                         })
                     )
+                ),
+                this.state.searchSubmitted && !this.state.searchReturned && React.createElement(
+                    "div",
+                    { className: "loader" },
+                    "Loading..."
+                ),
+                this.state.searchReturned && this.state.searchResults.length < 1 && React.createElement(
+                    "div",
+                    { className: "no-results" },
+                    React.createElement(
+                        "span",
+                        null,
+                        ":("
+                    ),
+                    React.createElement(
+                        "h3",
+                        null,
+                        "It looks like we can't find that."
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Sometimes this can happen. You may want to try a search with fewer options."
+                    )
                 )
             );
         }

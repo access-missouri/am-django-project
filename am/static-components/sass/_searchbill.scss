@@ -106,4 +106,34 @@ div.bill-search{
 
     }
   }
+
+  div.no-results{
+    margin-top: 1.5rem;
+    padding: 25px;
+    background-color: darken($project-background-light, 2%);
+    color: lighten($project-text-light, 10%);
+
+
+    span {
+      font-size: 8rem;
+      display: block;
+      text-align: center;
+      font-family: $concourse-bold;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-family: $advocate-reg;
+      text-align: center;
+    }
+
+    p {
+      font-family: $equity-reg;
+      text-align: center;
+      margin-top: .6em;
+      line-height: 1.4em;
+    }
+  }
 }
