@@ -16,3 +16,5 @@ am/static/gis
 node_modules
 .sass-cache
 am/package-lock.json
+
+am/scrape_cache

@@ -21,6 +21,9 @@ class BillText(AMBaseModel):
                              related_name="text_versions")
     type = models.CharField(max_length=140)
     date = models.DateField()
+    text_state_kw = models.CharField(max_length=140,
+                                     null=True,
+                                     blank=True)
     state_url = models.URLField(max_length=2000)
     ls_doc_id = models.CharField(max_length=50,
                                  blank=True,

@@ -89,12 +89,15 @@ class Command(BaseCommand):
                 item_date = (datetime
                              .strptime(text['date'], "%Y-%m-%d")
                              .date())
-                text, text_created = BillText.objects.get_or_create(
+                text, text_created = BillText.objects.update_or_create(
                     bill=bill_object,
                     type=text['mime'],
                     date=item_date,
                     state_url=text['state_link'],
-                    ls_doc_id=text['doc_id']
+                    ls_doc_id=text['doc_id'],
+                    defaults={
+                        "text_state_kw": text['type'],
+                    }
                 )
 
             for sponsorship in bill_sponsors_arr:
