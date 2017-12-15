@@ -384,6 +384,19 @@ div.bill-details div.vote-detail div.react-vote-donut-contain {
   }
 }
 
+div.bill-text div.main {
+  margin-top: 2em;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 25px;
+  background-color: #f7f7f9;
+}
+div.bill-text div.main p {
+  font-size: 1.3rem;
+  font-family: "equity_text_a_tabregular", Georgia;
+  margin-top: 1em;
+}
+
 div.person-details h1 {
   font-size: 2.8em;
   border-left: 3px solid #2b4162;

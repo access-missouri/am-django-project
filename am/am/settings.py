@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_react_templatetags',
     'rest_framework',
+    'markdownify',
     'select2',
     'senate_scraper',
     'general',
@@ -133,3 +134,19 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100
 }
+
+
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a',
+    'abbr',
+    'acronym',
+    'b',
+    'blockquote',
+    'em',
+    'i',
+    'li',
+    'ol',
+    'p',
+    'strong',
+    'ul'
+]

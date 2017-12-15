@@ -41,3 +41,4 @@ class Command(BaseCommand):
                 total=qset.count()):
             ingest_bill_text(b_text)
             sleep(1)
+

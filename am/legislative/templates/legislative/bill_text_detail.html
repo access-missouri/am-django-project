@@ -1,0 +1,22 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Bill Text - {{text.bill.identifier}}{% endblock %}
+
+{% load markdownify %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{text.bill.legislative_session.get_absolute_url}}">{{text.bill.legislative_session}}</a></li><li><a href="{{text.bill.get_absolute_url}}">{{text.bill.identifier}}</a></li></ul></div>
+<div class="bill-details container">
+    <h1>{{text.bill.identifier}}</h1>
+    <p class="bill-title">{{text.bill.title}}</p>
+
+
+    <div class="bill-text full-cluster">
+        <h2>Bill Text from {{text.date}}</h2>
+        <div class="bill-text main">
+            {{text.text | markdownify}}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

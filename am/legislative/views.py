@@ -5,7 +5,7 @@ Legislative views.
 from __future__ import unicode_literals
 
 from django.views.generic import DetailView
-from .models import Bill, BillVote
+from .models import Bill, BillVote, BillText
 
 
 class BillDetailView(DetailView):
@@ -41,6 +41,24 @@ class BillVotesListView(DetailView):
         if self.kwargs['id']:
             return Bill.objects.get(id=self.kwargs['id'])
         return super(BillVotesListView, self).get_objects()
+
+
+class BillTextDetailView(DetailView):
+    """
+    View showing detail information about an individual bill text.
+    """
+
+    model = BillText
+    context_object_name = "text"
+    template_name = 'legislative/bill_text_detail.html'
+
+    def get_object(self):
+        """
+        Retrieves object based on ID.
+        """
+        if self.kwargs['id']:
+            return BillText.objects.get(id=self.kwargs['id'])
+        return super(BillTextDetailView, self).get_objects()
 
 
 class VoteDetailView(DetailView):

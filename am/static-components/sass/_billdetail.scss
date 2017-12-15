@@ -90,3 +90,22 @@ div.bill-details{
 
 
 }
+
+div.bill-text{
+  div.main {
+    margin-top: 2em;
+    margin-left: 25px;
+    margin-right: 25px;
+
+    padding: 25px;
+
+    background-color: $gray-lightest;
+
+
+    p {
+      font-size: 1.3rem;
+      font-family: $equity-reg;
+      margin-top: 1em;
+    }
+  }
+}
