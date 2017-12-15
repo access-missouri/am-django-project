@@ -51,5 +51,18 @@
     </div>
     {% endif %}
 
+    {% if person.body_memberships.all %}
+    <div class="body-memberships full-cluster">
+        <h2>Legislative Body Memberships</h2>
+        <ul>
+            {% for membership in person.body_memberships.all %}
+            <li>
+                {{membership}}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}

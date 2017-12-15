@@ -4,6 +4,7 @@
 Access Missouri models for legislative tasks.
 """
 from .legislativesession import LegislativeSession
+from .bodymembership import BodyMembership
 from .bill import Bill
 from .billhelpers import (
     BillAbstract,
@@ -13,6 +14,7 @@ from .billhelpers import (
     BillTitle,
     BillVersion,
 )
+from .billtext  import BillText
 from .voting import (
     BillVote,
     PersonVote,
@@ -29,4 +31,6 @@ __all__ = (
     'BillTitle',
     'BillVote',
     'PersonVote',
+    'BodyMembership',
+    'BillText',
 )

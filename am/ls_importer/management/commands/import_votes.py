@@ -43,6 +43,7 @@ class Command(BaseCommand):
                 lsid=bill_ls_id
             ).bill
 
+
             broad_vote, broad_vote_created = BillVote.objects.get_or_create(
                 bill=vote_bill,
                 date=vote_date,
@@ -61,10 +62,10 @@ class Command(BaseCommand):
                     lsid=opinion['people_id'],
                 ).person
 
-                opinion_mod, op_mod_created = PersonVote.objects.get_or_create(
+                opinion_mod, op_mod_created = PersonVote.objects.update_or_create(
                     person=person,
                     bill_vote=broad_vote,
-                    opinion=opinion['vote_text']
+                    opinion=opinion['vote_text'],
                 )
 
         target_directory = os.path.join(os.path.expanduser("~"), 'votes')

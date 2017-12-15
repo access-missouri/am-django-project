@@ -4,7 +4,7 @@
 Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
-from legislative.models import Bill, LegislativeSession, BillAction, BillSponsorship
+from legislative.models import Bill, LegislativeSession, BillAction, BillSponsorship, BodyMembership, BillText
 from ls_importer.models import LSIDBill, LSIDPerson
 import json
 from datetime import datetime
@@ -35,6 +35,9 @@ class Command(BaseCommand):
             bill_session_json = bill_json['bill']['session']
             bill_history_arr = bill_json['bill']['history']
             bill_sponsors_arr = bill_json['bill']['sponsors']
+            bill_text_arr = bill_json['bill']['texts']
+            bill_origin_chamber = bill_json['bill']['body']
+            bill_current_chamber = bill_json['bill']['current_body']
 
             bill_session_name = bill_session_json['session_name']
             bill_session_type_code = ''
@@ -45,7 +48,7 @@ class Command(BaseCommand):
 
             session_object, session_created = (
                 LegislativeSession.objects
-                .get_or_create(
+                    .get_or_create(
                     name=bill_session_name,
                     classification=bill_session_type_code,
                 ))
@@ -82,15 +85,39 @@ class Command(BaseCommand):
                     }
                 )
 
+            for text in bill_text_arr:
+                item_date = (datetime
+                             .strptime(text['date'], "%Y-%m-%d")
+                             .date())
+                text, text_created = BillText.objects.get_or_create(
+                    bill=bill_object,
+                    type=text['mime'],
+                    date=item_date,
+                    state_url=text['state_link'],
+                    ls_doc_id=text['doc_id']
+                )
+
             for sponsorship in bill_sponsors_arr:
                 person = LSIDPerson.objects.get(lsid=sponsorship['people_id']).person
+
+
+
+
                 try:
                     date = (datetime
-                        .strptime(bill_history_arr[-1]['date'], "%Y-%m-%d")
-                        .date())
+                            .strptime(bill_history_arr[-1]['date'], "%Y-%m-%d")
+                            .date())
                 except:
                     date = None
                 primary = True if sponsorship['sponsor_type_id'] == 1 else False
+
+                if bill_origin_chamber == bill_current_chamber:
+                    if (bill_origin_chamber == 'H') | (bill_origin_chamber == 'S'):
+                        person_body_membership, p_bod_mem_created = BodyMembership.objects.get_or_create(
+                            person=person,
+                            body=bill_origin_chamber,
+                            session=session_object,
+                        )
 
                 sponsorship_model, sp_m_created = BillSponsorship.objects.get_or_create(
                     bill=bill_object,
