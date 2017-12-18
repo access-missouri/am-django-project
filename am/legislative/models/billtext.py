@@ -36,6 +36,9 @@ class BillText(AMBaseModel):
     def __str__(self):
         return '{} - {}'.format(self.bill, self.date)
 
+    def get_absolute_url(self):
+        return '/bills/{}/text/{}'.format(self.bill.id, self.id)
+
     class Meta:
         """
         Model options.

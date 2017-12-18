@@ -76,5 +76,17 @@
     </div>
     {% endif %}
 
+    {% if bill.text_versions.all %}
+    <div class="bill-text-versions full-cluster">
+        <h2>Bill Text Versions</h2>
+        <ul class="bill-sponsor-list">
+            {% for text in bill.text_versions.all %}
+            <li><a href="{{text.get_absolute_url}}"
+                   class="link-legislative">{{text.date}} - {{text.text_state_kw}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}

@@ -39,6 +39,7 @@ class Command(BaseCommand):
             with open(pdf_path, "wb") as pdf:
                 pdf.write(c)
 
+
             scraper = pdfquery.PDFQuery(pdf_path)
             scraper.load()
             scraper.tree.write("{}.xml".format(pdf_path),pretty_print=True)
@@ -60,6 +61,10 @@ class Command(BaseCommand):
         for b_text in tqdm(
                 iterable=qset,
                 total=qset.count()):
-            ingest_bill_text(b_text)
-            sleep(1)
+            try:
+                ingest_bill_text(b_text)
+                sleep(1)
+            except:
+                # If something goes wrong, just move on.
+                continue
 
