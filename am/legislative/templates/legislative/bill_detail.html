@@ -78,7 +78,7 @@
 
     {% if bill.text_versions.all %}
     <div class="bill-text-versions full-cluster">
-        <h2>Bill Text Versions</h2>
+        <h2>Bill Text History</h2>
         <ul class="bill-sponsor-list">
             {% for text in bill.text_versions.all %}
             <li><a href="{{text.get_absolute_url}}"
