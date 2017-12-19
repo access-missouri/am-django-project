@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'senate_scraper',
     'general',
     'legislative',
+    'finance',
     'house_scraper',
     'ls_importer',
     'search',

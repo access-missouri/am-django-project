@@ -23,5 +23,6 @@ urlpatterns = [
                   url(r'^people/(?P<id>[\w-]+)/$', PersonDetailView.as_view(), name='person'),
                   url(r'^people/(?P<id>[\w-]+)/votes/$', PersonVotesListView.as_view(), name='personvotes'),
                   url(r'^search/bills/', BillSearchListView.as_view(), name='bill-search'),
-                  url(r'^api/', include('api.urls', namespace='api'))
+                  url(r'^api/', include('api.urls', namespace='api')),
+                  url(r'^finance/', include('finance.urls', namespace='finance')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
