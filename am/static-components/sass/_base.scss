@@ -97,6 +97,23 @@ a.link-people {
 	}
 }
 
+a.link-finance {
+	color: $gray;
+	background-color: lighten($gray, 70%);
+	padding-left: 5px;
+	padding-right: 5px;
+	border-bottom: 1px dotted lighten($am-green, 20%);
+
+	transition: background-color ease-in 0.3s;
+
+	&:hover {
+		text-decoration: none;
+		background-color: lighten($am-green, 55%);
+		border-bottom: 1px dotted lighten($am-green, 10%);
+		transition: background-color ease-in 0.3s;
+	}
+}
+
 p.aff{
 	margin-top: 1rem;
 	font-size: 1.1em;

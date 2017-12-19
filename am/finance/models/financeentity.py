@@ -95,3 +95,11 @@ class FinanceEntity(AMBaseModel):
     def __str__(self):
         return "{}".format(self.name)
 
+    def get_absolute_url(self):
+        pl_type = "committees"
+        if self.type == "corp":
+            pl_type = "companies"
+        elif self.type == "person":
+            pl_type = "people"
+        return "/finance/{}/{}".format(pl_type, self.id)
+

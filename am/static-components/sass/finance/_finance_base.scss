@@ -1,0 +1,30 @@
+// Finance Variables
+$color-fin: $am-green;
+
+// Finance Menu Bar Label
+
+nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-finance a{
+  border-bottom-color: $color-fin;
+}
+
+// Finance Breadcrumbs
+
+div.bch-finance{
+  background-color: $color-fin;
+}
+
+div.finance-details {
+
+  h1 {
+    font-size: 2.8em;
+    border-left: 3px solid $color-fin;
+    padding-left: 10px;
+  }
+
+  p.finance-sub{
+    font-size: 2.6em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+}
