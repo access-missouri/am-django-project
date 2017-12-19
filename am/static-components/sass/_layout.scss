@@ -41,3 +41,28 @@ a{
 	}
 }
 
+div.explainer {
+  background-color: lighten($gray-lighter, 5%);
+  padding:20px;
+
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 0px;
+    font-family: $advocate-reg;
+    margin-bottom: 1em;
+
+    &:before{
+      content: "?";
+      font-size: 1rem;
+      margin-right: 1em;
+      background-color: darken($project-text-light, 10%);
+      padding: 5px 11px;
+      border-radius: 100%;
+      color: $project-text-dark;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}

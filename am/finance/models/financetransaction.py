@@ -36,3 +36,10 @@ class FinanceTransaction(AMBaseModel):
     def __str__(self):
         return "From {} to {} - {}".format(self.mec_id, self.name, self.name_last)
 
+    class Meta:
+        """
+        Model options.
+        """
+
+        ordering = ['-date']
+
