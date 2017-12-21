@@ -103,3 +103,21 @@ class FinanceEntity(AMBaseModel):
             pl_type = "people"
         return "/finance/{}/{}".format(pl_type, self.id)
 
+
+@python_2_unicode_compatible
+class MecLink(AMBaseModel):
+    """
+    Link multiple MEC ids to one entity.
+    """
+
+    mec_id = models.CharField(
+        max_length=128,
+        help_text='Missouri Ethics Commission ID number.',
+        unique=True
+    )
+    entity = models.ForeignKey(
+        FinanceEntity
+    )
+
+    def __str__(self):
+        return "{}  - {}".format(self.mec_id,self.entity)

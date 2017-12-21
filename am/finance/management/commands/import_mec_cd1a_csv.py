@@ -107,4 +107,6 @@ class Command(BaseCommand):
         target_directory = os.path.join(os.path.expanduser("~"), 'mec')
         for file in os.listdir(target_directory):
             if file.endswith(".csv"):
+                print("Starting {}.".format(file))
                 csv_to_db(os.path.join(target_directory, file))
+                print("Finished {}.".format(file))
