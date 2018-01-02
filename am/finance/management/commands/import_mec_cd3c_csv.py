@@ -58,26 +58,14 @@ class Command(BaseCommand):
                     }
                 )
 
-                fr_obj, fr_created = None, None
 
-                try:
-                    fr_obj = FinanceEntity.objects.filter(
-                        name__iexact=from_committee_name,
-                        type="comm",
-                        mec_id=None
-                    )
-                    print("total objects: {}".format(fr_obj.count()))
-                    fr_obj.mec_id = from_mec_id
-                    fr_obj.save()
-                except:
-                    fr_obj, fr_created = FinanceEntity.objects.get_or_create(
-                        name__iexact=from_committee_name,
-                        mec_id=from_mec_id,
-                        type="comm",
-                        defaults={
-                            "name": from_committee_name,
-                        }
-                    )
+                fr_obj, fr_created = FinanceEntity.objects.get_or_create(
+                    name__iexact=from_committee_name,
+                    type="comm",
+                    defaults={
+                        "name": from_committee_name,
+                    }
+                )
 
                 t_obj, t_created = FinanceTransaction.objects.get_or_create(
                     t_from=fr_obj,

@@ -20,3 +20,20 @@ class EntityDetailView(DetailView):
         if self.kwargs['id']:
             return FinanceEntity.objects.get(id=self.kwargs['id'])
         return super(EntityDetailView, self).get_objects()
+
+class EntityDetailSpendingListView(DetailView):
+    """
+    View showing detail information about an individual finance entity.
+    """
+
+    model = FinanceEntity
+    context_object_name = "object"
+    template_name = 'finance/entity_detail_spend_list.html'
+
+    def get_object(self):
+        """
+        Retrieves object based on ID.
+        """
+        if self.kwargs['id']:
+            return FinanceEntity.objects.get(id=self.kwargs['id'])
+        return super(EntityDetailView, self).get_objects()
