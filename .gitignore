@@ -18,3 +18,4 @@ node_modules
 am/package-lock.json
 
 am/scrape_cache
+am/zappa_settings.json
