@@ -49,6 +49,13 @@ class Person(AMBaseModel):
         help_text="Gender of the Person, if known.",
     )
 
+    index_name = models.CharField(
+        max_length=400,
+        null=True,
+        db_index=True,
+        help_text="Concatenated name for search purposes."
+    )
+
     def get_full_name(self):
         """
         Gets a person object's generated full name.
