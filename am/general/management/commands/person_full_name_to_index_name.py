@@ -29,4 +29,3 @@ class Command(BaseCommand):
                 total=qset.count()):
             person.index_name = person.get_full_name()
             person.save()
-

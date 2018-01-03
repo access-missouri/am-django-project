@@ -4,6 +4,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'bills', views.BillAPIViewset)
+router.register(r'people', views.PersonAPIViewset)
 
 
 
@@ -11,6 +12,7 @@ router.register(r'bills', views.BillAPIViewset)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^bills/$', views.BillSearchAPIView.as_view()),
+    url(r'^people/$', views.PersonSearchAPIView.as_view()),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

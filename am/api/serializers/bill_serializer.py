@@ -4,12 +4,8 @@ Serializers for the Django REST Framework.
 """
 
 from rest_framework import serializers
-from legislative.models import Bill, LegislativeSession
-
-class LegislativeSessionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = LegislativeSession
-        fields = ('name', 'id')
+from legislative.models import Bill
+from .legislative_session_serializer import LegislativeSessionSerializer
 
 class BillSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="api:bill-detail")
