@@ -77,6 +77,10 @@ class Bill(AMBaseModel):
         blank=True,
     )
 
+    def get_bill_status(self):
+        bill_status_int = 0
+        return bill_status_int
+
     def get_absolute_url(self):
         return '/bills/{}'.format(
             self.id,
