@@ -1,0 +1,139 @@
+div.people-search{
+
+  div.search-fields{
+    margin-top: 2rem;
+    $form-font-size: 1.2rem;
+    form {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      background-color: darken($project-background-light, 2%);
+
+      font-size: $form-font-size;
+
+      p{
+        margin-top: 0.5rem;
+        line-height: 1.5em;
+      }
+
+      label {
+        font-size: $form-font-size;
+        padding-top: 0.2rem;
+        font-family: $advocate-reg;
+      }
+
+      input {
+        font-size: $form-font-size - 0.2;
+        padding: 0.2rem;
+        font-family: $equity-reg;
+      }
+
+      button {
+        font-family: $advocate-reg;
+        font-size: $form-font-size;
+        border: 1px solid $am-blue;
+        background-color: transparent;
+        transition: background-color ease-in 0.2s,
+                    color ease-in 0.2s;
+
+        &:hover{
+          background-color: $am-blue;
+          color: $project-text-dark;
+        }
+      }
+
+      li {
+        label {
+          font-size: 0.8em;
+        }
+        line-height: 1.2em;
+      }
+
+      div.form-group{
+
+        display: flex;
+
+        input {
+          flex: 2;
+        }
+
+        label, input{
+          margin: 5px;
+        }
+      }
+
+
+      div.button-group {
+        @include clearfix();
+        margin-top: 1rem;
+
+        button {
+          float: right;
+        }
+
+        a {
+          font-family: $advocate-reg;
+          font-size: 1rem;
+          margin: 0.5rem;
+          float: right;
+        }
+      }
+
+    }
+  }
+
+
+  div.search-results{
+    ul.bill-search-results {
+
+      li {
+        background-color: darken($project-background-light, 2%);
+        padding-bottom: 1em;
+        margin-top: 1em;
+
+        h2 {
+          padding-top: 1rem;
+          margin-bottom: 1rem;
+          font-size: 1.4rem;
+        }
+
+        p {
+          margin-top: 0.5rem;
+          margin-left: 10px;
+        }
+      }
+
+    }
+  }
+
+  div.no-results{
+    margin-top: 1.5rem;
+    padding: 25px;
+    background-color: darken($project-background-light, 2%);
+    color: lighten($project-text-light, 10%);
+
+
+    span {
+      font-size: 8rem;
+      display: block;
+      text-align: center;
+      font-family: $concourse-bold;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-family: $advocate-reg;
+      text-align: center;
+    }
+
+    p {
+      font-family: $equity-reg;
+      text-align: center;
+      margin-top: .6em;
+      line-height: 1.4em;
+    }
+  }
+}

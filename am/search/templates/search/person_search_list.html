@@ -1,0 +1,27 @@
+{% extends 'sitewide/base.html' %}
+
+{% load static %}
+{% load react %}
+
+{% block metablock %}
+
+{{ form.media }}
+{% endblock %}
+
+{% block title %}Search for Bills{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li></ul></div>
+<div class="person-details container people-search">
+    <h1>Search for People</h1>
+
+    {% react_render component="PersonAdvancedSearch" %}
+
+
+</div>
+{% endblock %}
+
+{% block scriptyfoot %}
+<script src="{% static 'react_person_advanced_search.js' %}"></script>
+
+{% endblock %}

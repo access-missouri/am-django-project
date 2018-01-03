@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from legislative.models import Bill
+from general.models import Person
 from search_views.filters import BaseFilter
 from django.views.generic import TemplateView
 from .forms import SearchBillForm
@@ -19,4 +20,8 @@ class BillSearchFilter(BaseFilter):
 class BillSearchListView(TemplateView):
     model = Bill
     template_name = "search/bill_search_list.html"
+
+class PersonSearchListView(TemplateView):
+    model = Person
+    template_name = "search/person_search_list.html"
 

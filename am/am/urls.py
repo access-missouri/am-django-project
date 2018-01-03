@@ -12,7 +12,7 @@ from legislative.views import BillDetailView, VoteDetailView, BillVotesListView,
 from django.conf.urls.static import static
 from django.conf import settings
 
-from search.views import BillSearchListView
+from search.views import BillSearchListView, PersonSearchListView
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
@@ -23,6 +23,7 @@ urlpatterns = [
                   url(r'^people/(?P<id>[\w-]+)/$', PersonDetailView.as_view(), name='person'),
                   url(r'^people/(?P<id>[\w-]+)/votes/$', PersonVotesListView.as_view(), name='personvotes'),
                   url(r'^search/bills/', BillSearchListView.as_view(), name='bill-search'),
+                  url(r'^search/people/', PersonSearchListView.as_view(), name='person-search'),
                   url(r'^api/', include('api.urls', namespace='api')),
                   url(r'^finance/', include('finance.urls', namespace='finance')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

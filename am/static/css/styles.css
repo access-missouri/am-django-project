@@ -606,6 +606,111 @@ div.bill-search div.no-results p {
   line-height: 1.4em;
 }
 
+div.people-search div.search-fields {
+  margin-top: 2rem;
+}
+div.people-search div.search-fields form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #fafafa;
+  font-size: 1.2rem;
+}
+div.people-search div.search-fields form p {
+  margin-top: 0.5rem;
+  line-height: 1.5em;
+}
+div.people-search div.search-fields form label {
+  font-size: 1.2rem;
+  padding-top: 0.2rem;
+  font-family: "advocate_c43regular";
+}
+div.people-search div.search-fields form input {
+  font-size: 1rem;
+  padding: 0.2rem;
+  font-family: "equity_text_a_tabregular", Georgia;
+}
+div.people-search div.search-fields form button {
+  font-family: "advocate_c43regular";
+  font-size: 1.2rem;
+  border: 1px solid #2b4162;
+  background-color: transparent;
+  transition: background-color ease-in 0.2s, color ease-in 0.2s;
+}
+div.people-search div.search-fields form button:hover {
+  background-color: #2b4162;
+  color: #f7f7f9;
+}
+div.people-search div.search-fields form li {
+  line-height: 1.2em;
+}
+div.people-search div.search-fields form li label {
+  font-size: 0.8em;
+}
+div.people-search div.search-fields form div.form-group {
+  display: flex;
+}
+div.people-search div.search-fields form div.form-group input {
+  flex: 2;
+}
+div.people-search div.search-fields form div.form-group label, div.people-search div.search-fields form div.form-group input {
+  margin: 5px;
+}
+div.people-search div.search-fields form div.button-group {
+  overflow: hidden;
+  *zoom: 1;
+  margin-top: 1rem;
+}
+div.people-search div.search-fields form div.button-group button {
+  float: right;
+}
+div.people-search div.search-fields form div.button-group a {
+  font-family: "advocate_c43regular";
+  font-size: 1rem;
+  margin: 0.5rem;
+  float: right;
+}
+div.people-search div.search-results ul.bill-search-results li {
+  background-color: #fafafa;
+  padding-bottom: 1em;
+  margin-top: 1em;
+}
+div.people-search div.search-results ul.bill-search-results li h2 {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+div.people-search div.search-results ul.bill-search-results li p {
+  margin-top: 0.5rem;
+  margin-left: 10px;
+}
+div.people-search div.no-results {
+  margin-top: 1.5rem;
+  padding: 25px;
+  background-color: #fafafa;
+  color: #848a8e;
+}
+div.people-search div.no-results span {
+  font-size: 8rem;
+  display: block;
+  text-align: center;
+  font-family: "concourse_t2_tabbold", Helvetica, Arial;
+  margin-bottom: 2rem;
+  display: none;
+}
+div.people-search div.no-results h3 {
+  font-size: 2rem;
+  font-family: "advocate_c43regular";
+  text-align: center;
+}
+div.people-search div.no-results p {
+  font-family: "equity_text_a_tabregular", Georgia;
+  text-align: center;
+  margin-top: .6em;
+  line-height: 1.4em;
+}
+
 .loader,
 .loader:before,
 .loader:after {
