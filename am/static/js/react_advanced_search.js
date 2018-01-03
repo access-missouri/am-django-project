@@ -229,6 +229,9 @@ var BillAdvancedSearch = function (_React$Component2) {
         key: "submit",
         value: function submit(e) {
             e.preventDefault();
+            this.setState({
+                searchSubmitted: true
+            });
             this.search();
         }
     }, {

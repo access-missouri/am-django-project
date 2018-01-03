@@ -185,6 +185,9 @@ class BillAdvancedSearch extends React.Component {
 
     submit(e){
         e.preventDefault();
+        this.setState({
+            searchSubmitted: true
+        });
         this.search();
     }
 
