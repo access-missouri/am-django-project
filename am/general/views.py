@@ -4,9 +4,29 @@ Views and rendering systems from AM general.
 """
 from __future__ import unicode_literals
 from braces.views import SelectRelatedMixin
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from .models import Person
+from legislative.models import Bill, PersonVote
+from finance.models import FinanceTransaction
 
+
+class HomePageView(ListView):
+    """
+    The site home page.
+    """
+
+    model = Bill
+    queryset = Bill.objects.all()
+
+    template_name = "general/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['people'] = Person.objects.all()
+        context['bills'] = Bill.objects.all()
+        context['personvotes'] = PersonVote.objects.all()
+        context['finance_transactions'] = FinanceTransaction.objects.all()
+        return context
 
 class PersonDetailView(DetailView):
     """

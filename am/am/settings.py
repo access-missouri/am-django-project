@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'django.contrib.postgres',
+    'django.contrib.humanize',
     'django_react_templatetags',
     'storages',
     'rest_framework',
@@ -156,7 +157,7 @@ MARKDOWNIFY_WHITELIST_TAGS = [
 
 # Django Storage Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_AUTO_CREATE_BUCKET = True
 AWS_STORAGE_BUCKET_NAME = 'am-dj-store'
 AWS_ACCESS_KEY_ID = os.getenv("KBIA_BAKERIES_AWS_ID")

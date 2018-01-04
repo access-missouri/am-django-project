@@ -1,0 +1,56 @@
+div.home-page{
+
+  div.tease-image{
+    float: left;
+    max-width: 40%;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  div.teaser-block{
+
+    //background-color: $gray-lightest;
+    //padding: 1em;
+
+    //float: right;
+
+    p {
+      text-align: right;
+    }
+
+    p.pitch-phrase{
+      font-family: $advocate-reg;
+      font-size: 2.8em;
+    }
+
+    p.red{
+      color: $am-crimson;
+    }
+    p.blue{
+      color: $am-blue;
+    }
+    p.green{
+      color: $am-green;
+    }
+
+    h1{
+      font-family: $equity-reg;
+      margin-top: 1.5rem;
+      font-size: 4.0rem;
+      text-align: right;
+      color: darken($project-text-light, 20%);
+      line-height: 1.2em;
+    }
+
+    p.description{
+      margin-top: 0.5em;
+      font-family: $concourse-reg;
+      font-size: 2rem;
+      strong {
+        color: $am-blue;
+      }
+    }
+  }
+}

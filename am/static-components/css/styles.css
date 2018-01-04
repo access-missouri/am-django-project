@@ -306,7 +306,7 @@ div.nav-fs-menu {
 div.breadcrumb-holder {
   width: 100%;
   height: 3rem;
-  background-color: #0c1109;
+  background-color: rgba(70, 74, 76, 0.8);
   overflow: hidden;
   font-family: "advocate_c43regular";
 }
@@ -772,4 +772,43 @@ div.people-search div.no-results p {
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+div.home-page div.tease-image {
+  float: left;
+  max-width: 40%;
+}
+div.home-page div.tease-image img {
+  max-width: 100%;
+}
+div.home-page div.teaser-block p {
+  text-align: right;
+}
+div.home-page div.teaser-block p.pitch-phrase {
+  font-family: "advocate_c43regular";
+  font-size: 2.8em;
+}
+div.home-page div.teaser-block p.red {
+  color: #c51236;
+}
+div.home-page div.teaser-block p.blue {
+  color: #2b4162;
+}
+div.home-page div.teaser-block p.green {
+  color: #48661f;
+}
+div.home-page div.teaser-block h1 {
+  font-family: "equity_text_a_tabregular", Georgia;
+  margin-top: 1.5rem;
+  font-size: 4.0rem;
+  text-align: right;
+  color: #3a3d3f;
+  line-height: 1.2em;
+}
+div.home-page div.teaser-block p.description {
+  margin-top: 0.5em;
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+  font-size: 2rem;
+}
+div.home-page div.teaser-block p.description strong {
+  color: #2b4162;
 }

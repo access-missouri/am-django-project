@@ -1,0 +1,24 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% load humanize %}
+{% load static %}
+
+{% block body %}
+<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="#">{{person.get_full_name}}</a></li></ul></div>
+<div class="container home-page">
+    <div class="tease-image">
+        <img src="{% static 'am-logo-blue-1400.png' %}" alt="Access Missouri Logo">
+    </div>
+    <div class="teaser-block">
+        <!--<p class="pitch-phrase red">{{bills.count|intcomma}} bills.</p>-->
+        <!--<p class="pitch-phrase blue">{{personvotes.count|intcomma}} votes.</p>-->
+        <!--<p class="pitch-phrase green">{{finance_transactions.count|intcomma}} financial transactions.</p>-->
+        <h1>Legislative Data<br />Straight from Jefferson City</h1>
+        <p class="description">
+            Access Missouri compiles information on Missouri politics from across the web so you don't have to.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -3,7 +3,8 @@ $breadcrumb-height: 3rem;
 div.breadcrumb-holder{
   width: 100%;
   height: $breadcrumb-height;
-  background-color: #0c1109;
+  //background-color: #0c1109;
+  background-color: rgba(#464a4c,0.8);
   overflow: hidden;
   font-family: $advocate-reg;
 

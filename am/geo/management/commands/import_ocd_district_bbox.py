@@ -10,9 +10,6 @@ import requests
 from time import sleep
 from os import getenv
 import json
-from search.utils import phrase_to_index_name_q_search
-from general.models import Person
-from legislative.models import BodyMembership, LegislativeSession
 
 
 class Command(BaseCommand):
