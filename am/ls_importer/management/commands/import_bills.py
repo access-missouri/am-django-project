@@ -112,15 +112,16 @@ class Command(BaseCommand):
                             .date())
                 except:
                     date = None
+                
                 primary = True if sponsorship['sponsor_type_id'] == 1 else False
 
-                if bill_origin_chamber == bill_current_chamber:
-                    if (bill_origin_chamber == 'H') | (bill_origin_chamber == 'S'):
-                        person_body_membership, p_bod_mem_created = BodyMembership.objects.get_or_create(
-                            person=person,
-                            body=bill_origin_chamber,
-                            session=session_object,
-                        )
+                # if bill_origin_chamber == bill_current_chamber:
+                #     if (bill_origin_chamber == 'H') | (bill_origin_chamber == 'S'):
+                #         person_body_membership, p_bod_mem_created = BodyMembership.objects.get_or_create(
+                #             person=person,
+                #             body=bill_origin_chamber,
+                #             session=session_object,
+                #         )
 
                 sponsorship_model, sp_m_created = BillSponsorship.objects.get_or_create(
                     bill=bill_object,
