@@ -773,6 +773,14 @@ div.people-search div.no-results p {
     box-shadow: 0 2.5em 0 0;
   }
 }
+div.home-page {
+  box-sizing: border-box;
+}
+div.home-page div.float-top-home {
+  overflow: hidden;
+  *zoom: 1;
+  margin-bottom: 5rem;
+}
 div.home-page div.tease-image {
   float: left;
   max-width: 40%;
@@ -809,6 +817,46 @@ div.home-page div.teaser-block p.description {
   font-family: "concourse_t2_tabregular", Helvetica, Arial;
   font-size: 2rem;
 }
-div.home-page div.teaser-block p.description strong {
-  color: #2b4162;
+
+div.snippet-block {
+  margin-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+div.snippet-block h2 {
+  margin-top: 0.5rem;
+  border-top: 5px solid;
+  font-family: "advocate_c43regular";
+}
+
+div.snippet-block-legislative h2 {
+  border-top-color: #c51236;
+}
+
+div.snippet-block-financial h2 {
+  border-top-color: #48661f;
+}
+
+@media screen and (min-width: 800px) {
+  div.snippet-block {
+    float: left;
+    width: 50%;
+  }
+}
+ul.recents-list li {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em 5px;
+  background-color: #f7f7f9;
+}
+ul.recents-list li a {
+  background-color: transparent;
+}
+ul.recents-list li h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+ul.recents-list li p {
+  padding-left: 5px;
+  padding-right: 5px;
 }

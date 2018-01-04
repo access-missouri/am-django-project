@@ -1,5 +1,12 @@
 div.home-page{
 
+  box-sizing: border-box;
+
+  div.float-top-home{
+    @include clearfix;
+    margin-bottom: 5rem;
+  }
+
   div.tease-image{
     float: left;
     max-width: 40%;
@@ -49,8 +56,66 @@ div.home-page{
       font-family: $concourse-reg;
       font-size: 2rem;
       strong {
-        color: $am-blue;
       }
+    }
+  }
+}
+
+div.snippet-block{
+  margin-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+
+  h2 {
+    margin-top: 0.5rem;
+    border-top: 5px solid;
+    font-family: $advocate-reg;
+  }
+}
+
+div.snippet-block-legislative{
+      h2 {
+      border-top-color: $am-crimson;
+    }
+
+}
+
+div.snippet-block-financial{
+  h2 {
+    border-top-color: $am-green;
+  }
+}
+
+@media screen and (min-width: $medium-screen-width){
+  div.snippet-block{
+    float: left;
+    width: 50%;
+
+
+  }
+}
+
+ul.recents-list{
+  li{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 1em 5px;
+
+    background-color: $gray-lightest;
+
+    a {
+      background-color: transparent;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5em;
+    }
+
+    p{
+      padding-left: 5px;
+      padding-right: 5px;
     }
   }
 }

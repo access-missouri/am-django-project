@@ -70,12 +70,17 @@ class Command(BaseCommand):
                 bill_object.description = bill_description
             bill_object.save()
 
+            last_action_date = None
             action_order = 0
             for history_item in bill_history_arr:
                 action_order += 1
                 history_item_date = (datetime
                                      .strptime(history_item['date'], "%Y-%m-%d")
                                      .date())
+
+                if last_action_date == None \
+                        or history_item_date > last_action_date:
+                    last_action_date = history_item_date
                 action, action_created = BillAction.objects.get_or_create(
                     bill=bill_object,
                     description=history_item['action'],
@@ -84,6 +89,8 @@ class Command(BaseCommand):
                         'order': action_order,
                     }
                 )
+            bill_object.last_action_date = last_action_date
+            bill_object.save()
 
             for text in bill_text_arr:
                 item_date = (datetime

@@ -94,7 +94,7 @@ class Bill(AMBaseModel):
         Model options.
         """
 
-        ordering = ['-legislative_session__name','identifier']
+        ordering = ['-legislative_session__name','-last_action_date','identifier']
 
         index_together = [
             ['legislative_session', 'from_organization', 'identifier'],
