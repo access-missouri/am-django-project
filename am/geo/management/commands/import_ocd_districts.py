@@ -62,9 +62,3 @@ class Command(BaseCommand):
                         person=possible_people[0],
                         district=d_obj
                     )
-
-        # for person in tqdm(
-        #         iterable=qset,
-        #         total=qset.count()):
-        #     person.index_name = person.get_full_name()
-        #     person.save()
