@@ -10,6 +10,7 @@ from general.models import (
 )
 from legislative.models import LegislativeSession
 from django.utils.encoding import python_2_unicode_compatible
+from geo.models import District
 
 @python_2_unicode_compatible
 class BodyMembership(AMBaseModel):
@@ -32,6 +33,9 @@ class BodyMembership(AMBaseModel):
     )
     session = models.ForeignKey(LegislativeSession,
                                 related_name="body_memberships")
+    district = models.ForeignKey(District,
+                                 null=True,
+                                 blank=True)
 
     def __str__(self):
         return '{}({}) in {}'.format(self.person, self.body, self.session)

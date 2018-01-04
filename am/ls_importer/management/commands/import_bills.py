@@ -112,7 +112,7 @@ class Command(BaseCommand):
                             .date())
                 except:
                     date = None
-                
+
                 primary = True if sponsorship['sponsor_type_id'] == 1 else False
 
                 # if bill_origin_chamber == bill_current_chamber:
