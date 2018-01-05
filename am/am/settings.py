@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'markdownify',
     'select2',
-    'scraper',
     'senate_scraper',
     'general',
     'legislative',
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'ls_importer',
     'search',
     'api',
+    'scraper',
 ]
 
 MIDDLEWARE = [
