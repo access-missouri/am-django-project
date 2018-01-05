@@ -37,6 +37,11 @@
         </table>
         <p class="aff"><a href="{{person.get_absolute_url}}/votes" class="link-people">View All {{person.votes.all.count}} Votes by {{person.get_full_name}}</a></p>
     </div>
+    <br />
+    <div class="explainer full-cluster">
+        <h2>How we get this information</h2>
+        <p>Access Missouri's software intelligently searches through Missouri's House and Senate "journals," records of all legislative action taken in a day, after they are posted. We're able to take individual roll call votes - identified by representative name - and automatically add them to our profiles. Usually, a vote will appear here within about 24 hours of when it is cast.</p>
+    </div>
     {% endif %}
 
     {% if person.bill_sponsorships.all %}
@@ -63,6 +68,5 @@
         </ul>
     </div>
     {% endif %}
-
 </div>
 {% endblock %}

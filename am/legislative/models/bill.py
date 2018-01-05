@@ -79,7 +79,44 @@ class Bill(AMBaseModel):
 
     def get_bill_status(self):
         bill_status_int = 0
+        # 0 - Unknown, 1 - Proposed, 2 -Revision, 3 - Agreed, 4 - Sent, 5 - Veto, 6 - Law
+        actions = self.actions.all().order_by("date", "order")
+        for act in actions:
+            if "PROPOSE" in act.description.upper():
+                bill_status_int = 1
+            elif "FILE" in act.description.upper():
+                bill_status_int = 1
+            elif "COMM" in act.description.upper():
+                bill_status_int = 2
+            elif "AGREED" in act.description.upper():
+                bill_status_int = 3
+            elif "OVERRIDE" in act.description.upper():
+                bill_status_int = 6
+            elif "SIGNED" in act.description.upper():
+                bill_status_int = 6
+            elif "DELIVER" in act.description.upper():
+                bill_status_int = 4
+            elif "VETO" in act.description.upper():
+                bill_status_int = 5
         return bill_status_int
+
+    def get_bill_status_text(self):
+        bill_status_int = self.get_bill_status()
+        if bill_status_int == 0:
+            return "Unknown"
+        elif bill_status_int == 1:
+            return "Proposed"
+        elif bill_status_int == 2:
+            return "Revision"
+        elif bill_status_int == 3:
+            return "Agreed"
+        elif bill_status_int == 4:
+            return "Sent for Signature"
+        elif bill_status_int == 5:
+            return "Vetoed"
+        elif bill_status_int == 6:
+            return "Law"
+        return "Unknown"
 
     def get_absolute_url(self):
         return '/bills/{}'.format(

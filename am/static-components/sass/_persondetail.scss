@@ -17,6 +17,9 @@ div.person-details{
     line-height: 1.8em;
 
     li {
+      $link-format-indent-comp: 5px;
+      padding-left: $link-format-indent-comp;
+      text-indent: -$link-format-indent-comp;
       margin-top: 0.8em;
     }
   }

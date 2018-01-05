@@ -7,6 +7,7 @@
 <div class="bill-details container">
     <h1>{{bill.identifier}}</h1>
     <p class="bill-title">{{bill.title}}</p>
+    <p>{{bill.get_bill_status_text}}</p>
 
     {% if bill.description %}
     <div class="full-cluster">
