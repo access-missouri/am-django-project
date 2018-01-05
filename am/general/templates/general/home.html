@@ -37,6 +37,14 @@
 
     <div class="snippet-block snippet-block-financial">
         <h2>Recent Political Spending</h2>
+        <ul class="recents-list">
+            {% for transaction in finance_transactions|slice:"5" %}
+            <li>
+                <h3><a href="" class="link-finance">${{transaction.amount|floatformat:2}} Transaction</a></h3>
+                <p class="transaction-description">From <a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a> to <a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a></p>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
 </div>

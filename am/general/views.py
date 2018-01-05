@@ -25,7 +25,7 @@ class HomePageView(ListView):
         context['people'] = Person.objects.all()
         context['bills'] = Bill.objects.all()
         context['personvotes'] = PersonVote.objects.all()
-        context['finance_transactions'] = FinanceTransaction.objects.all()
+        context['finance_transactions'] = FinanceTransaction.objects.filter(amount__gte=500)[:5]
         return context
 
 class PersonDetailView(DetailView):

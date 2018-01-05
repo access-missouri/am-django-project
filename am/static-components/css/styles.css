@@ -859,4 +859,5 @@ ul.recents-list li h3 {
 ul.recents-list li p {
   padding-left: 5px;
   padding-right: 5px;
+  line-height: 1.4rem;
 }
