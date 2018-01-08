@@ -1,1 +1,1 @@
-import base
+from .base import BaseScraper
