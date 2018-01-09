@@ -10,7 +10,26 @@
     <h1>{{session.name}}</h1>
     <p class="bill-title">Session Details</p>
 
-    
+    {% if session.bills.all %}
+    <div class="session-bills full-cluster">
+        <h2>Bills from this Session</h2>
+        <table class="table listing">
+            <!--<thead class="">-->
+            <!--<tr>-->
+                <!--<td>Name</td>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <tbody>
+            {% for bill in session.bills.all|dictsortreversed:"updated_at" %}
+            <tr>
+                <th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>
+                <p>{{bill.title}}</p></th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
 
 </div>
 {% endblock %}

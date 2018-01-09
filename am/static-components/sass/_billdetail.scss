@@ -31,6 +31,11 @@ div.bill-details{
         }
       }
     }
+    h3 {
+      font-size: 1.5rem;
+      line-height: 1em;
+      margin-bottom: 0.5em;
+    }
   }
 
   ul.bill-sponsor-list{
@@ -108,4 +113,8 @@ div.bill-text{
       margin-top: 1em;
     }
   }
+}
+
+table {
+
 }

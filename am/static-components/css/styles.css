@@ -375,6 +375,11 @@ div.bill-details table td a:hover {
   border-bottom: 1px dotted #eb1f48;
   transition: background-color ease-in 0.3s;
 }
+div.bill-details table h3 {
+  font-size: 1.5rem;
+  line-height: 1em;
+  margin-bottom: 0.5em;
+}
 div.bill-details ul.bill-sponsor-list {
   font-size: 1.2em;
 }
