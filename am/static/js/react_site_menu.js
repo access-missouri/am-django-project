@@ -49,7 +49,41 @@ var SiteMenu = function (_React$Component) {
                         "Close"
                     )
                 ),
-                this.state.menuIsOpen && React.createElement("div", { className: "nav-fs-menu" })
+                this.state.menuIsOpen && React.createElement(
+                    "div",
+                    { className: "nav-fs-menu" },
+                    React.createElement(
+                        "ul",
+                        { className: "nav-list mobile" },
+                        React.createElement(
+                            "li",
+                            { className: "nav-list-item nl-item-legislation" },
+                            React.createElement(
+                                "a",
+                                { href: "/bills/" },
+                                "Legislation"
+                            )
+                        ),
+                        React.createElement(
+                            "li",
+                            { className: "nav-list-item nl-item-people" },
+                            React.createElement(
+                                "a",
+                                { href: "/people/" },
+                                "People"
+                            )
+                        ),
+                        React.createElement(
+                            "li",
+                            { className: "nav-list-item nl-item-finance" },
+                            React.createElement(
+                                "a",
+                                { href: "/finance/" },
+                                "Finance"
+                            )
+                        )
+                    )
+                )
             );
         }
     }]);

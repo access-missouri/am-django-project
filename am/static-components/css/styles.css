@@ -303,6 +303,12 @@ div.nav-fs-menu {
   background-color: white;
 }
 
+ul.nav-list.mobile li {
+  display: block !important;
+  margin-bottom: 0.5em !important;
+  margin-top: 1.2em !important;
+}
+
 div.breadcrumb-holder {
   width: 100%;
   height: 3rem;

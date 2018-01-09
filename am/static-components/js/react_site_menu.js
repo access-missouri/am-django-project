@@ -4,8 +4,8 @@ class SiteMenu extends React.Component {
         super(props);
 
         this.state =  {
-                menuIsOpen: false
-            }
+            menuIsOpen: false
+        }
     }
 
     toggleMenu(){
@@ -21,9 +21,14 @@ class SiteMenu extends React.Component {
                 <a className="menu-link" onClick={this.toggleMenu.bind(this)}>{ !this.state.menuIsOpen && <span>Menu</span> }{ this.state.menuIsOpen && <span>Close</span>}</a>
                 {
                     this.state.menuIsOpen &&
-                        <div className={"nav-fs-menu"}>
+                    <div className={"nav-fs-menu"}>
+                        <ul className="nav-list mobile">
+                            <li className="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
+                            <li className="nav-list-item nl-item-people"><a href="/people/">People</a></li>
+                            <li className="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
+                        </ul>
 
-                        </div>
+                    </div>
                 }
             </span>
         )
