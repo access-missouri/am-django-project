@@ -10,9 +10,13 @@ from django.contrib import admin
 from general.views import HomePageView, PersonVotesListView, PersonDetailView
 from legislative.views import BillDetailView, VoteDetailView, BillVotesListView, BillTextDetailView
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
 from django.conf import settings
 
 from search.views import BillSearchListView, PersonSearchListView
+
+handler404 = 'general.views.handler404'
+handler500 = 'general.views.handler500'
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),

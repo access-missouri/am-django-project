@@ -1,0 +1,27 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% load humanize %}
+{% load static %}
+
+{% block body %}
+<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">Home</a></li></ul></div>
+<div class="container home-page">
+    <div class="float-top-home">
+        <div class="tease-image">
+            <img src="{% static 'am-logo-blue-1400.png' %}" alt="Access Missouri Logo">
+        </div>
+        <div class="teaser-block">
+            <!--<p class="pitch-phrase red">{{bills.count|intcomma}} bills.</p>-->
+            <!--<p class="pitch-phrase blue">{{personvotes.count|intcomma}} votes.</p>-->
+            <!--<p class="pitch-phrase green">{{finance_transactions.count|intcomma}} financial transactions.</p>-->
+            <h1>Oh Dear...</h1>
+            <p class="description">
+                It looks like we can't find that page. You'll have to try again later!
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Site Processing Error{% endblock %}
+
+{% load humanize %}
+{% load static %}
+
+{% block body %}
+<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">Home</a></li></ul></div>
+<div class="container home-page">
+    <div class="float-top-home">
+        <div class="tease-image">
+            <img src="{% static 'am-logo-blue-1400.png' %}" alt="Access Missouri Logo">
+        </div>
+        <div class="teaser-block">
+            <!--<p class="pitch-phrase red">{{bills.count|intcomma}} bills.</p>-->
+            <!--<p class="pitch-phrase blue">{{personvotes.count|intcomma}} votes.</p>-->
+            <!--<p class="pitch-phrase green">{{finance_transactions.count|intcomma}} financial transactions.</p>-->
+            <h1>Yikes!</h1>
+            <p class="description">
+                Something went wrong processing your request. Rest assured we're looking into it!
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
