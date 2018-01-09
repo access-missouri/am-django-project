@@ -46,7 +46,7 @@ class LegislativeSession(AMBaseModel):
     )
 
     def get_absolute_url(self):
-        return '/sessions/{}'.format(
+        return '/legislative/sessions/{}'.format(
             self.id
         )
 

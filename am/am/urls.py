@@ -26,5 +26,6 @@ urlpatterns = [
                   url(r'^search/bills/', BillSearchListView.as_view(), name='bill-search'),
                   url(r'^search/people/', PersonSearchListView.as_view(), name='person-search'),
                   url(r'^api/', include('api.urls', namespace='api')),
+                  url(r'^legislative/', include('legislative.urls', namespace='legislative')),
                   url(r'^finance/', include('finance.urls', namespace='finance')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
