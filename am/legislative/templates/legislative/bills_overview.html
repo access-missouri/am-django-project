@@ -29,7 +29,7 @@
                     {{action.date}}
                 </p>
                 <p class="bill">
-                    <a class="link-tl" href="{{bill.get_absolute_url}}">{{action.bill}}</a>
+                    <a class="link-tl" href="{{action.bill.get_absolute_url}}">{{action.bill}}</a>
                 </p>
             </div>
             {% endfor %}
