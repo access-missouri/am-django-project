@@ -70,7 +70,7 @@
         <ul class="bill-sponsor-list">
             {% for sponsorship in bill.sponsorships.all %}
             <li><a href="{{sponsorship.person.get_absolute_url}}"
-                   class="link-people">{{sponsorship.person.get_full_name}}{% if sponsorship.primary %} (Primary){% endif %}</a></li>
+                   class="link-people">{{sponsorship.person.get_full_name}}{% if sponsorship.primary == False %} (Cosponsor){% endif %}</a></li>
             {% endfor %}
         </ul>
     </div>
