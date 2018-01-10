@@ -1,0 +1,23 @@
+
+div.pitch {
+  background-color: $gray-lightest;
+  margin: 15px;
+
+  padding: 10px;
+
+  @include clearfix;
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+
+    a.link-button {
+      float:right;
+    }
+  }
+
+}
+
+a.link-button {
+  border: 1px dotted;
+}

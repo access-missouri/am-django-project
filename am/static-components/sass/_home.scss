@@ -14,7 +14,14 @@ div.home-page{
     img {
       max-width: 100%;
     }
+
+    @media screen and (max-width: $medium-screen-width){
+      display: none;
+    }
+
   }
+
+
 
   div.teaser-block{
 
@@ -49,6 +56,10 @@ div.home-page{
       text-align: right;
       color: darken($project-text-light, 20%);
       line-height: 1.2em;
+
+          @media screen and (max-width: $medium-screen-width){
+      font-size: 3.0rem;
+    }
     }
 
     p.description{

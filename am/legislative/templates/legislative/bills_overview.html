@@ -1,0 +1,57 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Legislation{% endblock %}
+
+{% load markdownify %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills">Bills</a></li></ul></div>
+<div class="bill-details container">
+    <h1>Legislation</h1>
+
+    <div class="pitch full-cluster">
+            <p>Every night, Access Missouri scans hundreds of pages of Missouri congressional data - then we put it up for you the next morning, ready to browse.</p>
+            <p><a class="link-legislative link-button" href="/search/bills">Search All Bills</a></p>
+    </div>
+
+    <div class="recent-bill-actions full-cluster">
+        <h2>Recent Bill Actions</h2>
+        <div class="timeline">
+            {% for action in actions %}
+            <div class="update">
+                <p class="action-content">
+                    {{action.description}}
+                </p>
+                <p class="date">
+                    {{action.date}}
+                </p>
+                <p class="bill">
+                    {{action.bill}}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="recent-updated-bills full-cluster">
+        <h2>Recently Updated Bills</h2>
+        <table class="table listing">
+            <!--<thead class="">-->
+            <!--<tr>-->
+                <!--<td>Name</td>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <tbody>
+            {% for bill in bills|dictsortreversed:"updated_at"|slice:"15" %}
+            <tr>
+                <th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill}}</a></h3>
+                <p>{{bill.title}}</p></th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

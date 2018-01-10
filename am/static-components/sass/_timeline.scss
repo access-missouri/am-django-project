@@ -1,0 +1,41 @@
+div.timeline{
+
+  $timeline-border-width: 2px;
+
+  border-left: $timeline-border-width solid;
+  //border-right: $timeline-border-width solid;
+
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 1.5rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  div.update {
+    margin-bottom: 1em;
+    background-color: $gray-lightest;
+    padding: 10px;
+
+    p.action-content {
+      font-size: 1.3rem;
+      margin-bottom: 1em;
+    }
+
+    p.date {
+
+    }
+
+    p.bill-label {
+
+    }
+  }
+
+}
+
+div.bill-details{
+  div.timeline {
+    border-color: $am-crimson;
+  }
+}
