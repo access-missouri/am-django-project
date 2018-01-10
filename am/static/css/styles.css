@@ -900,8 +900,74 @@ div.pitch p a.link-button {
   float: right;
 }
 
+@keyframes dash-to-fill {
+  25% {
+    stroke: black;
+    stroke-dasharray: 5;
+  }
+  50% {
+    stroke-dasharray: 1000;
+    stroke: black;
+    fill: transparent;
+  }
+  70% {
+    stroke-dasharray: 1000;
+    fill: black;
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke: transparent;
+    fill: black;
+  }
+}
+div.pitch-svg.dash-fill svg {
+  stroke-dasharray: 5;
+  stroke: transparent;
+  fill: transparent;
+  animation: dash-to-fill 5s linear forwards;
+}
+
+div.pitching-contain {
+  overflow: hidden;
+  *zoom: 1;
+}
+div.pitching-contain p {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+div.pitching-contain p:first-of-type {
+  margin-top: 1em;
+}
+
+div.pitch-svg {
+  display: none;
+  float: right;
+}
+@media screen and (min-width: 800px) {
+  div.pitch-svg {
+    display: block;
+    max-width: 50%;
+  }
+}
+div.pitch-svg svg {
+  width: 100%;
+}
+
 a.link-button {
   border: 1px dotted;
+  padding: 5px 10px;
+}
+
+a.link-button.link-legislative:hover {
+  border-color: #c51236;
+}
+
+ul.session-list li {
+  font-size: 1.4rem;
+  margin-bottom: 1em;
+}
+ul.session-list li:first-of-type {
+  margin-top: 1rem;
 }
 
 div.timeline {
@@ -922,6 +988,9 @@ div.timeline div.update {
 div.timeline div.update p.action-content {
   font-size: 1.3rem;
   margin-bottom: 1em;
+}
+div.timeline div.update a.link-tl {
+  color: #c51236;
 }
 
 div.bill-details div.timeline {

@@ -82,11 +82,11 @@ class Bill(AMBaseModel):
         # 0 - Unknown, 1 - Proposed, 2 -Revision, 3 - Agreed, 4 - Sent, 5 - Veto, 6 - Law
         actions = self.actions.all().order_by("date", "order")
         for act in actions:
-            if "PROPOSE" in act.description.upper():
+            if "PROPOSE" in act.description.upper() or "OFFER" in act.description.upper():
                 bill_status_int = 1
             elif "FILE" in act.description.upper():
                 bill_status_int = 1
-            elif "COMM" in act.description.upper():
+            elif "COMM" in act.description.upper() or "REFER" in act.description.upper():
                 bill_status_int = 2
             elif "AGREED" in act.description.upper():
                 bill_status_int = 3

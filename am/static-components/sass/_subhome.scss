@@ -18,6 +18,86 @@ div.pitch {
 
 }
 
+
+
+// SVG Animations
+$dash-fill-array-len: 5;
+@keyframes dash-to-fill{
+  25% {
+    stroke: rgba(#000, 1);
+    stroke-dasharray: $dash-fill-array-len;
+  }
+  50%{
+    stroke-dasharray: 1000;
+    stroke: rgba(#000, 1);
+    fill: rgba(#000, 0);
+  }
+  70% {
+    stroke-dasharray: 1000;
+    fill: rgba(#000, 1);
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke: rgba(#000, 0);
+    fill: rgba(#000, 1);
+  }
+}
+
+div.pitch-svg.dash-fill{
+  svg {
+    stroke-dasharray: $dash-fill-array-len;
+    stroke: rgba(#000, 0);
+    fill: rgba(#000, 0);
+    animation: dash-to-fill 5s linear forwards;
+  }
+}
+
+
+
+div.pitching-contain {
+  @include clearfix;
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+
+  p:first-of-type{
+    margin-top: 1em;
+  }
+}
+
+
+div.pitch-svg {
+  display: none;
+  float: right;
+
+  @media screen and (min-width: $medium-screen-width){
+    display: block;
+    max-width: 50%;
+  }
+
+  svg {
+    width: 100%;
+  }
+}
+
 a.link-button {
   border: 1px dotted;
+  padding: 5px 10px;
 }
+
+a.link-button.link-legislative:hover{
+  border-color: $am-crimson;
+}
+
+ul.session-list{
+  li {
+    font-size: 1.4rem;
+    margin-bottom: 1em;
+  }
+  li:first-of-type{
+    margin-top: 1rem;
+  }
+}
+

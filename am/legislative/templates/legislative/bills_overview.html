@@ -9,7 +9,10 @@
 <div class="bill-details container">
     <h1>Legislation</h1>
 
-    <div class="pitch full-cluster">
+    <div class="full-cluster pitching-contain">
+            <div class="pitch-svg">
+                {% include "graphics/papers_sections_icon.html" %}
+            </div>
             <p>Every night, Access Missouri scans hundreds of pages of Missouri congressional data - then we put it up for you the next morning, ready to browse.</p>
             <p><a class="link-legislative link-button" href="/search/bills">Search All Bills</a></p>
     </div>
@@ -26,7 +29,7 @@
                     {{action.date}}
                 </p>
                 <p class="bill">
-                    {{action.bill}}
+                    <a class="link-tl" href="{{bill.get_absolute_url}}">{{action.bill}}</a>
                 </p>
             </div>
             {% endfor %}
