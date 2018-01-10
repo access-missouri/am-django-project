@@ -996,3 +996,11 @@ div.timeline div.update a.link-tl {
 div.bill-details div.timeline {
   border-color: #c51236;
 }
+
+div.finance-details div.timeline {
+  border-color: #48661f;
+}
+
+div.person-details div.timeline {
+  border-color: #2b4162;
+}

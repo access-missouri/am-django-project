@@ -41,6 +41,17 @@ class HomePageView(ListView):
         context['finance_transactions'] = FinanceTransaction.objects.filter(amount__gte=500)[:5]
         return context
 
+class PeopleHomeView(ListView):
+    queryset = Person.objects.all()[:25]
+    context_object_name = "people"
+    model = Person
+    template_name = "people/people_overview.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PeopleHomeView, self).get_context_data(**kwargs)
+        return context
+
+
 class PersonDetailView(DetailView):
     """
     Individual person profile view.

@@ -1,0 +1,39 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Finance{% endblock %}
+
+{% load markdownify %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance">Finance</a></li></ul></div>
+<div class="finance-details container">
+    <h1>Finance</h1>
+
+    <div class="full-cluster pitching-contain">
+            <div class="pitch-svg">
+                {% include "graphics/money_capitol_svg.html" %}
+            </div>
+            <p>Access Missouri groups individuals, political organizations and companies together with their political spending habits to help you see how they influence state politics.</p>
+            <!--<p><a class="link-legislative link-button" href="/search/bills">Search All Bills</a></p>-->
+    </div>
+
+    <div class="recent-transactions full-cluster">
+        <h2>Recent Transactions</h2>
+        <div class="timeline">
+            {% for transaction in transactions %}
+            <div class="update">
+                <p class="action-content">
+                    <a href="{{transaction.get_absolute_url}}" class="link-finance">${{transaction.amount|floatformat:2}} Transaction</a>
+                </p>
+                <p class="date">
+                    {{transaction.date}}
+                </p>
+                <p class="transaction-parties">
+                From <a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a> to <a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a>                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -7,7 +7,7 @@ am URL Configuration.
 
 from django.conf.urls import url, include
 from django.contrib import admin
-from general.views import HomePageView, PersonVotesListView, PersonDetailView
+from general.views import HomePageView, PersonVotesListView, PersonDetailView, PeopleHomeView
 from legislative.views import BillDetailView, VoteDetailView, BillVotesListView, BillTextDetailView, BillsHomeView
 from django.conf.urls.static import static
 from django.conf.urls import handler404, handler500
@@ -19,6 +19,7 @@ urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^$', HomePageView.as_view()),
                   url(r'^bills/$', BillsHomeView.as_view()),
+                  url(r'^people/$', PeopleHomeView.as_view()),
                   url(r'^bills/(?P<id>[\w-]+)/$', BillDetailView.as_view(), name='bill'),
                   url(r'^bills/(?P<id>[\w-]+)/votes/$', BillVotesListView.as_view(), name='billvotes'),
                   url(r'^bills/(?P<bill_id>[\w-]+)/votes/(?P<id>[\w-]+)/$', VoteDetailView.as_view(), name='vote'),

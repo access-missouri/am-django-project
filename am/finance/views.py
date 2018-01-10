@@ -1,9 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.views.generic import DetailView
-from .models import FinanceEntity
+from django.views.generic import DetailView, ListView
+from .models import FinanceEntity, FinanceTransaction
 
 # Create your views here.
+
+class FinanceHomeView(ListView):
+    queryset = FinanceTransaction.objects.all()[:25]
+    context_object_name = "transactions"
+    model = FinanceTransaction
+    template_name = "finance/finance_overview.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(FinanceHomeView, self).get_context_data(**kwargs)
+        return context
+
 class EntityDetailView(DetailView):
     """
     View showing detail information about an individual finance entity.

@@ -36,6 +36,9 @@ class FinanceTransaction(AMBaseModel):
     def __str__(self):
         return "From {} to {} - {}".format(self.mec_id, self.name, self.name_last)
 
+    def get_absolute_url(self):
+        return "/finance/transactions/{}".format(self.id)
+
     class Meta:
         """
         Model options.
