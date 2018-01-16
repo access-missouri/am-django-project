@@ -1,0 +1,49 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{object.name}}{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% if object.type == "comm" %} <li><a href="/finance/committees">Committees</a></li>{% endif %}{% if object.type == "corp" %} <li><a href="/finance/companies">Companies</a></li>{% endif %}{% if object.type == "person" %} <li><a href="/finance/people">People</a></li>{% endif %}</ul></div>
+<div class="finance-details container">
+    <h1>{{object.name}}</h1>
+    {% if object.type == "comm" %}
+    <p class="finance-sub">Political Committee</p>
+    {% endif %}
+    {% if object.type == "person" %}
+    <p class="finance-sub">Individual Contributor</p>
+    {% endif %}
+    {% if object.type == "corp" %}
+    <p class="finance-sub">Company or Corporate Contributor</p>
+    {% endif %}
+
+    <div class="explainer full-cluster">
+        <h2>How we get this information</h2>
+        <p>State laws require that political organizations report their donations and spending to the Missouri Ethics Commission anywhere between one and five times each year, depending on the kind of organization and how much money they raise. We compile these reports and other public records to create profiles for each donor and political organization.</p>
+    </div>
+{% if object.income.all %}
+    <div class="recent-income full-cluster">
+        <h2>All Income</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Source</td>
+                <td>Amount</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in object.income.all %}
+            <tr>
+                <th scope="row">{{transaction.date}}</th>
+                <td><a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a></td>
+                <td>${{transaction.amount|floatformat:2}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock %}
