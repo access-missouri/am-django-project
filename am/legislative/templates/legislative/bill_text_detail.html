@@ -10,6 +10,11 @@
     <h1>{{text.bill.identifier}}</h1>
     <p class="bill-title">{{text.bill.title}}</p>
 
+    <div class="explainer full-cluster">
+        <h2>How we find this</h2>
+        <p>Bill text is published alongside proposed bills on the Missouri House and Senate web sites in PDF form. We scrape these PDFs and republish that information in plain text.</p>
+    </div>
+
     {% if text.text %}
     <div class="bill-text full-cluster">
         <h2>Bill Text from {{text.date}} - {{text.text_state_kw}}</h2>
