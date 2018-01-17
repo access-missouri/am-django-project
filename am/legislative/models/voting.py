@@ -108,3 +108,10 @@ class PersonVote(AMBaseModel):
             self.bill_vote,
             self.opinion
         )
+
+    class Meta:
+        """
+        Model options.
+        """
+
+        ordering = ['-bill_vote__date', ]
