@@ -34,7 +34,7 @@ class FinanceTransaction(AMBaseModel):
     amount = models.FloatField()
 
     def __str__(self):
-        return "From {} to {} - {}".format(self.mec_id, self.name, self.name_last)
+        return "From {} to {} - {}".format(self.t_from.name, self.t_to.name, self.amount)
 
     def get_absolute_url(self):
         return "/finance/transactions/{}".format(self.id)

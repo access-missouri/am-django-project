@@ -1,0 +1,36 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{object}}{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li></ul></div>
+<div class="finance-details container">
+    <h1>Finance Transaction Details</h1>
+
+    <div class="transaction-banner">
+        <div class="trans-block trans-from">
+            <p><a href="{{object.t_from.get_absolute_url}}" class="link-finance">{{object.t_from}}</a></p>
+
+        </div>
+        <div class="trans-block trans-arr">
+            <div class="arrow-svg svg">
+                {% include "graphics/dot_arrow_r_svg.html" %}
+            </div>
+            <p class="trans-amount">
+                ${{object.amount|floatformat:2}}
+            </p>
+        </div>
+        <div class="trans-block trans-to">
+            <p><a href="{{object.t_to.get_absolute_url}}" class="link-finance">{{object.t_to}}</a></p>
+        </div>
+    </div>
+
+    <div class="explainer full-cluster">
+        <h2>How we get this information</h2>
+        <p>State laws require that political organizations report their donations and spending to the Missouri Ethics Commission anywhere between one and five times each year, depending on the kind of organization and how much money they raise. We compile these reports and other public records to create profiles for each donor and political organization.</p>
+    </div>
+
+
+
+</div>
+{% endblock %}

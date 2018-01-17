@@ -1,0 +1,28 @@
+div.transaction-banner{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  div.trans-block{
+
+
+  }
+
+  @media screen and (min-width: $medium-screen-width){
+    div.trans-block {
+      width: 33%;
+      float: left;
+
+      p {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+
+      div.arrow-svg{
+        max-width: 100px;
+        margin:auto;
+      }
+    }
+    @include clearfix;
+  }
+}
