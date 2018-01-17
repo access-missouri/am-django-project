@@ -56,7 +56,7 @@ class EntityDetailIncomeListView(DetailView):
 
     model = FinanceEntity
     context_object_name = "object"
-    template_name = 'finance/entity_detail_spend_list.html'
+    template_name = 'finance/entity_detail_income_list.html'
 
     def get_object(self):
         """
