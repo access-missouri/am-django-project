@@ -9,34 +9,21 @@ from bs4 import BeautifulSoup
 from time import sleep
 
 
-def parse_query_str(url):
-    """
-    Parse the query string part out of a url into key/value pairs.
-
-    Return a dict.
-    """
-    query_str = urlparse(url).query
-    return {i.split('=')[0]: i.split('=')[1] for i in query_str.split('&')}
-
-
 class BaseScraper(object):
     """
     Base class with properties and classes common to all Scraper subclasses.
     """
 
-    def __init__(self, url_path=None, params=None, sleep_count=1):
+    def __init__(self, url=None, sleep_count=1):
         """
         Initializes an object for scraping a page.
         """
         self.sleep_count = sleep_count
-        self.url_base = "http://senate.mo.gov/17info/BTS_Web/"
-        self.url_path = url_path
-        self.params = params
-        self._response = None
+        self.url = url
         self._soup = None
 
     def _request(self):
-        full_url = urljoin(self.url_base, self.url_path)
+        full_url = self.url
         self._response = requests.get(full_url, params=self.params)
         sleep(self.sleep_count)
         return self._response
