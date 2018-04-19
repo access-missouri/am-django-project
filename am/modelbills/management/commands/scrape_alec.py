@@ -5,7 +5,12 @@ Scrape data from the ALEC site and load into model policy models.
 """
 from django.core.management.base import BaseCommand
 
+from tqdm import tqdm
+
 from modelbills.scrapers.interpreters.alec_list import AlecListScraper
+from modelbills.scrapers.interpreters.alec_bill import AlecBillScraper
+from general.models import Organization
+from modelbills.models import  ModelBill
 
 class Command(BaseCommand):
     """
@@ -19,6 +24,8 @@ class Command(BaseCommand):
         Make it happen.
         """
 
+        org, org_created = Organization.objects.get_or_create(name="American Legislative Exchange Council")
+
         # Loop through all the ALEC model bills index pages, scraping down the urls to further bills.
         alec_page_first = AlecListScraper(url="https://www.alec.org/model-policy/")
         model_bill_urls = alec_page_first.bill_urls
@@ -31,4 +38,13 @@ class Command(BaseCommand):
                 model_bill_urls.append(url)
             print("Finished index page {}.".format(list_page))
             list_page += 1
-        print(model_bill_urls)
+        print("Finished pulling bill URLS. {} total.".format(len(model_bill_urls)))
+        for url in tqdm(model_bill_urls):
+            bill_page = AlecBillScraper(url)
+            bill, bill_created = ModelBill.objects.get_or_create(
+                source_url=url,
+                origin=org,
+                name=bill_page.name,
+                summary=bill_page.summary,
+                text=bill_page.text
+            )

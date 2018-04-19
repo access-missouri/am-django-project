@@ -14,7 +14,7 @@ class BaseScraper(object):
     Base class with properties and classes common to all Scraper subclasses.
     """
 
-    def __init__(self, url=None, sleep_count=10):
+    def __init__(self, url=None, sleep_count=1):
         """
         Initializes an object for scraping a page.
         """

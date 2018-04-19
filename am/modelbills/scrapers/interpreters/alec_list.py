@@ -15,6 +15,7 @@ class AlecListScraper(BaseScraper):
         """
         super(AlecListScraper, self).__init__(
             url=url,
+            sleep_count=1,
             **kwargs
         )
 

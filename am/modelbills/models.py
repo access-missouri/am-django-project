@@ -11,6 +11,8 @@ class ModelBill(AMBaseModel):
                             null=False)
     origin = models.ForeignKey(Organization,
                                related_name="model_bills")
+    summary = models.TextField(blank=True,
+                               null=True)
     text = models.TextField()
     source_url = models.URLField(max_length=512,
                                  blank=True,
