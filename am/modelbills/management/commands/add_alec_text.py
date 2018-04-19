@@ -31,6 +31,5 @@ class Command(BaseCommand):
         for bill in tqdm(iterable=query,
                         total=query.count()):
             bill_page = AlecBillScraper(bill.source_url)
-            bill.update(
-                text=bill_page.text
-            )
+            bill.text = bill_page.text
+            bill.save()

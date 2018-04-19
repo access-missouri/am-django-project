@@ -32,24 +32,22 @@ class AlecBillScraper(BaseScraper):
         try:
             element = self.soup.find_all('h2',
                                      string=re.compile("Summary"))[0].find_next_siblings("p")[0]
-            return element.string
+            return element.get_text()
         except:
             return None
 
     @property
     def text(self):
-        try:
-            elements = self.soup.find_all('p',
-                                          string=re.compile("Model Legislation"))[0].find_next_siblings("p")
+        split_text = re.split("Model\s[\s]+\n", self.full_page_text)
+        if len(split_text) <= 2:
+            return split_text[-1]
+        else:
+            return "\n".join(split_text[1:])
 
-            return "\n".join([el.string for el in elements])
-        except:
-            try:
-                element_first = self.soup.find_all('p',
-                                              string=re.compile("WHEREAS\b|Section\b|Amend\b"))[0]
-                elements = element_first.find_next_siblings("p")
-                elements[0:0] = element_first
-
-                return "\n".join([el.string for el in elements])
-            except:
-                return ""
+    @property
+    def full_page_text(self):
+        elements = []
+        content_elements = self.soup.find_all('div',class_="the-content")
+        for ce in content_elements:
+            elements = elements + ce.find_all(['p', 'li'])
+        return "\n".join([el.get_text() for el in elements])
