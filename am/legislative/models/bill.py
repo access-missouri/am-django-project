@@ -40,6 +40,7 @@ class Bill(AMBaseModel):
         help_text='Reference to the Organization (typically a legislative '
                   'chamber) wherein the bill originated.',
         null=True,
+        blank=True,
     )
     title = models.TextField(
         help_text='The current title of the bill.',
