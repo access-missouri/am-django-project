@@ -57,6 +57,17 @@
     <div class="container">
             <img alt="Access Missouri Logo" class="img-foot"  src="{% static 'am-logo-white-1400.png' %}">
             <p class="am-t">Access Missouri</p>
+            <div class="footer-links">
+                <ul class="foot-link-left-col">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/search/people/">Search People</a></li>
+                </ul>
+                <ul class="foot-link-right-col">
+                    <li><a href="/search/bills/">Search Bills</a></li>
+                    {% block adminlink %}
+                    {% endblock %}
+                </ul>
+            </div>
     </div>
 </footer>
 {% react_print %}

@@ -29,4 +29,26 @@ footer {
     }
   }
 
+  div.footer-links{
+    @include contained(500px);
+    margin-top: 24px;
+    ul {
+      font-family: $concourse-reg;
+      li {
+        margin-bottom: 0.5em;
+        text-align: center;
+        a {
+          color: darken($project-text-dark, 20%);
+        }
+      }
+    }
+
+    @media screen and (min-width: $medium-screen-width){
+      ul {
+        width: 50%;
+        float: left;
+      }
+    }
+  }
+
 }

@@ -45,6 +45,7 @@ class Bill(AMBaseModel):
         help_text='The current title of the bill.',
     )
     lr_number = models.CharField(
+        "LR Number",
         max_length=6,
         null=True,
         blank=True,
@@ -70,6 +71,7 @@ class Bill(AMBaseModel):
     calendar_position = models.CharField(
         max_length=300,
         null=True,
+        blank=True,
         help_text='Current position of the bill on the legislative calendar.',
     )
     description = models.TextField(
@@ -120,6 +122,11 @@ class Bill(AMBaseModel):
 
     def get_absolute_url(self):
         return '/bills/{}'.format(
+            self.id,
+        )
+
+    def get_admin_url(self):
+        return '/admin/legislative/bill/{}/change/'.format(
             self.id,
         )
 

@@ -536,6 +536,28 @@ footer div.container a:hover {
   border-bottom: 1px solid #f7f7f9;
   transition: border-bottom-color ease-in 0.3s;
 }
+footer div.footer-links {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 24px;
+}
+footer div.footer-links ul {
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+}
+footer div.footer-links ul li {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+footer div.footer-links ul li a {
+  color: #bdbdcd;
+}
+@media screen and (min-width: 800px) {
+  footer div.footer-links ul {
+    width: 50%;
+    float: left;
+  }
+}
 
 div.bill-search div.search-fields {
   margin-top: 2rem;
