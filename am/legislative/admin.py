@@ -39,6 +39,7 @@ class BillAdmin(admin.ModelAdmin):
     list_display = ['identifier','title','legislative_session','last_action_date']
     search_fields = ['identifier','title','description','legislative_session__name']
     list_filter = ['last_action_date','legislative_session','from_organization']
+    filter_horizontal = ['tags',]
     fieldsets = (
         (None, {
             'fields': (
@@ -46,6 +47,7 @@ class BillAdmin(admin.ModelAdmin):
                 'from_organization',
                 'title',
                 'description',
+                'tags',
                 ('last_action_date','last_action_description'),
             )
         }),

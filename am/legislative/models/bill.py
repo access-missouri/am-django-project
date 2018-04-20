@@ -8,6 +8,7 @@ from django.db import models
 from general.models import (
     AMBaseModel,
     Organization,
+    Tag,
 )
 from .legislativesession import LegislativeSession
 from django.utils.encoding import python_2_unicode_compatible
@@ -77,6 +78,10 @@ class Bill(AMBaseModel):
     )
     description = models.TextField(
         help_text="Description of the purpose of the bill.",
+        blank=True,
+    )
+    tags = models.ManyToManyField(
+        Tag,
         blank=True,
     )
 

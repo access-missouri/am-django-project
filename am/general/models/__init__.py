@@ -6,6 +6,7 @@ General am models.
 from .base import AMBaseModel
 from .person import Person
 from .organization import Organization, Post, Membership
+from .tag import Tag
 
 __all__ = (
     'AMBaseModel',
@@ -13,4 +14,5 @@ __all__ = (
     'Organization',
     'Post',
     'Membership',
+    'Tag',
 )
