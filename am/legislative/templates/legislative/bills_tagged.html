@@ -1,0 +1,32 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}Bills Tagged {{tag.name}}{% endblock %}
+
+{% load markdownify %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills">Bills</a></li><li><a href="#">Tag '{{tag.name}}'</a></li></ul></div>
+<div class="bill-details container">
+    <h1>Bills Tagged with '{{tag.name}}'</h1>
+
+    <div class="recent-updated-bills full-cluster">
+        <h2>Recently Updated</h2>
+        <table class="table listing">
+            <!--<thead class="">-->
+            <!--<tr>-->
+                <!--<td>Name</td>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <tbody>
+            {% for bill in bills|dictsortreversed:"updated_at"|slice:"15" %}
+            <tr>
+                <th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill}}</a></h3>
+                <p>{{bill.title}}</p></th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

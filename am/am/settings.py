@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'api',
     'scraper',
     'modelbills',
+    'tags',
 ]
 
 MIDDLEWARE = [
