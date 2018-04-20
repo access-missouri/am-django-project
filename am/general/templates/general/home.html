@@ -35,6 +35,15 @@
         </ul>
     </div>
 
+    <div class="snippet-block snippet-block-personal">
+        <h2>Explore by Subject</h2>
+        <ul class="tag-cloud">
+            {% for tag in tags %}
+            <li><a href="{{tag.get_absolute_url}}">{{tag.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
     <div class="snippet-block snippet-block-financial">
         <h2>Recent Political Spending</h2>
         <ul class="recents-list">

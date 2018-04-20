@@ -905,6 +905,10 @@ div.snippet-block-financial h2 {
   border-top-color: #48661f;
 }
 
+div.snippet-block-personal h2 {
+  border-top-color: #2b4162;
+}
+
 @media screen and (min-width: 800px) {
   div.snippet-block {
     float: left;
@@ -928,6 +932,30 @@ ul.recents-list li p {
   padding-left: 5px;
   padding-right: 5px;
   line-height: 1.4rem;
+}
+
+ul.tag-cloud {
+  list-style: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+ul.tag-cloud li {
+  display: inline;
+  float: left;
+  padding: 1em 5px;
+}
+ul.tag-cloud li a {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background-color: #d3d6d9;
+  color: #6b7174;
+}
+ul.tag-cloud li a:hover {
+  background-color: #b7bdc1;
 }
 
 div.pitch {

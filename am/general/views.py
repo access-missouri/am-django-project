@@ -5,7 +5,7 @@ Views and rendering systems from AM general.
 from __future__ import unicode_literals
 from braces.views import SelectRelatedMixin
 from django.views.generic import DetailView, ListView
-from .models import Person
+from .models import Person, Tag
 from legislative.models import Bill, PersonVote
 from finance.models import FinanceTransaction
 from django.shortcuts import render_to_response, render
@@ -38,6 +38,7 @@ class HomePageView(ListView):
         context['people'] = Person.objects.all()
         context['bills'] = Bill.objects.all()
         context['personvotes'] = PersonVote.objects.all()
+        context['tags'] = Tag.objects.all()
         context['finance_transactions'] = FinanceTransaction.objects.filter(amount__gte=500)[:5]
         return context
 
