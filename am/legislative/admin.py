@@ -4,18 +4,11 @@
 Legislative models app admins.
 """
 from django.contrib import admin # NOQA
-from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillAmendment, BillSponsorship, BillTitle, BillVersion   # NOQA
+from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillSponsorship, BillVersion   # NOQA
 
 
 # Register your models here.
 
-admin.site.register(LegislativeSession)
-admin.site.register(BillAbstract)
-admin.site.register(BillAction)
-admin.site.register(BillAmendment)
-admin.site.register(BillSponsorship)
-admin.site.register(BillTitle)
-admin.site.register(BillVersion)
 
 class BillActionInline(admin.TabularInline):
     model = BillAction
@@ -67,3 +60,9 @@ class BillAdmin(admin.ModelAdmin):
         form.base_fields['title'].widget.attrs['style'] = 'height: 3em;'
         return form
 
+
+admin.site.register(LegislativeSession)
+admin.site.register(BillAbstract)
+admin.site.register(BillAction)
+admin.site.register(BillSponsorship)
+admin.site.register(BillVersion)
