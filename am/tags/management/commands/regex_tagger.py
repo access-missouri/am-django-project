@@ -1,24 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Tags untagged bills according to regex pairings.
+Manual tagging utility to pair regexes with tags on a one-off run.
 """
 from django.core.management.base import BaseCommand
 from legislative.models import Bill
 from general.models import Tag
 import re
 from tqdm import tqdm
-import requests
-from bs4 import BeautifulSoup
-from time import sleep
-from django.db.models import Count
 
 class Command(BaseCommand):
     """
-    Tags untagged bills according to regex pairings.
+    Manual tagging utility to pair regexes with tags on a one-off run.
     """
 
-    help = 'Tags untagged bills according to regex pairings.'
+    help = 'Manual tagging utility to pair regexes with tags on a one-off run.'
 
     def handle(self, *args, **options):
         """
