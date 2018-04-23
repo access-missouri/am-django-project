@@ -23,29 +23,38 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.1/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.1/umd/react-dom.production.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85627450-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-85627450-1');
+    </script>
 
     <title>{% block title %}{% endblock %} - Access Missouri</title>
 </head>
 <body>
 <nav class="am-navbar">
-<div class="nav-container">
-    <div class="nav-left">
-        <a href="/">        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
-</a>
-    </div>
-
-    <div class="nav-right">
-        <ul class="nav-list desktop">
-            <li class="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
-            <li class="nav-list-item nl-item-people"><a href="/people/">People</a></li>
-            <li class="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
-        </ul>
-        <div class="reactive-region mobile">
-            {% react_render component="SiteMenu" %}
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="/">        <img alt="Access Missouri Logo" class="img-navbar"  src="{% static 'am-logo-nearblack-1400.png' %}">
+            </a>
         </div>
-    </div>
 
-</div>
+        <div class="nav-right">
+            <ul class="nav-list desktop">
+                <li class="nav-list-item nl-item-legislation"><a href="/bills/">Legislation</a></li>
+                <li class="nav-list-item nl-item-people"><a href="/people/">People</a></li>
+                <li class="nav-list-item nl-item-finance"><a href="/finance/">Finance</a></li>
+            </ul>
+            <div class="reactive-region mobile">
+                {% react_render component="SiteMenu" %}
+            </div>
+        </div>
+
+    </div>
 </nav>
 {% block body %}
 {% endblock %}
@@ -55,19 +64,19 @@
 {% endblock %}
 <footer>
     <div class="container">
-            <img alt="Access Missouri Logo" class="img-foot"  src="{% static 'am-logo-white-1400.png' %}">
-            <p class="am-t">Access Missouri</p>
-            <div class="footer-links">
-                <ul class="foot-link-left-col">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/search/people/">Search People</a></li>
-                </ul>
-                <ul class="foot-link-right-col">
-                    <li><a href="/search/bills/">Search Bills</a></li>
-                    {% block adminlink %}
-                    {% endblock %}
-                </ul>
-            </div>
+        <img alt="Access Missouri Logo" class="img-foot"  src="{% static 'am-logo-white-1400.png' %}">
+        <p class="am-t">Access Missouri</p>
+        <div class="footer-links">
+            <ul class="foot-link-left-col">
+                <li><a href="/">Home</a></li>
+                <li><a href="/search/people/">Search People</a></li>
+            </ul>
+            <ul class="foot-link-right-col">
+                <li><a href="/search/bills/">Search Bills</a></li>
+                {% block adminlink %}
+                {% endblock %}
+            </ul>
+        </div>
     </div>
 </footer>
 {% react_print %}
