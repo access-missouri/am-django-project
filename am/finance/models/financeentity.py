@@ -21,6 +21,7 @@ class FinanceEntity(AMBaseModel):
     mec_id = models.CharField(
         max_length=128,
         help_text='Missouri Ethics Commission ID number.',
+        blank=True,
     )
     name = models.CharField(
         max_length=300,
@@ -94,6 +95,9 @@ class FinanceEntity(AMBaseModel):
 
     def __str__(self):
         return "{}".format(self.name)
+
+    def get_admin_url(self):
+        return "/admin/finance/financeentity/{}/".format(self.id)
 
     def get_absolute_url(self):
         pl_type = "committees"
