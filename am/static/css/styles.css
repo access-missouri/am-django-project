@@ -938,6 +938,8 @@ ul.tag-cloud {
   list-style: none;
   margin-top: 1em;
   margin-bottom: 1em;
+  overflow: hidden;
+  *zoom: 1;
 }
 ul.tag-cloud li {
   display: inline;

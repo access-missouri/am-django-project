@@ -64,6 +64,13 @@
     </div>
     {% endif %}
 
+    {% if bill.tags.all %}
+    <div class="tagged full-cluster">
+        <h2>Bill Tags</h2>
+        {% include "tags/components/tag_cloud.html" with tags=bill.tags.all %}
+    </div>
+    {% endif %}
+
     {% if bill.sponsorships.all %}
     <div class="sponsors full-cluster">
         <h2>Bill Sponsors</h2>
