@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for action in bill.actions.all|slice:"5" %}
+            {% for action in bill.actions.all %}
             <tr>
                 <th scope="row">{{action.date}}</th>
                 <td>{{action.description}}</td>
@@ -51,7 +51,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for vote in bill.votes.all|slice:"5" %}
+            {% for vote in bill.votes.all %}
             <tr>
                 <th scope="row">{{vote.date}}</th>
                 <td><a href="{{vote.get_absolute_url}}">{{vote.issue}}</a></td>

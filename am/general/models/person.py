@@ -80,6 +80,9 @@ class Person(AMBaseModel):
     def get_absolute_url(self):
         return '/people/%i' % self.id
 
+    def get_admin_url(self):
+        return '/admin/general/person/%i/' % self.id
+
     def __str__(self):
         template = '{0.last_name}, {0.suffix}, {0.first_name} "{0.nickname}" {0.middle_name}' # noqa
         return (

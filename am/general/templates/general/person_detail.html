@@ -70,3 +70,8 @@
     {% endif %}
 </div>
 {% endblock %}
+
+
+{% block adminlink %}
+<li><a href="{{person.get_admin_url}}" rel="nofollow">Edit This Page</a></li>
+{% endblock %}
