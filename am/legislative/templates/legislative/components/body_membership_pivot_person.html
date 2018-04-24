@@ -1,9 +1,13 @@
 <div class="body-membership">
-    <h3>Representing {{membership.district}} in {{membership.session}}</h3>
-<table class="table listing">
-    <tr>
-        <th scope="row">Bills Sponsored</th>
-        <td>{{membership.get_num_bills_sponsored}}</td>
-    </tr>
-</table>
+    <h3>{% if membership.district %}Representing {{membership.district}}{% else %}Congressperson{% endif %} in {{membership.session}}</h3>
+    <table class="table listing">
+        <tr>
+            <th scope="row">Bills Sponsored</th>
+            <td>{{membership.get_num_bills_sponsored}}</td>
+        </tr>
+        <tr>
+            <td>Primary Sponsorships</td>
+            <td>{{membership.get_num_bills_primary_sponsored}}</td>
+        </tr>
+    </table>
 </div>

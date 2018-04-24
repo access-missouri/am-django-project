@@ -59,13 +59,9 @@
     {% if person.body_memberships.all %}
     <div class="body-memberships full-cluster">
         <h2>Legislative Body Memberships</h2>
-        <ul>
             {% for membership in person.body_memberships.all %}
-            <li>
-                {{membership}}
-            </li>
+                {% include "legislative/components/body_membership_pivot_person.html" with membership=membership %}
             {% endfor %}
-        </ul>
     </div>
     {% endif %}
 </div>

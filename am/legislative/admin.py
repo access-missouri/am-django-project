@@ -4,7 +4,7 @@
 Legislative models app admins.
 """
 from django.contrib import admin # NOQA
-from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillSponsorship, BillVersion   # NOQA
+from .models import Bill, LegislativeSession, BillAbstract, BillAction, BillSponsorship, BillVersion, BodyMembership   # NOQA
 
 
 # Register your models here.
@@ -59,6 +59,11 @@ class BillAdmin(admin.ModelAdmin):
         form = super(BillAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['title'].widget.attrs['style'] = 'height: 3em;'
         return form
+
+@admin.register(BodyMembership)
+class BodyMembershipAdmin(admin.ModelAdmin):
+    fields = ('person','body','session','district')
+    list_filter = ['session','body']
 
 
 admin.site.register(LegislativeSession)

@@ -466,6 +466,16 @@ div.person-details ul.bill-sponsored-list li {
   margin-top: 0.8em;
 }
 
+div.body-membership {
+  overflow: hidden;
+  *zoom: 1;
+  margin-top: 1.5em;
+}
+div.body-membership h3 {
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+  font-size: 1.2em;
+}
+
 nav.am-navbar div.nav-container div.nav-right ul.nav-list li.nl-item-finance a {
   border-bottom-color: #48661f;
 }

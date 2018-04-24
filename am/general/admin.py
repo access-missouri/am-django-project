@@ -5,11 +5,16 @@ General models app admins.
 """
 from django.contrib import admin # NOQA
 
-from .models import Organization, Post, Membership, Person, Tag
+from .models import Organization, Post, Person, Tag
+
+from legislative.models import BodyMembership
 
 admin.site.register(Organization)
 admin.site.register(Post)
-admin.site.register(Membership)
+
+class BodyMembershipInline(admin.TabularInline):
+    model = BodyMembership
+    fields = ('body','session','district')
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -29,6 +34,8 @@ class PersonAdmin(admin.ModelAdmin):
                      'classes': ('collapse',)
                  }),
                  )
+    inlines = [BodyMembershipInline]
+    search_fields = ['index_name']
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
