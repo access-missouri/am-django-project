@@ -8,10 +8,10 @@ from django.db import models
 from general.models import (
     AMBaseModel,
     Organization,
-    Membership,
     Person,
 )
 from .bill import Bill
+from legislative.models import BodyMembership
 from django.utils.encoding import python_2_unicode_compatible
 
 
@@ -145,7 +145,7 @@ class BillAmendment(AMBaseModel):
         help_text='Reference to the Bill to which the amendment was proposed.',
     )
     member = models.ForeignKey(
-        Membership,
+        BodyMembership,
         related_name='amendments',
         help_text='Reference to the member who proposed the bill amendment.',
     )
@@ -175,7 +175,7 @@ class BillSponsorship(AMBaseModel):
         help_text='Reference to the sponsored Bill.',
     )
     member = models.ForeignKey(
-        Membership,
+        BodyMembership,
         related_name='bill_sponsorships',
         help_text='Reference to the membership record for who sponsored the Bill.',
         null=True,
