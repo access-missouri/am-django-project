@@ -6,6 +6,11 @@ am-django-project
 
 Integration hub for all Access Missouri data sets (built in Django).
 
+## Usage and Full Documentation
+This is a pretty big project with tens of thousands of lines of code and tons of different data sources. To keep things organized and simplify the process of learning what you need to know, most major documentation now happens in [the project wiki](https://github.com/access-missouri/am-django-project/wiki).
+
+## In Brief
+
 Requires:
 
 * Python 2.7 (currently testing 3.5 also)
@@ -20,3 +25,4 @@ To run tests locally:
 ```bash
 make test
 ```
+
