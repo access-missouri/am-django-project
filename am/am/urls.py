@@ -32,6 +32,7 @@ urlpatterns = [
                   url(r'^api/', include('api.urls', namespace='api')),
                   url(r'^legislative/', include('legislative.urls', namespace='legislative')),
                   url(r'^finance/', include('finance.urls', namespace='finance')),
+                  url(r'^geo/', include('geo.urls', namespace='geo')),
                   url(r'^tags/', include('tags.urls', namespace='tags')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -1,0 +1,44 @@
+{% extends 'sitewide/base.html' %}
+
+{% load react %}
+{% load static %}
+
+{% block title %}{{district.name}}{% endblock %}
+
+{% block headscript %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/react-leaflet/dist/react-leaflet.min.js"></script>
+    <style>
+        div.map-contain{
+            max-width: 100%;
+            height: 400px;
+            margin: 0 auto;
+        }
+        .leaflet-container {
+        height: 400px;
+        width: 80%;
+        margin: 0 auto;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="#">Districts</a></li><li><a href="#">{{district.name}}</a></li></ul></div>
+<div class="person-details container">
+    <h1>{{district.name}}</h1>
+    {% react_render component="DistrictMap" props=district %}
+
+
+
+</div>
+{% endblock %}
+
+
+{% block adminlink %}
+<li><a href="#" rel="nofollow">Edit This Page</a></li>
+{% endblock %}
+
+{% block scriptyfoot %}
+    <script src="{% static 'react_dist_map.js' %}"></script>
+{% endblock %}

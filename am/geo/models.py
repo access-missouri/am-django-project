@@ -7,10 +7,11 @@ from __future__ import unicode_literals
 from general.models import AMBaseModel
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django_react_templatetags.mixins import RepresentationMixin
 
 
 @python_2_unicode_compatible
-class District(AMBaseModel):
+class District(RepresentationMixin, AMBaseModel):
     """
     A land area, likely a voting region or representative's base.
     """
@@ -52,6 +53,15 @@ class District(AMBaseModel):
 
     def __str__(self):
         return self.name
+
+    def to_react_representation(self, context={}):
+        return {
+            'name': str(self.name),
+            'bbox_top_lat': self.bbox_top_lat,
+            'bbox_bottom_lat': self.bbox_bottom_lat,
+            'bbox_left_lon': self.bbox_left_lon,
+            'bbox_right_lon': self.bbox_right_lon,
+        }
 
     class Meta:
         ordering = ['name']
