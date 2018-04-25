@@ -26,8 +26,7 @@ class Command(BaseCommand):
         Make it happen.
         """
 
-        sponsorships = BillSponsorship.objects.filter(member=None,
-                                                      bill__identifier__contains="SJR")
+        sponsorships = BillSponsorship.objects.filter(member=None)
 
         sponsorships_changed = 0
 
