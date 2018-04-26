@@ -1,12 +1,14 @@
 {% extends 'sitewide/base.html' %}
 
+
 {% block title %}Home{% endblock %}
 
 {% load humanize %}
 {% load static %}
+{% load react %}
 
 {% block body %}
-<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">Home</a></li></ul></div>
+<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">Home</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="container home-page">
     <div class="float-top-home">
         <div class="tease-image">

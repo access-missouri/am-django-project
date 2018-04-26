@@ -1,9 +1,9 @@
 {% extends 'sitewide/base.html' %}
 
 {% block title %}{{object}}{% endblock %}
-
+{% load react %}
 {% block body %}
-<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li></ul></div>
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="finance-details container">
     <h1>Finance Transaction Details</h1>
     <p class="finance-sub">{{object.date}}</p>

@@ -4,9 +4,10 @@
 
 {% load humanize %}
 {% load static %}
+{% load react %}
 
 {% block body %}
-<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">404 Error</a></li></ul></div>
+<div class="breadcrumb-holder "><ul class="breadcrumbs"><li><a href="/">404 Error</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="container home-page">
     <div class="float-top-home">
         <div class="tease-image">

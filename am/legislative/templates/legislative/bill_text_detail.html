@@ -3,9 +3,9 @@
 {% block title %}Bill Text - {{text.bill.identifier}}{% endblock %}
 
 {% load markdownify %}
-
+{% load react %}
 {% block body %}
-<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{text.bill.legislative_session.get_absolute_url}}">{{text.bill.legislative_session}}</a></li><li><a href="{{text.bill.get_absolute_url}}">{{text.bill.identifier}}</a></li></ul></div>
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{text.bill.legislative_session.get_absolute_url}}">{{text.bill.legislative_session}}</a></li><li><a href="{{text.bill.get_absolute_url}}">{{text.bill.identifier}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
     <h1>{{text.bill.identifier}}</h1>
     <p class="bill-title">{{text.bill.title}}</p>

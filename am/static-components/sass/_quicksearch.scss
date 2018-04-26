@@ -1,0 +1,117 @@
+div.breadcrumb-holder{
+  ul {
+    div {
+      display: inline;
+    }
+  }
+}
+
+li.reactive-quick-search{
+  float:right;
+
+  div.quick-search-container {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba($gray-dark, 0.8);
+
+    div {
+      display: block;
+    }
+
+
+    div.quick-search-mechanics {
+      @include container(800px);
+      margin-top: 50px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+  }
+}
+
+
+
+
+div.quick-search-mechanics{
+  button {
+    font-family: $concourse-reg;
+    text-transform: uppercase;
+    border-radius: 0px;
+    background-color: rgba($gray-dark, 0.5);
+    color: $project-text-dark;
+    font-size: 1.5rem;
+
+    &:hover{
+      background-color: rgba($gray-dark, 0.8);
+    }
+  }
+  div.search-window-controls{
+    @include clearfix;
+    button{
+      float: right;
+    }
+  }
+
+  div.search-window-box{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgba($gray-dark, 0.5);
+
+    input {
+      width: 100%;
+      font-size: 1.5rem;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px solid $gray-lightest;
+      background: none;
+      color: $project-text-dark;
+      font-family: $concourse-reg;
+
+      &:focus{
+        outline: none !important;
+        border-bottom: 3px solid white;
+      }
+    }
+  }
+
+  div.search-results{
+    margin-top: 1em;
+    background-color: rgba($gray-dark, 0.5);
+    padding: 10px;
+
+    div.result {
+      display: list-item;
+      background-color: rgba($gray-dark, 0.8);
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding: 10px;
+
+      h3.type-bill{
+        color: $am-crimson;
+      }
+
+      h3.type-person{
+        color: lighten($am-blue, 10%);
+      }
+
+      h3.label{
+        font-size: 1.4em;
+      }
+
+      p.description{
+        margin-top: 0.3em;
+        color: darken($project-text-dark, 15%);
+        font-family: $equity-reg;
+      }
+    }
+  }
+}

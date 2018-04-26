@@ -6,7 +6,7 @@
 {% load static %}
 
 {% block body %}
-<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{vote.bill.legislative_session.get_absolute_url}}">{{vote.bill.legislative_session}}</a></li><li><a href="{{vote.bill.get_absolute_url}}">{{vote.bill.identifier}}</a></li></ul></div>
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{vote.bill.legislative_session.get_absolute_url}}">{{vote.bill.legislative_session}}</a></li><li><a href="{{vote.bill.get_absolute_url}}">{{vote.bill.identifier}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
     <h1>{{vote.bill.identifier}}</h1>
     <p class="bill-title">{{vote.bill.title}}</p>

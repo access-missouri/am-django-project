@@ -3,9 +3,10 @@
 {% block title %}Legislation{% endblock %}
 
 {% load markdownify %}
+{% load react %}
 
 {% block body %}
-<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills">Bills</a></li></ul></div>
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills">Bills</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
     <h1>Legislation</h1>
 

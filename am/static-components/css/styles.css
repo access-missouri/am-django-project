@@ -1089,3 +1089,105 @@ div.finance-details div.timeline {
 div.person-details div.timeline {
   border-color: #2b4162;
 }
+
+div.breadcrumb-holder ul div {
+  display: inline;
+}
+
+li.reactive-quick-search {
+  float: right;
+}
+li.reactive-quick-search div.quick-search-container {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(41, 43, 44, 0.8);
+}
+li.reactive-quick-search div.quick-search-container div {
+  display: block;
+}
+li.reactive-quick-search div.quick-search-container div.quick-search-mechanics {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+li.reactive-quick-search div.quick-search-container div.quick-search-mechanics:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+div.quick-search-mechanics button {
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+  text-transform: uppercase;
+  border-radius: 0px;
+  background-color: rgba(41, 43, 44, 0.5);
+  color: #f7f7f9;
+  font-size: 1.5rem;
+}
+div.quick-search-mechanics button:hover {
+  background-color: rgba(41, 43, 44, 0.8);
+}
+div.quick-search-mechanics div.search-window-controls {
+  overflow: hidden;
+  *zoom: 1;
+}
+div.quick-search-mechanics div.search-window-controls button {
+  float: right;
+}
+div.quick-search-mechanics div.search-window-box {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgba(41, 43, 44, 0.5);
+}
+div.quick-search-mechanics div.search-window-box input {
+  width: 100%;
+  font-size: 1.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #f7f7f9;
+  background: none;
+  color: #f7f7f9;
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
+}
+div.quick-search-mechanics div.search-window-box input:focus {
+  outline: none !important;
+  border-bottom: 3px solid white;
+}
+div.quick-search-mechanics div.search-results {
+  margin-top: 1em;
+  background-color: rgba(41, 43, 44, 0.5);
+  padding: 10px;
+}
+div.quick-search-mechanics div.search-results div.result {
+  display: list-item;
+  background-color: rgba(41, 43, 44, 0.8);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 10px;
+}
+div.quick-search-mechanics div.search-results div.result h3.type-bill {
+  color: #c51236;
+}
+div.quick-search-mechanics div.search-results div.result h3.type-person {
+  color: #3b5985;
+}
+div.quick-search-mechanics div.search-results div.result h3.label {
+  font-size: 1.4em;
+}
+div.quick-search-mechanics div.search-results div.result p.description {
+  margin-top: 0.3em;
+  color: #cbcbd8;
+  font-family: "equity_text_a_tabregular", Georgia;
+}

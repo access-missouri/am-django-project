@@ -2,8 +2,10 @@
 
 {% block title %}{{bill.identifier}}{% endblock %}
 
+{% load react %}
+
 {% block body %}
-<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{bill.legislative_session.get_absolute_url}}">{{bill.legislative_session}}</a></li></ul></div>
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/bills/">Bills</a></li><li><a href="{{bill.legislative_session.get_absolute_url}}">{{bill.legislative_session}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
     <h1>{{bill.identifier}}</h1>
     <p class="bill-title">{{bill.title}}</p>
