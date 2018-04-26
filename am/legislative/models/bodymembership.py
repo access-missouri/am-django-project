@@ -35,7 +35,8 @@ class BodyMembership(AMBaseModel):
                                 related_name="body_memberships")
     district = models.ForeignKey(District,
                                  null=True,
-                                 blank=True)
+                                 blank=True,
+                                 related_name="body_memberships")
 
     def __str__(self):
         return '{}({}) in {}'.format(self.person, self.body, self.session)

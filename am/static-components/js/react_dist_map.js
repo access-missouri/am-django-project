@@ -9,7 +9,7 @@ class DistrictMap extends React.Component {
             (this.props.bbox_top_lat+this.props.bbox_bottom_lat)/2
             ];
         return (<div className="map-contain">
-            <LeafletMap center={position} zoom={9}>
+            <LeafletMap center={position} zoom={11}>
                 <TileLayer
                             url='https://api.mapbox.com/styles/v1/nathanlawrence/cj7dsc9j815p02spkufl6xrdt/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmF0aGFubGF3cmVuY2UiLCJhIjoiY2l5dzl5NDA4MDAxeTJxcWU3NTVwaHBsMyJ9.kNUj23zWfRJNLl2W8hsAyA'
                         />

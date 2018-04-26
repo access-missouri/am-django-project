@@ -13,13 +13,16 @@
         div.map-contain{
             max-width: 100%;
             height: 400px;
-            margin: 0 auto;
+            margin: 1em auto;
         }
         .leaflet-container {
         height: 400px;
         width: 80%;
         margin: 0 auto;
       }
+        div.leaflet-control-attribution{
+            display: none;
+        }
     </style>
 {% endblock %}
 
@@ -27,9 +30,20 @@
 <div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="#">Districts</a></li><li><a href="#">{{district.name}}</a></li></ul></div>
 <div class="person-details container">
     <h1>{{district.name}}</h1>
-    {% react_render component="DistrictMap" props=district %}
+    <div class="full-cluster map">
+        <h2>District Geography</h2>
+        {% react_render component="DistrictMap" props=district %}
+    </div>
 
 
+    {% if district.body_memberships.all %}
+    <div class="body-memberships full-cluster">
+    <h2>Past Representation</h2>
+        {% for membership in district.body_memberships.all %}
+        {% include "legislative/components/body_membership_pivot_district.html" with membership=membership %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
 </div>
 {% endblock %}
