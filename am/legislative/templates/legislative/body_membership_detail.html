@@ -1,0 +1,37 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{session.name}}{% endblock %}
+
+{% load markdownify %}
+{% load react %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="{{membership.person.get_absolute_url}}">{{membership.person}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
+<div class="bill-details container">
+    <h1>{{membership.person}}'s Work in {{membership.session}}</h1>
+    {% if membership.district %}}
+    <p class="bill-title">Representing {{membership.district}}</p>
+
+    <!--{% if session.bills.all %}-->
+    <!--<div class="session-bills full-cluster">-->
+        <!--<h2>Bills from this Session</h2>-->
+        <!--<table class="table listing">-->
+            <!--&lt;!&ndash;<thead class="">&ndash;&gt;-->
+            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                <!--&lt;!&ndash;<td>Name</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+            <!--<tbody>-->
+            <!--{% for bill in session.bills.all|dictsortreversed:"updated_at" %}-->
+            <!--<tr>-->
+                <!--<th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>-->
+                <!--<p>{{bill.title}}</p></th>-->
+            <!--</tr>-->
+            <!--{% endfor %}-->
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+    <!--{% endif %}-->
+
+</div>
+{% endblock %}
