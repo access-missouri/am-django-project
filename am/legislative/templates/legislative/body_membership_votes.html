@@ -1,0 +1,45 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{membership.person.get_full_name}}'s Votes in {{membership.session}}{% endblock %}
+
+{% load markdownify %}
+{% load react %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="{{membership.person.get_absolute_url}}">{{membership.person}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
+<div class="bill-details container">
+    <h1>{{membership.person.get_full_name}}'s Votes in {{membership.session}}</h1>
+    {% if membership.district %}
+    <p class="bill-title">Representing {{membership.district}}</p>
+    {% endif %}
+
+
+    {% if votes %}
+    <div class="recent-actions full-cluster">
+        <h2>Votes</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Bill</td>
+                <td>Question</td>
+                <td>Response</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in votes %}
+            <tr>
+                <th scope="row">{{vote.bill_vote.date}}</th>
+                <td><a href="{{vote.bill_vote.bill.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.bill}}</a></td>
+                <td><a href="{{vote.bill_vote.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.issue}}</a></td>
+                <td>{{vote.opinion}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock %}

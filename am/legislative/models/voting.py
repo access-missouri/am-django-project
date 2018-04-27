@@ -106,6 +106,7 @@ class PersonVote(AMBaseModel):
         BodyMembership,
         null=True,
         blank=True,
+        related_name='votes',
     )
 
     def __str__(self):

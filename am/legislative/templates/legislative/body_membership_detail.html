@@ -1,6 +1,6 @@
 {% extends 'sitewide/base.html' %}
 
-{% block title %}{{session.name}}{% endblock %}
+{% block title %}{{membership.person.get_full_name}}'s Work in {{membership.session}}{% endblock %}
 
 {% load markdownify %}
 {% load react %}
@@ -8,7 +8,7 @@
 {% block body %}
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="{{membership.person.get_absolute_url}}">{{membership.person}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
-    <h1>{{membership.person}}'s Work in {{membership.session}}</h1>
+    <h1>{{membership.person.get_full_name}}'s Work in {{membership.session}}</h1>
     {% if membership.district %}
     <p class="bill-title">Representing {{membership.district}}</p>
     {% endif %}
@@ -23,6 +23,33 @@
                    class="link-legislative">{{sponsorship.bill.identifier}}–{{sponsorship.bill.title}}{% if sponsorship.primary %} (Primary Sponsor){% endif %}</a></li>
             {% endfor %}
         </ul>
+    </div>
+    {% endif %}
+
+    {% if membership.votes.all %}
+    <div class="recent-actions full-cluster">
+        <h2>Votes</h2>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Bill</td>
+                <td>Question</td>
+                <td>Response</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in membership.votes.all|slice:"10" %}
+            <tr>
+                <th scope="row">{{vote.bill_vote.date}}</th>
+                <td><a href="{{vote.bill_vote.bill.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.bill}}</a></td>
+                <td><a href="{{vote.bill_vote.get_absolute_url}}" class="link-legislative">{{vote.bill_vote.issue}}</a></td>
+                <td>{{vote.opinion}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="aff"><a href="{{membership.get_votes_absolute_url}}" class="link-people">View All {{membership.votes.all.count}} Votes by {{membership.person.get_full_name}} in {{membership.session}}</a></p>
     </div>
     {% endif %}
 
