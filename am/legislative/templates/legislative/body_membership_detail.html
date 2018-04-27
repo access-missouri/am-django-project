@@ -9,8 +9,22 @@
 <div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="{{membership.person.get_absolute_url}}">{{membership.person}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="bill-details container">
     <h1>{{membership.person}}'s Work in {{membership.session}}</h1>
-    {% if membership.district %}}
+    {% if membership.district %}
     <p class="bill-title">Representing {{membership.district}}</p>
+    {% endif %}
+
+
+    {% if membership.bill_sponsorships.all %}
+    <div class="bill-sponsorships full-cluster">
+        <h2>Bills Sponsored</h2>
+                <ul class="bill-sponsored-list">
+            {% for sponsorship in membership.bill_sponsorships.all %}
+            <li><a href="{{sponsorship.bill.get_absolute_url}}"
+                   class="link-legislative">{{sponsorship.bill.identifier}}–{{sponsorship.bill.title}}{% if sponsorship.primary %} (Primary Sponsor){% endif %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 
     <!--{% if session.bills.all %}-->
     <!--<div class="session-bills full-cluster">-->

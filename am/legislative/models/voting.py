@@ -9,6 +9,7 @@ from general.models import (
     AMBaseModel,
     Person,
 )
+from .bodymembership import BodyMembership
 from .bill import Bill
 from django.utils.encoding import python_2_unicode_compatible
 from django_react_templatetags.mixins import RepresentationMixin
@@ -100,6 +101,11 @@ class PersonVote(AMBaseModel):
     opinion = models.CharField(
         max_length=12,
         help_text='What the person actually voted.',
+    )
+    member = models.ForeignKey(
+        BodyMembership,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):

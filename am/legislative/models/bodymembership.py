@@ -41,6 +41,9 @@ class BodyMembership(AMBaseModel):
     def __str__(self):
         return '{}({}) in {}'.format(self.person, self.body, self.session)
 
+    def get_absolute_url(self):
+        return '/legislative/sessions/memberships/{}'.format(self.id)
+
     def get_num_bills_sponsored(self):
         return self.bill_sponsorships.count()
 

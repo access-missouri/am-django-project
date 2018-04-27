@@ -14,7 +14,7 @@ class BodyMembershipView(DetailView):
 
     model = BodyMembership
     context_object_name = "membership"
-    template_name = 'legislative/session_detail.html'
+    template_name = 'legislative/body_membership_detail.html'
 
     def get_object(self):
         """
