@@ -30,6 +30,7 @@ div.person-details{
 div.body-membership{
   @include clearfix;
   margin-top: 1.5em;
+  margin-bottom: 3em;
   h3{
     font-family: $concourse-reg;
     font-size: 1.2em;
