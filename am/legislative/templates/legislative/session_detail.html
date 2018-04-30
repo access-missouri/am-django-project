@@ -11,26 +11,52 @@
     <h1>{{session.name}}</h1>
     <p class="bill-title">Session Details</p>
 
-    {% if session.bills.all %}
-    <div class="session-bills full-cluster">
-        <h2>Bills from this Session</h2>
+    {% if session.body_memberships %}
+    <div class="session-members full-cluster">
+        <h2>Legislators in This Session</h2>
         <table class="table listing">
-            <!--<thead class="">-->
-            <!--<tr>-->
-                <!--<td>Name</td>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <tbody>
-            {% for bill in session.bills.all|dictsortreversed:"updated_at" %}
+            <thead class="">
             <tr>
-                <th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>
-                <p>{{bill.title}}</p></th>
+                <td>Legislator</td>
+                <td>District</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for membership in session.body_memberships.all %}
+            <tr>
+                <th scope="row"><a href="{{membership.person.get_absolute_url}}" class="link-people">{{membership.person.get_full_name}}</a></th>
+                <td><a href="{{membership.district.get_absolute_url}}" class="link-person">{{membership.district.name}}</a></td>
+                <td><a href="{{membership.get_absolute_url}}">View Details</a></td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
     {% endif %}
+
+    {% if session.bills.all %}
+    <div class="session-bills full-cluster">
+        <h2>Bills from this Session</h2>
+        <table class="table listing">
+            <!--<thead class="">-->
+            <!--<tr>-->
+            <!--<td>Name</td>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <tbody>
+            {% for bill in session.bills.all|dictsortreversed:"updated_at" %}
+            <tr>
+                <th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>
+                    <p>{{bill.title}}</p></th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+
 
 </div>
 {% endblock %}
