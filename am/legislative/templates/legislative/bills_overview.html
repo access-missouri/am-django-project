@@ -22,17 +22,7 @@
         <h2>Recent Bill Actions</h2>
         <div class="timeline">
             {% for action in actions %}
-            <div class="update">
-                <p class="action-content">
-                    {{action.description}}
-                </p>
-                <p class="date">
-                    {{action.date}}
-                </p>
-                <p class="bill">
-                    <a class="link-tl" href="{{action.bill.get_absolute_url}}">{{action.bill}}</a>
-                </p>
-            </div>
+            {% include 'legislative/components/bill_action_timeline_entry.html' with action=action %}
             {% endfor %}
         </div>
     </div>

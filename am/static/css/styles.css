@@ -1073,7 +1073,9 @@ div.timeline div.update {
 }
 div.timeline div.update p.action-content {
   font-size: 1.3rem;
-  margin-bottom: 1em;
+}
+div.timeline div.update p.date {
+  margin-bottom: 0.5rem;
 }
 div.timeline div.update a.link-tl {
   color: #c51236;
