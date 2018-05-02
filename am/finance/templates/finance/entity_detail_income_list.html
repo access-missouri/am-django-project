@@ -34,9 +34,9 @@
             <tbody>
             {% for transaction in object.income.all %}
             <tr>
-                <th scope="row">{{transaction.date}}</th>
+                <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
                 <td><a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a></td>
-                <td>${{transaction.amount|floatformat:2}}</td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
             </tr>
             {% endfor %}
             </tbody>
