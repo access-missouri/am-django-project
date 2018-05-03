@@ -229,6 +229,10 @@ p.cont {
   margin-top: 1rem;
 }
 
+table td.sub-item {
+  padding-left: 30px;
+}
+
 ul.block-list li.block-list-item {
   margin-top: 1rem;
   padding-top: 1em;

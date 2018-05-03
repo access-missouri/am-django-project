@@ -2,11 +2,11 @@
     <h3>{% if membership.district %}Representing <a href="{{membership.district.get_absolute_url}}" class="link-people">{{membership.district}}</a>{% else %}Congressperson{% endif %} in {{membership.session}}</h3>
     <table class="table listing">
         <tr>
-            <th scope="row">Bills Sponsored</th>
+            <th scope="row"><a class="link-legislative" href="{{membership.get_absolute_url}}/bills">Bills Sponsored and Cosponsored</a></th>
             <td>{{membership.get_num_bills_sponsored}}</td>
         </tr>
         <tr>
-            <td>Primary Sponsorships</td>
+            <td class="sub-item">Primary Sponsorships</td>
             <td>{{membership.get_num_bills_primary_sponsored}}</td>
         </tr>
     </table>

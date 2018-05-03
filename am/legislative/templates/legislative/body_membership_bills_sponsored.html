@@ -1,0 +1,30 @@
+{% extends 'sitewide/base.html' %}
+
+{% block title %}{{membership.person.get_full_name}}'s Sponsored Bills in {{membership.session}}{% endblock %}
+
+{% load markdownify %}
+{% load react %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-bills"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="{{membership.person.get_absolute_url}}">{{membership.person}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
+<div class="bill-details container">
+    <h1>{{membership.person.get_full_name}}'s Sponsorships in {{membership.session}}</h1>
+    {% if membership.district %}
+    <p class="bill-title">Representing {{membership.district}}</p>
+    {% endif %}
+
+
+    {% if membership.bill_sponsorships.all %}
+    <div class="bill-sponsorships full-cluster">
+        <h2>Bills Sponsored</h2>
+        <ul class="block-list bill-sponsored-list">
+            {% for sponsorship in membership.bill_sponsorships.all %}
+            {% include "legislative/components/bill_sponsored_block.html" with sponsorship=sponsorship %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+
+</div>
+{% endblock %}

@@ -6,7 +6,7 @@ Access Missouri views for legislative tasks.
 from BillViews import BillTextDetailView, BillVotesListView, BillsHomeView, BillDetailView, BillsTaggedView #noqa
 from VoteDetailView import VoteDetailView
 from LegislativeSessionViews import LegislativeSessionView, LegislativeSessionListView
-from BodyMembershipView import BodyMembershipView, BodyMembershipVotesView
+from BodyMembershipView import BodyMembershipView, BodyMembershipVotesView, BodyMembershipBillSponsorshipsView
 __all__ = (
     'BillTextDetailView',
     'BillsHomeView',
@@ -18,4 +18,5 @@ __all__ = (
     'BillsTaggedView',
     'BodyMembershipView',
     'BodyMembershipVotesView',
+    'BodyMembershipBillSponsorshipsView',
 )

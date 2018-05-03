@@ -24,6 +24,23 @@ class BodyMembershipView(DetailView):
             return BodyMembership.objects.get(id=self.kwargs['id'])
         return super(BodyMembershipView, self).get_objects()
 
+class BodyMembershipBillSponsorshipsView(DetailView):
+    """
+    View showing sponsorship information about a single body membership in a legislative Session.
+    """
+
+    model = BodyMembership
+    context_object_name = "membership"
+    template_name = 'legislative/body_membership_bills_sponsored.html'
+
+    def get_object(self):
+        """
+        Retrieves object based on ID.
+        """
+        if self.kwargs['id']:
+            return BodyMembership.objects.get(id=self.kwargs['id'])
+        return super(BodyMembershipView, self).get_objects()
+
 class BodyMembershipVotesView(DetailView):
     model = BodyMembership
     context_object_name = "membership"
