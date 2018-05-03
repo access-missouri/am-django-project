@@ -14,10 +14,13 @@
 
         </div>
         <div class="trans-block trans-arr">
+            <p class="trans-amount trans-amount-top">
+                ${{object.amount|floatformat:2}}
+            </p>
             <div class="arrow-svg svg">
                 {% include "graphics/dot_arrow_r_svg.html" %}
             </div>
-            <p class="trans-amount">
+            <p class="trans-amount trans-amount-bottom">
                 ${{object.amount|floatformat:2}}
             </p>
         </div>

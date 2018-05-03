@@ -4,6 +4,25 @@ div.transaction-banner{
 
   div.trans-block{
 
+    p {
+      font-size: 1.5rem;
+      line-height: 1.5em;
+      text-align: center;
+    }
+
+    div.arrow-svg {
+      transform: rotate(90deg);
+      max-width: 150px;
+      margin: 3em auto;
+    }
+
+    p.trans-amount-bottom{
+      display:none;
+    }
+    p.trans-amount-top{
+      display: block;
+    }
+
 
   }
 
@@ -14,6 +33,7 @@ div.transaction-banner{
 
       p {
         font-size: 1.5rem;
+        line-height: 1.5em;
         text-align: center;
       }
 
@@ -21,7 +41,17 @@ div.transaction-banner{
       div.arrow-svg{
         max-width: 100px;
         margin:auto;
+        transform: none;
       }
+
+      p.trans-amount-top{
+        display:none;
+      }
+      p.trans-amount-bottom{
+        display:block;
+      }
+
+
     }
     @include clearfix;
   }

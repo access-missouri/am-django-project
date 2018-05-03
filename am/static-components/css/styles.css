@@ -553,6 +553,22 @@ div.transaction-banner {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+div.transaction-banner div.trans-block p {
+  font-size: 1.5rem;
+  line-height: 1.5em;
+  text-align: center;
+}
+div.transaction-banner div.trans-block div.arrow-svg {
+  transform: rotate(90deg);
+  max-width: 150px;
+  margin: 3em auto;
+}
+div.transaction-banner div.trans-block p.trans-amount-bottom {
+  display: none;
+}
+div.transaction-banner div.trans-block p.trans-amount-top {
+  display: block;
+}
 @media screen and (min-width: 800px) {
   div.transaction-banner {
     overflow: hidden;
@@ -564,11 +580,19 @@ div.transaction-banner {
   }
   div.transaction-banner div.trans-block p {
     font-size: 1.5rem;
+    line-height: 1.5em;
     text-align: center;
   }
   div.transaction-banner div.trans-block div.arrow-svg {
     max-width: 100px;
     margin: auto;
+    transform: none;
+  }
+  div.transaction-banner div.trans-block p.trans-amount-top {
+    display: none;
+  }
+  div.transaction-banner div.trans-block p.trans-amount-bottom {
+    display: block;
   }
 }
 
