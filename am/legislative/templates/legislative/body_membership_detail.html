@@ -17,10 +17,11 @@
     {% if membership.bill_sponsorships.all %}
     <div class="bill-sponsorships full-cluster">
         <h2>Bills Sponsored</h2>
-                <ul class="bill-sponsored-list">
+        <ul class="block-list bill-sponsored-list">
             {% for sponsorship in membership.bill_sponsorships.all %}
-            <li><a href="{{sponsorship.bill.get_absolute_url}}"
-                   class="link-legislative">{{sponsorship.bill.identifier}}–{{sponsorship.bill.title}}{% if sponsorship.primary %} (Primary Sponsor){% endif %}</a></li>
+            <!--<li><a href="{{sponsorship.bill.get_absolute_url}}"-->
+                   <!--class="link-legislative">{{sponsorship.bill.identifier}}–{{sponsorship.bill.title}}{% if sponsorship.primary %} (Primary Sponsor){% endif %}</a></li>-->
+            {% include "legislative/components/bill_sponsored_block.html" with sponsorship=sponsorship %}
             {% endfor %}
         </ul>
     </div>
@@ -55,22 +56,22 @@
 
     <!--{% if session.bills.all %}-->
     <!--<div class="session-bills full-cluster">-->
-        <!--<h2>Bills from this Session</h2>-->
-        <!--<table class="table listing">-->
-            <!--&lt;!&ndash;<thead class="">&ndash;&gt;-->
-            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
-                <!--&lt;!&ndash;<td>Name</td>&ndash;&gt;-->
-            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-            <!--&lt;!&ndash;</thead>&ndash;&gt;-->
-            <!--<tbody>-->
-            <!--{% for bill in session.bills.all|dictsortreversed:"updated_at" %}-->
-            <!--<tr>-->
-                <!--<th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>-->
-                <!--<p>{{bill.title}}</p></th>-->
-            <!--</tr>-->
-            <!--{% endfor %}-->
-            <!--</tbody>-->
-        <!--</table>-->
+    <!--<h2>Bills from this Session</h2>-->
+    <!--<table class="table listing">-->
+    <!--&lt;!&ndash;<thead class="">&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<td>Name</td>&ndash;&gt;-->
+    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+    <!--<tbody>-->
+    <!--{% for bill in session.bills.all|dictsortreversed:"updated_at" %}-->
+    <!--<tr>-->
+    <!--<th scope="row"><h3><a href="{{bill.get_absolute_url}}" class="link-legislative">{{bill.identifier}}</a></h3>-->
+    <!--<p>{{bill.title}}</p></th>-->
+    <!--</tr>-->
+    <!--{% endfor %}-->
+    <!--</tbody>-->
+    <!--</table>-->
     <!--</div>-->
     <!--{% endif %}-->
 

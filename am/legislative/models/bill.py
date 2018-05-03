@@ -136,6 +136,9 @@ class Bill(AMBaseModel):
             self.id,
         )
 
+    def name(self):
+        return self.identifier
+
     def __str__(self):
         return '{} in {}'.format(self.identifier, self.legislative_session)
 

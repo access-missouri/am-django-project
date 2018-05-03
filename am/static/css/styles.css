@@ -155,6 +155,7 @@ a.link-finance:hover {
 p.aff {
   margin-top: 1rem;
   font-size: 1.1em;
+  line-height: 1.5em;
 }
 
 *, *:before, *:after {
@@ -221,6 +222,56 @@ div.subcluster h3 {
   font-size: 1.5rem;
   padding-left: 5px;
   margin-top: 1em;
+}
+
+p.cont {
+  padding-left: 5px;
+  margin-top: 1rem;
+}
+
+ul.block-list li.block-list-item {
+  margin-top: 1rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #f7f7f9;
+}
+ul.block-list li.block-list-item p a {
+  background: none;
+}
+ul.block-list li.block-list-item p a.link-legislative {
+  color: #c51236;
+}
+ul.block-list li.block-list-item p a.link-finance {
+  color: #48661f;
+}
+ul.block-list li.block-list-item p a.link-people {
+  color: #2b4162;
+}
+ul.block-list li.block-list-item p.primary-indicator {
+  font-size: 1.4rem;
+}
+ul.block-list li.block-list-item p.primary-indicator a {
+  color: #6b7174;
+}
+ul.block-list li.block-list-item p.primary-indicator a:hover {
+  text-decoration: underline;
+}
+ul.block-list li.block-list-item p.type {
+  font-family: "advocate_c43regular";
+}
+ul.block-list li.block-list-item p.type-legislative {
+  color: #c51236;
+}
+ul.block-list li.block-list-item p.more {
+  margin-top: 0.5em;
+}
+ul.block-list li.block-list-item p.more a {
+  padding: 0;
+}
+ul.block-list li.block-list-item p.more a:hover {
+  background-color: white;
 }
 
 nav.am-navbar {
@@ -462,15 +513,6 @@ div.person-details p.bill-title {
   font-size: 2.6em;
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-div.person-details ul.bill-sponsored-list {
-  font-size: 1.2em;
-  line-height: 1.8em;
-}
-div.person-details ul.bill-sponsored-list li {
-  padding-left: 5px;
-  text-indent: -5px;
-  margin-top: 0.8em;
 }
 
 div.body-membership {

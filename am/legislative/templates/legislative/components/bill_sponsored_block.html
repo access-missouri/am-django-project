@@ -1,0 +1,7 @@
+<li class="block-list-item bill-sponsorship">
+    <p class="type type-legislative">{% if sponsorship.primary %}Primary Sponsor{% else %}Cosponsor{% endif %}</p>
+    <p class="primary-indicator bill-name"><a href="{{sponsorship.bill.get_absolute_url}}">{{sponsorship.bill.identifier}}</a></p>
+    <p class="secondary-indicator">{{sponsorship.bill.title}}</p>
+    <p class="more"><a class="link-legislative" href="{{sponsorship.bill.get_absolute_url}}">View Bill
+    </a></p>
+</li>
