@@ -96,6 +96,34 @@ class FinanceEntity(AMBaseModel):
     def __str__(self):
         return "{}".format(self.name)
 
+    def get_total_income_from_type(self, type):
+        return self.income.filter(
+            t_from__type=type
+        ).aggregate(models.Sum('amount'))['amount__sum']
+
+    def get_total_income_from_comm(self):
+        return self.get_total_income_from_type('comm')
+
+    def get_total_income_from_corp(self):
+        return self.get_total_income_from_type('corp')
+
+    def get_total_income_from_people(self):
+        return self.get_total_income_from_type('person')
+
+    def get_total_spending_to_type(self, type):
+        return self.spending.filter(
+            t_from__type=type
+        ).aggregate(models.Sum('amount'))['amount__sum']
+
+    def get_total_spending_to_comm(self):
+        return self.get_total_spending_to_type('comm')
+
+    def get_total_spending_to_corp(self):
+        return self.get_total_spending_to_type('corp')
+
+    def get_total_spending_to_people(self):
+        return self.get_total_spending_to_type('person')
+
     def get_admin_url(self):
         return "/admin/finance/financeentity/{}/".format(self.id)
 
