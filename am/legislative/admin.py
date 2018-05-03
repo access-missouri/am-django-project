@@ -26,9 +26,20 @@ class BillActionInline(admin.TabularInline):
         form.base_fields['description'].widget.attrs['style'] = 'height: 3em;'
         return form
 
+
+class BillSponsorshipInline(admin.TabularInline):
+    model = BillSponsorship
+    fieldsets = ((None, {
+        'fields': (
+            'person',
+            'primary',
+            'sponsored_at',
+        )
+    }),)
+
 @admin.register(Bill)
 class BillAdmin(admin.ModelAdmin):
-    inlines = [BillActionInline,]
+    inlines = [BillActionInline,BillSponsorshipInline,]
     list_display = ['identifier','title','legislative_session','last_action_date']
     search_fields = ['identifier','title','description','legislative_session__name']
     list_filter = ['last_action_date','legislative_session','from_organization']

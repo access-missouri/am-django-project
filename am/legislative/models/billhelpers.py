@@ -191,6 +191,7 @@ class BillSponsorship(AMBaseModel):
     )
     sponsored_at = models.DateField(
         null=True,
+        blank=True,
         help_text='Date and time when the member sponsored the bill.',
     )
 
