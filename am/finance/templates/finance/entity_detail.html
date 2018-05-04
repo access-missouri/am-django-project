@@ -21,9 +21,30 @@
         <h2>How we get this information</h2>
         <p>State laws require that political organizations report their donations and spending to the Missouri Ethics Commission anywhere between one and five times each year, depending on the kind of organization and how much money they raise. We compile these reports and other public records to create profiles for each donor and political organization.</p>
     </div>
+
+
     {% if object.income.all %}
     <div class="recent-income full-cluster">
         <h2>Income</h2>
+        {% if top_donors %}
+        <div class="subcluster">
+        <h3>Top Income Sources</h3>
+            <table class="table listing">
+                <thead>
+                <td>Source</td>
+                <td>Total Received</td>
+                </thead>
+                <tbody>
+                {% for donor in top_donors %}
+                    <tr>
+                        <td><a href="/finance/entities/{{donor.t_from__id}}" class="link-finance">{{donor.t_from__name}}</a></td>
+                        <td>${{donor.amount|floatformat:2}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
         <div class="subcluster">
         <h3>Income by Source Type</h3>
         <div class="viz-row-right">
@@ -79,6 +100,25 @@
 {% if object.spending.all %}
 <div class="recent-income full-cluster">
     <h2>Spending</h2>
+    {% if top_targets %}
+        <div class="subcluster">
+        <h3>Top Spending Targets</h3>
+            <table class="table listing">
+                <thead>
+                <td>Recipient</td>
+                <td>Total Spent</td>
+                </thead>
+                <tbody>
+                {% for target in top_targets %}
+                    <tr>
+                        <td><a href="/finance/entities/{{target.t_to__id}}" class="link-finance">{{target.t_to__name}}</a></td>
+                        <td>${{target.amount|floatformat:2}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
     <div class="subcluster">
         <h3>Spending by Recipient Type</h3>
         <table class="table listing">

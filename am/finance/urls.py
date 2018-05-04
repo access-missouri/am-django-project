@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.FinanceHomeView.as_view()),
-    url(r'^(?:people|companies|committees)/(?P<id>[\w-]+)/$', views.EntityDetailView.as_view(), name='finance_entity'),
+    url(r'^(?:people|companies|committees|entities)/(?P<id>[\w-]+)/$', views.EntityDetailView.as_view(), name='finance_entity'),
     url(r'^(?:people|companies|committees)/(?P<id>[\w-]+)/spending$', views.EntityDetailSpendingListView.as_view(),
         name='finance_entity_sp_list'),
     url(r'^(?:people|companies|committees)/(?P<id>[\w-]+)/income$', views.EntityDetailIncomeListView.as_view(),
