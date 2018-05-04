@@ -25,98 +25,105 @@
     <div class="recent-income full-cluster">
         <h2>Income</h2>
         <div class="subcluster">
-            <h3>Income by Source Type</h3>
-            <table class="table listing">
-                <tbody>
-                <tr>
-                    <td>Corporate Spending</td>
-                    <td>${{object.get_total_income_from_corp|default_if_none:"0"|floatformat:2}}</td>
-                </tr>
-                <tr>
-                    <td>Political Committees</td>
-                    <td>${{object.get_total_income_from_comm|default_if_none:"0"|floatformat:2}}</td>
-                </tr>
-                <tr>
-                    <td>Private Individuals</td>
-                    <td>${{object.get_total_income_from_people|default_if_none:"0"|floatformat:2}}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="subcluster">
-            <h3>Recent Income</h3>
-            <table class="table listing">
-                <thead class="">
-                <tr>
-                    <td>Date</td>
-                    <td>Source</td>
-                    <td>Amount</td>
-                </tr>
-                </thead>
-                <tbody>
-                {% for transaction in object.income.all|slice:"5" %}
-                <tr>
-                    <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
-                    <td><a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a></td>
-                    <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            <p class="cont"><a href="{{object.get_absolute_url}}/income" class="link-finance">View All Income</a></p>
+        <h3>Income by Source Type</h3>
+        <div class="viz-row-right">
+            <div class="viz-40">
+            {% react_render component="amUI.FinanceTypePie" prop_corp=object.get_total_income_from_corp prop_comm=object.get_total_income_from_comm prop_people=object.get_total_income_from_people %}
+            </div>
+            <div class="viz-slack">
+                <table class="table listing">
+                    <tbody>
+                    <tr>
+                        <td>Corporate Spending</td>
+                        <td>${{object.get_total_income_from_corp|default_if_none:"0"|floatformat:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>Political Committees</td>
+                        <td>${{object.get_total_income_from_comm|default_if_none:"0"|floatformat:2}}</td>
+                    </tr>
+                    <tr>
+                        <td>Private Individuals</td>
+                        <td>${{object.get_total_income_from_people|default_if_none:"0"|floatformat:2}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    {% endif %}
-
-
-    {% if object.spending.all %}
-    <div class="recent-income full-cluster">
-        <h2>Spending</h2>
-        <div class="subcluster">
-            <h3>Spending by Recipient Type</h3>
-            <table class="table listing">
-                <tbody>
-                <tr>
-                    <td>Corporations</td>
-                    <td>${{object.get_total_spending_to_corp|default_if_none:"0"|floatformat:2}}</td>
-                </tr>
-                <tr>
-                    <td>Political Committees</td>
-                    <td>${{object.get_total_spending_to_comm|floatformat:2}}</td>
-                </tr>
-                <tr>
-                    <td>Private Individuals</td>
-                    <td>${{object.get_total_spending_to_people|default_if_none:"0"|floatformat:2}}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="subcluster">
-            <h3>Recent Spending</h3>
-            <table class="table listing">
-                <thead class="">
-                <tr>
-                    <td>Date</td>
-                    <td>Destination</td>
-                    <td>Amount</td>
-                </tr>
-                </thead>
-                <tbody>
-                {% for transaction in object.spending.all|slice:"5" %}
-                <tr>
-                    <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
-                    <td><a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a></td>
-                    <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-            <p class="cont"><a href="{{object.get_absolute_url}}/spending" class="link-finance">View All Spending</a></p>
-        </div>
-
+    <div class="subcluster">
+        <h3>Recent Income</h3>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Source</td>
+                <td>Amount</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in object.income.all|slice:"5" %}
+            <tr>
+                <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
+                <td><a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a></td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="cont"><a href="{{object.get_absolute_url}}/income" class="link-finance">View All Income</a></p>
     </div>
-    {% endif %}
+</div>
+{% endif %}
+
+
+{% if object.spending.all %}
+<div class="recent-income full-cluster">
+    <h2>Spending</h2>
+    <div class="subcluster">
+        <h3>Spending by Recipient Type</h3>
+        <table class="table listing">
+            <tbody>
+            <tr>
+                <td>Corporations</td>
+                <td>${{object.get_total_spending_to_corp|default_if_none:"0"|floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Political Committees</td>
+                <td>${{object.get_total_spending_to_comm|floatformat:2}}</td>
+            </tr>
+            <tr>
+                <td>Private Individuals</td>
+                <td>${{object.get_total_spending_to_people|default_if_none:"0"|floatformat:2}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="subcluster">
+        <h3>Recent Spending</h3>
+        <table class="table listing">
+            <thead class="">
+            <tr>
+                <td>Date</td>
+                <td>Destination</td>
+                <td>Amount</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in object.spending.all|slice:"5" %}
+            <tr>
+                <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
+                <td><a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a></td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="cont"><a href="{{object.get_absolute_url}}/spending" class="link-finance">View All Spending</a></p>
+    </div>
+
+</div>
+{% endif %}
 
 
 

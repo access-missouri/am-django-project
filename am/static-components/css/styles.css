@@ -217,6 +217,10 @@ div.explainer p {
   font-size: 1.1rem;
 }
 
+div.subcluster {
+  overflow: hidden;
+  *zoom: 1;
+}
 div.subcluster h3 {
   font-family: "concourse_t2_tabregular", Helvetica, Arial;
   font-size: 1.5rem;
@@ -276,6 +280,26 @@ ul.block-list li.block-list-item p.more a {
 }
 ul.block-list li.block-list-item p.more a:hover {
   background-color: white;
+}
+
+@media screen and (min-width: 800px) {
+  div.viz-row-right {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  div.viz-row-right div.viz-40 {
+    width: 40%;
+  }
+  div.viz-row-right div.viz-slack {
+    flex-grow: 1;
+  }
+}
+
+div.viz-table {
+  max-width: 100%;
+}
+div.viz-table table {
+  width: 100%;
 }
 
 nav.am-navbar {

@@ -68,6 +68,7 @@ div.explainer {
 }
 
 div.subcluster{
+  @include clearfix;
   h3 {
     font-family: $concourse-reg;
     font-size: 1.5rem;
@@ -146,5 +147,29 @@ ul.block-list{
     }
 
 
+  }
+}
+
+
+
+div.viz-row-right {
+   @media screen and (min-width: $medium-screen-width){
+     display: flex;
+     flex-direction: row-reverse;
+
+     div.viz-40{
+       width: 40%;
+
+     }
+     div.viz-slack{
+      flex-grow: 1;
+     }
+  }
+}
+
+div.viz-table{
+  max-width: 100%;
+  table {
+    width: 100%;
   }
 }
