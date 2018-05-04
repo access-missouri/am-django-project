@@ -97,9 +97,10 @@ class FinanceEntity(AMBaseModel):
         return "{}".format(self.name)
 
     def get_total_income_from_type(self, type):
-        return self.income.filter(
+        sum = self.income.filter(
             t_from__type=type
         ).aggregate(models.Sum('amount'))['amount__sum']
+        return sum if sum else 0
 
     def get_total_income_from_comm(self):
         return self.get_total_income_from_type('comm')
@@ -111,9 +112,10 @@ class FinanceEntity(AMBaseModel):
         return self.get_total_income_from_type('person')
 
     def get_total_spending_to_type(self, type):
-        return self.spending.filter(
-            t_from__type=type
+        sum = self.spending.filter(
+            t_to__type=type
         ).aggregate(models.Sum('amount'))['amount__sum']
+        return sum if sum else 0
 
     def get_total_spending_to_comm(self):
         return self.get_total_spending_to_type('comm')
