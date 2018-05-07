@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 from datetime import datetime
 from general.models import AMBaseModel
 from django.db import models
-from general.models import Person
+from general.models import Person, Organization
 
 from django.utils.encoding import python_2_unicode_compatible
 
@@ -88,10 +88,19 @@ class FinanceEntity(AMBaseModel):
         blank=True,
         help_text="Occupation, if person."
     )
-    linked_person = models.ForeignKey(Person,
+    canonical_person = models.ForeignKey(Person,
                                       related_name="finance_entities",
                                       null=True,
                                       blank=True)
+
+    canonical_organization = models.ForeignKey(Organization,
+                                      related_name="finance_entities",
+                                      null=True,
+                                      blank=True)
+
+    related_people = models.ManyToManyField(Person,
+                                            related_name="finance_entities_all",
+                                            blank=True)
 
     def __str__(self):
         return "{}".format(self.name)
