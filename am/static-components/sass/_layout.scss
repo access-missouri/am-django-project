@@ -76,7 +76,7 @@ div.subcluster{
     margin-top: 1em;
   }
 
-  p {
+  p.exp {
     padding-left: 5px;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -141,6 +141,12 @@ ul.block-list{
 
     p.type-legislative{
       color: $am-crimson;
+    }
+    p.type-finance{
+      color: $am-green;
+    }
+    p.type-people{
+      color: $am-blue;
     }
 
     p.more {

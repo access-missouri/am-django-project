@@ -72,10 +72,20 @@
         {% if personal_spending %}
         <div class="subcluster">
             <h3>Top Personal Spending</h3>
-            <p>Searches across multiple records linked to this individual indicate they have spent around ${{personal_spending_total|floatformat:'2'|intcomma}} on political causes. Here's where our records indicate that money tends to go.</p>
+            <p class="exp">Searches across multiple records linked to this individual indicate they have spent around ${{personal_spending_total|floatformat:'2'|intcomma}} on political causes. Here's where our records indicate that money tends to go.</p>
             {% include 'finance/components/top_spending_targets.html' with top_targets=personal_spending_by_entity %}
         </div>
         {% endif %}
+
+        <div class="subcluster">
+            <h3>Linked Finance Entities</h3>
+            <p class="exp">Whether accidentally or intentionally, people often refer to themselves or related organizations in several different ways across financial disclosure forms. Here's a list of all financial bodies we've linked to this person.</p>
+            <ul class="block-list">
+                {% for entity in person.finance_entities_all.all %}
+                    {% include 'finance/components/block_list_finance_entity.html' with entity=entity%}
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     {% endif %}
 </div>

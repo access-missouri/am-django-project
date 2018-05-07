@@ -227,7 +227,7 @@ div.subcluster h3 {
   padding-left: 5px;
   margin-top: 1em;
 }
-div.subcluster p {
+div.subcluster p.exp {
   padding-left: 5px;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -279,6 +279,12 @@ ul.block-list li.block-list-item p.type {
 }
 ul.block-list li.block-list-item p.type-legislative {
   color: #c51236;
+}
+ul.block-list li.block-list-item p.type-finance {
+  color: #48661f;
+}
+ul.block-list li.block-list-item p.type-people {
+  color: #2b4162;
 }
 ul.block-list li.block-list-item p.more {
   margin-top: 0.5em;
