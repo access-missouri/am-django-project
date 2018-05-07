@@ -10,6 +10,9 @@ from legislative.models import Bill, PersonVote
 from finance.models import FinanceTransaction
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+from finance.utils import get_personal_spending
+
+from django.db.models import Sum
 
 
 def handler404(request):
@@ -71,6 +74,14 @@ class PersonDetailView(DetailView):
         if self.kwargs['id']:
             return Person.objects.get(id=self.kwargs['id'])
         return super(PersonDetailView, self).get_objects()
+
+    def get_context_data(self, **kwargs):
+        context = super(PersonDetailView, self).get_context_data(**kwargs)
+        context['personal_spending'] = get_personal_spending(self.get_object())
+        context['personal_spending_total'] = context['personal_spending'].aggregate(Sum('amount'))['amount__sum']
+        context['personal_spending_by_entity'] = context['personal_spending'].values('t_to__id', 't_to__name').annotate(amount=Sum('amount')).order_by('-amount')[:10]
+        return context
+
 
 
 class PersonVotesListView(SelectRelatedMixin, DetailView):

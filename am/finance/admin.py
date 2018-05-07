@@ -9,13 +9,22 @@ from finance.models import FinanceEntity, FinanceTransaction
 
 @admin.register(FinanceEntity)
 class FinanceEntityAdmin(admin.ModelAdmin):
+    filter_horizontal = ['related_people',]
+    search_fields = ['name', 'mec_id', 'employer', 'address_first', 'address_second', 'address_city']
     fieldsets = ((None, {
         'fields': (
             ('name', 'type',),
             'mec_id',
-            'linked_person',
         )
     }),
+                 ("Links", {
+                     'fields': (
+                         'canonical_person',
+                         'canonical_organization',
+                         'related_people',
+                     ),
+                     'classes': ('collapse',)
+                 }),
                  ("More Info", {
                      'fields': (
                          'first_name',

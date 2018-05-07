@@ -227,6 +227,14 @@ div.subcluster h3 {
   padding-left: 5px;
   margin-top: 1em;
 }
+div.subcluster p {
+  padding-left: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.5em;
+  font-family: "equity_text_a_tabregular", Georgia;
+}
 
 p.cont {
   padding-left: 5px;

@@ -2,6 +2,7 @@
 
 {% block title %}{{person.get_full_name}}{% endblock %}
 {% load react %}
+{% load humanize %}
 {% block body %}
 <div class="breadcrumb-holder bch-people"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/people/">People</a></li><li><a href="#">{{person.get_full_name}}</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="person-details container">
@@ -61,6 +62,20 @@
             {% for membership in person.body_memberships.all %}
                 {% include "legislative/components/body_membership_pivot_person.html" with membership=membership %}
             {% endfor %}
+    </div>
+    {% endif %}
+
+
+    {% if person.finance_entities_all.all %}
+    <div class="full-cluster">
+        <h2>Finance</h2>
+        {% if personal_spending %}
+        <div class="subcluster">
+            <h3>Top Personal Spending</h3>
+            <p>Searches across multiple records linked to this individual indicate they have spent around ${{personal_spending_total|floatformat:'2'|intcomma}} on political causes. Here's where our records indicate that money tends to go.</p>
+            {% include 'finance/components/top_spending_targets.html' with top_targets=personal_spending_by_entity %}
+        </div>
+        {% endif %}
     </div>
     {% endif %}
 </div>

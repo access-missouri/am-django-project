@@ -1,0 +1,15 @@
+{% load humanize %}
+<table class="table listing">
+    <thead>
+    <td>Recipient</td>
+    <td>Total Spent</td>
+    </thead>
+    <tbody>
+    {% for target in top_targets %}
+    <tr>
+        <td><a href="/finance/entities/{{target.t_to__id}}" class="link-finance">{{target.t_to__name}}</a></td>
+        <td>${{target.amount|floatformat:2|intcomma}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
