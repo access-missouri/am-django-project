@@ -81,7 +81,7 @@
             <h3>Linked Finance Entities</h3>
             <p class="exp">Whether accidentally or intentionally, people often refer to themselves or related organizations in several different ways across financial disclosure forms. Here's a list of all financial bodies we've linked to this person.</p>
             <ul class="block-list">
-                {% for entity in person.finance_entities_all.all %}
+                {% for entity in person.finance_entities.all %}
                     {% include 'finance/components/block_list_finance_entity.html' with entity=entity%}
                 {% endfor %}
             </ul>
