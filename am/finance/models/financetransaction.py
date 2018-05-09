@@ -26,7 +26,7 @@ class FinanceTransaction(AMBaseModel):
         ('M', 'Monetary'),
         ('I', 'In-Kind'),
     )
-    type = models.CharField(
+    e_type = models.CharField(
         max_length=1,
         choices=TRANSACTION_TYPE_CHOICES
     )

@@ -1,6 +1,6 @@
 {% load humanize %}
 <li class="block-list-item bill-sponsorship">
-    <p class="type type-finance">{% if entity.type == 'person' %}Person{% elif entity.type == 'corp' %}Company{% else %}Committee{% endif %}</p>
+    <p class="type type-finance">{% if entity.e_type == 'person' %}Person{% elif entity.e_type == 'corp' %}Company{% else %}Committee{% endif %}</p>
     <p class="primary-indicator entity-name"><a href="{{entity.get_absolute_url}}">{{entity.name}}</a></p>
     <p class="secondary-indicator">Total Spending: ${{entity.get_total_spent|floatformat:'2'|intcomma}}</p>
     <p class="secondary-indicator">Total Income: ${{entity.get_total_income|floatformat:'2'|intcomma}}</p>

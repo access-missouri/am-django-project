@@ -32,7 +32,7 @@ class FinanceEntity(AMBaseModel):
         ('comm', 'Committee'),
         ('person', 'Person'),
     )
-    type = models.CharField(
+    e_type = models.CharField(
         max_length=8,
         choices=ENTITY_TYPE_CHOICES,
         null=False,
@@ -115,7 +115,7 @@ class FinanceEntity(AMBaseModel):
 
     def get_total_income_from_type(self, type):
         sum = self.income.filter(
-            t_from__type=type
+            t_from__e_type=type
         ).aggregate(models.Sum('amount'))['amount__sum']
         return sum if sum else 0
 
@@ -130,7 +130,7 @@ class FinanceEntity(AMBaseModel):
 
     def get_total_spending_to_type(self, type):
         sum = self.spending.filter(
-            t_to__type=type
+            t_to__e_type=type
         ).aggregate(models.Sum('amount'))['amount__sum']
         return sum if sum else 0
 

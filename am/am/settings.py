@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django_react_templatetags',
     'storages',
     'rest_framework',
+    'graphene_django',
     'markdownify',
     'select2',
     'senate_scraper',
@@ -172,3 +173,8 @@ AWS_QUERYSTRING_AUTH = False
 
 # React Template Tags
 # REACT_COMPONENT_PREFIX = 'amUI.'
+
+# Graphene
+GRAPHENE = {
+    'SCHEMA': 'schema.schema'
+}

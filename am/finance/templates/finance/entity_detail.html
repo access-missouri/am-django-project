@@ -3,16 +3,16 @@
 {% block title %}{{object.name}}{% endblock %}
 {% load react %}
 {% block body %}
-<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% if object.type == "comm" %} <li><a href="/finance/committees">Committees</a></li>{% endif %}{% if object.type == "corp" %} <li><a href="/finance/companies">Companies</a></li>{% endif %}{% if object.type == "person" %} <li><a href="/finance/people">People</a></li>{% endif %}{% react_render component="AMQuickSearch" %}</ul></div>
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% if object.e_type == "comm" %} <li><a href="/finance/committees">Committees</a></li>{% endif %}{% if object.e_type == "corp" %} <li><a href="/finance/companies">Companies</a></li>{% endif %}{% if object.e_type == "person" %} <li><a href="/finance/people">People</a></li>{% endif %}{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="finance-details container">
     <h1>{{object.name}}</h1>
-    {% if object.type == "comm" %}
+    {% if object.e_type == "comm" %}
     <p class="finance-sub">Political Committee</p>
     {% endif %}
-    {% if object.type == "person" %}
+    {% if object.e_type == "person" %}
     <p class="finance-sub">Individual Contributor</p>
     {% endif %}
-    {% if object.type == "corp" %}
+    {% if object.e_type == "corp" %}
     <p class="finance-sub">Company or Corporate Contributor</p>
     {% endif %}
 
