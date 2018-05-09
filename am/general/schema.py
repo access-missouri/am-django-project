@@ -1,11 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from graphene import relay, ObjectType
+from graphene import relay, ObjectType, String
 from graphene_django.types import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from general.models import Person, Organization
 
 class PersonNode(DjangoObjectType):
+    absolute_url = String()
+    full_name = String()
+    admin_url = String()
+
+    def resolve_absolute_url(instance, info, **kwargs):
+        return instance.get_absolute_url()
+
+    def resolve_full_name(instance, info, **kwargs):
+        return instance.get_full_name()
+
+    def resolve_admin_url(instance, info, **kwargs):
+        return instance.get_admin_url()
+
     class Meta:
         model = Person
         filter_fields = {
@@ -19,6 +32,7 @@ class PersonNode(DjangoObjectType):
         interfaces = (relay.Node, )
 
 class OrganizationNode(DjangoObjectType):
+
     class Meta:
         model = Organization
         filter_fields = {

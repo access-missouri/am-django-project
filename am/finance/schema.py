@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from graphene import relay, ObjectType
+from graphene import relay, ObjectType, String
 from graphene_django.types import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from finance.models import FinanceEntity, FinanceTransaction
 
+
 class FinanceEntityNode(DjangoObjectType):
+    absolute_url = String()
+
+    def resolve_absolute_url(instance, info, **kwargs):
+        return instance.get_absolute_url()
+
     class Meta:
         model = FinanceEntity
         filter_fields = {
@@ -14,6 +20,11 @@ class FinanceEntityNode(DjangoObjectType):
         interfaces = (relay.Node, )
 
 class FinanceTransactionNode(DjangoObjectType):
+    absolute_url = String()
+
+    def resolve_absolute_url(instance, info, **kwargs):
+        return instance.get_absolute_url()
+
     class Meta:
         model = FinanceTransaction
         filter_fields = {
