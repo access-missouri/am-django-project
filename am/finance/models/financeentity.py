@@ -148,9 +148,9 @@ class FinanceEntity(AMBaseModel):
 
     def get_absolute_url(self):
         pl_type = "committees"
-        if self.type == "corp":
+        if self.e_type == "corp":
             pl_type = "companies"
-        elif self.type == "person":
+        elif self.e_type == "person":
             pl_type = "people"
         return "/finance/{}/{}".format(pl_type, self.id)
 
