@@ -105,6 +105,14 @@ class FinanceEntity(AMBaseModel):
     def __str__(self):
         return "{}".format(self.name)
 
+    def get_top_spending_targets(self):
+        top_targets = self.spending.values('t_to__name','t_to__id', 't_to__e_type').annotate(amount=models.Sum('amount')).order_by('-amount')[:5]
+        return top_targets
+
+    def get_top_income_sources(self):
+        top_donors = self.income.values('t_from__name','t_from__id', 't_from__e_type').annotate(amount=models.Sum('amount')).order_by('-amount')[:5]
+        return top_donors
+
     def get_total_spent(self):
         sum = self.spending.aggregate(models.Sum('amount'))['amount__sum']
         return sum if sum else 0

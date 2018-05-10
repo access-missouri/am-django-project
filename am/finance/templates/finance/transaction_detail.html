@@ -34,7 +34,23 @@
         <p>State laws require that political organizations report their donations and spending to the Missouri Ethics Commission anywhere between one and five times each year, depending on the kind of organization and how much money they raise. We compile these reports and other public records to create profiles for each donor and political organization.</p>
     </div>
 
-
+    {% if object.t_from.get_top_income_sources or object.t_to.get_top_spending_targets %}
+    <div class="follow-money full-cluster">
+        <h2>Follow the Finances</h2>
+        {% if object.t_from.get_top_income_sources %}
+        <div class="subcluster">
+            <h3>{{object.t_from.name}}'s Top Funding Sources</h3>
+            {% include "finance/components/top_income_sources.html" with top_sources=object.t_from.get_top_income_sources %}
+        </div>
+        {% endif %}
+        {% if object.t_to.get_top_spending_targets %}
+        <div class="subcluster">
+            <h3>{{object.t_to.name}}'s Top Spending Targets</h3>
+            {% include "finance/components/top_spending_targets.html" with top_targets=object.t_to.get_top_spending_targets %}
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
 
 </div>
 {% endblock %}

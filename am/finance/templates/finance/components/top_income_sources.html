@@ -1,0 +1,15 @@
+{% load humanize %}
+<table class="table listing">
+    <thead>
+    <td>Source</td>
+    <td>Total Received</td>
+    </thead>
+    <tbody>
+    {% for source in top_sources %}
+    <tr>
+        <td><a href="/finance/entities/{{source.t_from__id}}" class="link-finance">{{source.t_from__name}}</a></td>
+        <td>${{source.amount|floatformat:2|intcomma}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
