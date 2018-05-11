@@ -175,7 +175,8 @@ class MecLink(AMBaseModel):
         unique=True
     )
     entity = models.ForeignKey(
-        FinanceEntity
+        FinanceEntity,
+        related_name="mec_links"
     )
 
     def __str__(self):
