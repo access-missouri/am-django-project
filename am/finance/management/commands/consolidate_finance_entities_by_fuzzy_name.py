@@ -19,9 +19,11 @@ def merge_entity(entity_from, entity_into):
         entity_from.related_people.remove(person)
 
     for transaction in entity_from.income.all():
+        tqdm.write("Moving income transaction {}.".format(transaction.id))
         transaction.t_to = entity_into
         transaction.save()
     for transaction in entity_from.spending.all():
+        tqdm.write("Moving spending transaction {}.".format(transaction.id))
         transaction.t_from = entity_into
         transaction.save()
 
@@ -74,8 +76,8 @@ class Command(BaseCommand):
         entities_merged = 0
 
         for entity_outer in tqdm(
-                FinanceEntity.objects.all()[400:10000],
-                total=FinanceEntity.objects.all()[400:10000].count()):
+                FinanceEntity.objects.all()[8000:11000],
+                total=FinanceEntity.objects.all()[8000:11000].count()):
 
             # First, we have to make sure we haven't already removed this entity
             # in one of our previous iterations.
@@ -97,7 +99,9 @@ class Command(BaseCommand):
                 if entity_matched == entity_outer:
                     continue
                 if fuzz.ratio(entity_outer.name, entity_matched.name) >= 97:
-                    tqdm.write("Matched {} to {}.".format(entity_outer, entity_matched))
+                    tqdm.write("Matched {} to {}. This is merge {}.".format(entity_outer,
+                                                                            entity_matched,
+                                                                            entities_merged))
                     merge_entity(entity_from=entity_matched, entity_into=entity_outer)
                     entities_merged += 1
 
