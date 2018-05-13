@@ -8,7 +8,6 @@ bootstrap:
 	python am/manage.py runserver
 
 test:
-	flake8 am
 	coverage run am/manage.py test senate_scraper
 	coverage run am/manage.py test house_scraper
 	coverage report -m

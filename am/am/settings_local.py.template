@@ -3,6 +3,7 @@
 """
 Local development settings that override settings.py.
 """
+from os import getenv
 
 DATABASES = {
     'default': {
@@ -14,3 +15,7 @@ DATABASES = {
         'PORT': '5432',
     },
 }
+
+DEBUG = True
+if getenv("debug_prevent"):
+    DEBUG = False
