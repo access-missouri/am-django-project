@@ -13,7 +13,7 @@ def get_all_spending(person):
 def get_personal_spending(person):
     return FinanceTransaction.objects.filter(
         t_from__canonical_person=person,
-        t_from__type='person',
+        t_from__e_type='person',
     )
 
 def get_all_income(person):
@@ -24,5 +24,5 @@ def get_all_income(person):
 def get_personal_income(person):
     return FinanceTransaction.objects.filter(
         t_to__canonical_person=person,
-        t_to__type='person',
+        t_to__e_type='person',
     )
