@@ -6,7 +6,7 @@ class EntityAdvSearchResult extends React.Component {
 
     render() {
         return (<li>
-            <h2><a class="link-finance" href={`/finance/entities/${this.props.person_id}`}>{this.props.name}</a></h2>
+            <h2><a class="link-finance" href={`/finance/entities/${this.props.entity_id}`}>{this.props.name}</a></h2>
             {/*<p class="bill-description">{this.props.bill_title}</p>*/}
             {/*<p class="recent-action">{this.props.} recent actions.</p>*/}
         </li>);

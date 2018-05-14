@@ -1,6 +1,10 @@
 {% extends 'sitewide/base.html' %}
 
 {% block title %}{{object.name}}{% endblock %}
+
+{% block metablock %}
+<link rel="canonical" href="https://www.accessmo.org{{object.get_absolute_url}}">
+{% endblock %}
 {% load react %}
 {% block body %}
 <div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% if object.e_type == "comm" %} <li><a href="/finance/committees">Committees</a></li>{% endif %}{% if object.e_type == "corp" %} <li><a href="/finance/companies">Companies</a></li>{% endif %}{% if object.e_type == "person" %} <li><a href="/finance/people">People</a></li>{% endif %}{% react_render component="AMQuickSearch" %}</ul></div>
