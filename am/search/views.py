@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 from legislative.models import Bill
 from general.models import Person
+from finance.models import FinanceEntity
 from search_views.filters import BaseFilter
 from django.views.generic import TemplateView
-from .forms import SearchBillForm
 
 from django.shortcuts import render
 
@@ -21,7 +21,12 @@ class BillSearchListView(TemplateView):
     model = Bill
     template_name = "search/bill_search_list.html"
 
+
 class PersonSearchListView(TemplateView):
     model = Person
     template_name = "search/person_search_list.html"
 
+
+class FinanceSearchListView(TemplateView):
+    model = FinanceEntity
+    template_name = "search/finance_entity_search_list.html"

@@ -1,0 +1,27 @@
+{% extends 'sitewide/base.html' %}
+
+{% load static %}
+{% load react %}
+
+{% block metablock %}
+
+{{ form.media }}
+{% endblock %}
+
+{% block title %}Search for Finance Entities{% endblock %}
+
+{% block body %}
+<div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
+<div class="person-details container people-search">
+    <h1>Search for Finance Entities</h1>
+
+    {% react_render component="FinanceAdvancedSearch" %}
+
+
+</div>
+{% endblock %}
+
+{% block scriptyfoot %}
+<script src="{% static 'react_finance_advanced_search.js' %}"></script>
+
+{% endblock %}

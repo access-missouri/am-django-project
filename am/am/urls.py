@@ -15,7 +15,7 @@ from django.conf import settings
 
 from graphene_django.views import GraphQLView
 
-from search.views import BillSearchListView, PersonSearchListView
+from search.views import BillSearchListView, PersonSearchListView, FinanceSearchListView
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
@@ -32,6 +32,7 @@ urlpatterns = [
                   url(r'^people/(?P<id>[\w-]+)/votes/$', PersonVotesListView.as_view(), name='personvotes'),
                   url(r'^search/bills/', BillSearchListView.as_view(), name='bill-search'),
                   url(r'^search/people/', PersonSearchListView.as_view(), name='person-search'),
+                  url(r'^search/finance/', FinanceSearchListView.as_view(), name='finance-search'),
                   url(r'^api/', include('api.urls', namespace='api')),
                   url(r'^legislative/', include('legislative.urls', namespace='legislative')),
                   url(r'^finance/', include('finance.urls', namespace='finance')),
