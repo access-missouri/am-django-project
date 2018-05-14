@@ -1302,6 +1302,9 @@ div.quick-search-mechanics div.search-results div.result h3.type-bill {
 div.quick-search-mechanics div.search-results div.result h3.type-person {
   color: #3b5985;
 }
+div.quick-search-mechanics div.search-results div.result h3.type-finance {
+  color: #48661f;
+}
 div.quick-search-mechanics div.search-results div.result h3.label {
   font-size: 1.4em;
 }
