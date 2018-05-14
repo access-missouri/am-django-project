@@ -5,6 +5,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'bills', views.BillAPIViewset)
 router.register(r'people', views.PersonAPIViewset)
+router.register(r'financeentities', views.FinanceEntityAPIViewset)
 
 
 
@@ -13,6 +14,7 @@ router.register(r'people', views.PersonAPIViewset)
 urlpatterns = [
     url(r'^bills/$', views.BillSearchAPIView.as_view()),
     url(r'^people/$', views.PersonSearchAPIView.as_view()),
+    url(r'^financeentities/$', views.FinanceEntitySearchAPIView.as_view()),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
