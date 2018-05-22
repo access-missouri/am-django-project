@@ -13,7 +13,7 @@ class FinanceEntityAdmin(admin.ModelAdmin):
     search_fields = ['name', 'mec_id', 'employer', 'address_first', 'address_second', 'address_city']
     fieldsets = ((None, {
         'fields': (
-            ('name', 'type',),
+            ('name', 'e_type',),
             'mec_id',
         )
     }),
