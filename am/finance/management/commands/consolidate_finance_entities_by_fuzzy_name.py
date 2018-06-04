@@ -75,9 +75,11 @@ class Command(BaseCommand):
 
         entities_merged = 0
 
+        query = FinanceEntity.objects.all()[10000:]
+
         for entity_outer in tqdm(
-                FinanceEntity.objects.all()[8000:11000],
-                total=FinanceEntity.objects.all()[8000:11000].count()):
+                query,
+                total=query.count()):
 
             # First, we have to make sure we haven't already removed this entity
             # in one of our previous iterations.
@@ -98,7 +100,7 @@ class Command(BaseCommand):
             for entity_matched in entity_match_list:
                 if entity_matched == entity_outer:
                     continue
-                if fuzz.ratio(entity_outer.name, entity_matched.name) >= 97:
+                if fuzz.ratio(entity_outer.name.upper(), entity_matched.name.upper()) >= 97:
                     tqdm.write("Matched {} to {}. This is merge {}.".format(entity_outer,
                                                                             entity_matched,
                                                                             entities_merged))
