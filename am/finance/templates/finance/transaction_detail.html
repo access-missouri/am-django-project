@@ -2,6 +2,7 @@
 
 {% block title %}{{object}}{% endblock %}
 {% load react %}
+{% load humanize %}
 {% block body %}
 <div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="finance-details container">
@@ -15,13 +16,13 @@
         </div>
         <div class="trans-block trans-arr">
             <p class="trans-amount trans-amount-top">
-                ${{object.amount|floatformat:2}}
+                ${{object.amount|floatformat:2|intcomma}}
             </p>
             <div class="arrow-svg svg">
                 {% include "graphics/dot_arrow_r_svg.html" %}
             </div>
             <p class="trans-amount trans-amount-bottom">
-                ${{object.amount|floatformat:2}}
+                ${{object.amount|floatformat:2|intcomma}}
             </p>
         </div>
         <div class="trans-block trans-to">

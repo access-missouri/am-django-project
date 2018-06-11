@@ -2,7 +2,7 @@
 
 {% block title %}{{object.name}} - Spending{% endblock %}
 {% load react %}
-
+{% load humanize %}
 {% block body %}
 <div class="breadcrumb-holder bch-finance"><ul class="breadcrumbs"><li><a href="/">Home</a></li><li><a href="/finance/">Finance</a></li>{% if object.e_type == "comm" %} <li><a href="/finance/committees">Committees</a></li>{% endif %}{% if object.e_type == "corp" %} <li><a href="/finance/companies">Companies</a></li>{% endif %}{% if object.e_type == "person" %} <li><a href="/finance/people">People</a></li>{% endif %}{% react_render component="AMQuickSearch" %}</ul></div>
 <div class="finance-details container">
@@ -37,7 +37,7 @@
             <tr>
                 <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
                 <td><a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a></td>
-                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2|intcomma}}</a></td>
             </tr>
             {% endfor %}
             </tbody>

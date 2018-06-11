@@ -1,7 +1,7 @@
 {% extends 'sitewide/base.html' %}
 
 {% block title %}{{object.name}}{% endblock %}
-
+{% load humanize %}
 {% block metablock %}
 <link rel="canonical" href="https://www.accessmo.org{{object.get_absolute_url}}">
 {% endblock %}
@@ -42,7 +42,7 @@
                 {% for donor in top_donors %}
                     <tr>
                         <td><a href="/finance/entities/{{donor.t_from__id}}" class="link-finance">{{donor.t_from__name}}</a></td>
-                        <td>${{donor.amount|floatformat:2}}</td>
+                        <td>${{donor.amount|floatformat:2|intcomma}}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -60,15 +60,15 @@
                     <tbody>
                     <tr>
                         <td>Corporate Spending</td>
-                        <td>${{object.get_total_income_from_corp|default_if_none:"0"|floatformat:2}}</td>
+                        <td>${{object.get_total_income_from_corp|default_if_none:"0"|floatformat:2|intcomma}}</td>
                     </tr>
                     <tr>
                         <td>Political Committees</td>
-                        <td>${{object.get_total_income_from_comm|default_if_none:"0"|floatformat:2}}</td>
+                        <td>${{object.get_total_income_from_comm|default_if_none:"0"|floatformat:2|intcomma}}</td>
                     </tr>
                     <tr>
                         <td>Private Individuals</td>
-                        <td>${{object.get_total_income_from_people|default_if_none:"0"|floatformat:2}}</td>
+                        <td>${{object.get_total_income_from_people|default_if_none:"0"|floatformat:2|intcomma}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -90,7 +90,7 @@
             <tr>
                 <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
                 <td><a class="link-finance" href="{{transaction.t_from.get_absolute_url}}">{{transaction.t_from.name}}</a></td>
-                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2|intcomma}}</a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -116,7 +116,7 @@
                 {% for target in top_targets %}
                     <tr>
                         <td><a href="/finance/entities/{{target.t_to__id}}" class="link-finance">{{target.t_to__name}}</a></td>
-                        <td>${{target.amount|floatformat:2}}</td>
+                        <td>${{target.amount|floatformat:2|intcomma}}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -129,15 +129,15 @@
             <tbody>
             <tr>
                 <td>Corporations</td>
-                <td>${{object.get_total_spending_to_corp|default_if_none:"0"|floatformat:2}}</td>
+                <td>${{object.get_total_spending_to_corp|default_if_none:"0"|floatformat:2|intcomma}}</td>
             </tr>
             <tr>
                 <td>Political Committees</td>
-                <td>${{object.get_total_spending_to_comm|floatformat:2}}</td>
+                <td>${{object.get_total_spending_to_comm|floatformat:2|intcomma}}</td>
             </tr>
             <tr>
                 <td>Private Individuals</td>
-                <td>${{object.get_total_spending_to_people|default_if_none:"0"|floatformat:2}}</td>
+                <td>${{object.get_total_spending_to_people|default_if_none:"0"|floatformat:2|intcomma}}</td>
             </tr>
             </tbody>
         </table>
@@ -158,7 +158,7 @@
             <tr>
                 <th scope="row"><a class="link-finance" href="{{transaction.get_absolute_url}}">{{transaction.date}}</a></th>
                 <td><a class="link-finance" href="{{transaction.t_to.get_absolute_url}}">{{transaction.t_to.name}}</a></td>
-                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2}}</a></td>
+                <td><a class="link-finance" href="{{transaction.get_absolute_url}}">${{transaction.amount|floatformat:2|intcomma}}</a></td>
             </tr>
             {% endfor %}
             </tbody>
