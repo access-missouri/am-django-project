@@ -19,7 +19,8 @@
 
     {% if bill.actions.all %}
     <div class="recent-actions full-cluster">
-        <h2>Recent Actions</h2>
+        <h2>Bill Actions Over Time</h2>
+        {% react_render component="amUI.AMBillActionCalendar" prop_actions=bill.get_dict_array_actions %}
         <table class="table listing">
             <thead class="">
             <tr>

@@ -1,0 +1,36 @@
+div.calendar-heatmap{
+  margin-top: 2em;
+  margin-bottom: 1em;
+
+  @include clearfix;
+
+  .react-calendar-heatmap{
+    text {
+      font-family: $advocate-reg;
+      font-size: 10px;
+      color: $gray-light;
+    }
+    rect.color-empty {
+      fill: $gray-lighter;
+    }
+  }
+
+  div.calendar-heatmap-month{
+    h3{
+      font-family: $advocate-reg;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+    width: 100px;
+    float: left;
+    margin-bottom: 1em;
+  }
+}
+
+div.calendar-heatmap-legislative {
+  .react-calendar-heatmap {
+    rect.color-filled {
+      fill: lighten($am-crimson, 10%);
+    }
+  }
+}

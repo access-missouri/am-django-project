@@ -140,7 +140,7 @@ class Bill(AMBaseModel):
         return self.identifier
 
     def get_dict_array_actions(self):
-        return [i.serialize_to_dict for i in self.actions.all()]
+        return [i for i in self.actions.all()]
 
     def __str__(self):
         return '{} in {}'.format(self.identifier, self.legislative_session)

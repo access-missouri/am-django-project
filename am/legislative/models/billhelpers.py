@@ -13,6 +13,8 @@ from general.models import (
 from .bill import Bill
 from legislative.models import BodyMembership
 from django.utils.encoding import python_2_unicode_compatible
+from django_react_templatetags.mixins import RepresentationMixin
+
 
 
 @python_2_unicode_compatible
@@ -62,7 +64,7 @@ class BillAbstract(AMBaseModel):
 
 
 @python_2_unicode_compatible
-class BillAction(AMBaseModel):
+class BillAction(RepresentationMixin, AMBaseModel):
     """
     An individual action on a bill.
     """
@@ -88,6 +90,12 @@ class BillAction(AMBaseModel):
     order = models.PositiveIntegerField(
         help_text="Order of the action in the Bill's activity history.",
     )
+
+    def to_react_representation(self, context={}):
+        return {
+            'description': self.description,
+            'date': self.date.strftime('%Y-%m-%d')
+        }
 
 
     def serialize_to_dict(self):

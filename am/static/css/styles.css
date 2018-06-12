@@ -1313,3 +1313,32 @@ div.quick-search-mechanics div.search-results div.result p.description {
   color: #cbcbd8;
   font-family: "equity_text_a_tabregular", Georgia;
 }
+
+div.calendar-heatmap {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  overflow: hidden;
+  *zoom: 1;
+}
+div.calendar-heatmap .react-calendar-heatmap text {
+  font-family: "advocate_c43regular";
+  font-size: 10px;
+  color: #d3d6d9;
+}
+div.calendar-heatmap .react-calendar-heatmap rect.color-empty {
+  fill: #eceeef;
+}
+div.calendar-heatmap div.calendar-heatmap-month {
+  width: 100px;
+  float: left;
+  margin-bottom: 1em;
+}
+div.calendar-heatmap div.calendar-heatmap-month h3 {
+  font-family: "advocate_c43regular";
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+div.calendar-heatmap-legislative .react-calendar-heatmap rect.color-filled {
+  fill: #eb1f48;
+}
