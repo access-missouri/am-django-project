@@ -89,6 +89,15 @@ class BillAction(AMBaseModel):
         help_text="Order of the action in the Bill's activity history.",
     )
 
+
+    def serialize_to_dict(self):
+        d = {}
+        d['bill_id'] = self.bill.id
+        d['description'] = self.description
+        d['date'] = self.strftime('%Y-%m-%d')
+        return d
+
+
     class Meta:
         """
         Model options.
