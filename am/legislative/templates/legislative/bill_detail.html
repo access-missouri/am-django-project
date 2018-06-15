@@ -21,20 +21,21 @@
     <div class="recent-actions full-cluster">
         <h2>Bill Actions Over Time</h2>
         {% react_render component="amUI.AMBillActionCalendar" class="subcluster" prop_actions=bill.get_dict_array_actions %}
-        <table class="table listing">
+        {% react_render component="amUI.AMBillActionSearchFilter" prop_bill_id=bill.id %}
+        <table class="table listing" id="actions-list-{{bill.id}}">
             <thead class="">
-            <tr>
-                <td>Date</td>
+            <tr class="am-notouch">
+                <td class="bill-action-date">Date</td>
                 <td>Action</td>
-                <td>Chamber</td>
+                <td class="bill-chamber">Chamber</td>
             </tr>
             </thead>
             <tbody>
             {% for action in bill.actions.all %}
             <tr>
-                <th scope="row">{{action.date}}</th>
+                <th scope="row" class="bill-action-date">{{action.date}}</th>
                 <td>{{action.description}}</td>
-                <td>{{action.chamber}}</td>
+                <td class="bill-chamber">{{action.chamber}}</td>
             </tr>
             {% endfor %}
             </tbody>

@@ -31,6 +31,17 @@ div.bill-details{
         }
       }
     }
+
+    .bill-action-date{
+      min-width: 110px;
+    }
+
+    .bill-chamber{
+      @media screen and (max-width: $small-screen-width){
+        display:none;
+      }
+    }
+
     h3 {
       font-size: 1.5rem;
       line-height: 1em;

@@ -1,0 +1,16 @@
+.am-hidden{
+  display: none;
+}
+
+div.amui-fixed-search-filter{
+  @include clearfix;
+
+  input{
+    float:right;
+    border: 1px solid #eee;
+    max-width: 100px;
+    padding: 5px;
+    text-align: right;
+    font-family: $concourse-reg;
+  }
+}

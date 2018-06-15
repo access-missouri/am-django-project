@@ -87,7 +87,7 @@ p {
 }
 
 table {
-  margin-top: 1.5em;
+  margin-top: 1em;
   font-size: 1rem;
   line-height: 1.5em;
   color: #464a4c;
@@ -480,6 +480,14 @@ div.bill-details table td a:hover {
   background-color: #fef1f4;
   border-bottom: 1px dotted #eb1f48;
   transition: background-color ease-in 0.3s;
+}
+div.bill-details table .bill-action-date {
+  min-width: 110px;
+}
+@media screen and (max-width: 600px) {
+  div.bill-details table .bill-chamber {
+    display: none;
+  }
 }
 div.bill-details table h3 {
   font-size: 1.5rem;
@@ -1341,4 +1349,21 @@ div.calendar-heatmap div.calendar-heatmap-month h3 {
 
 div.calendar-heatmap-legislative .react-calendar-heatmap rect.color-filled {
   fill: #eb1f48;
+}
+
+.am-hidden {
+  display: none;
+}
+
+div.amui-fixed-search-filter {
+  overflow: hidden;
+  *zoom: 1;
+}
+div.amui-fixed-search-filter input {
+  float: right;
+  border: 1px solid #eee;
+  max-width: 100px;
+  padding: 5px;
+  text-align: right;
+  font-family: "concourse_t2_tabregular", Helvetica, Arial;
 }
