@@ -1338,6 +1338,7 @@ div.calendar-heatmap .react-calendar-heatmap rect.color-empty {
 }
 div.calendar-heatmap div.calendar-heatmap-month {
   width: 100px;
+  height: 100px;
   float: left;
   margin-bottom: 1em;
 }
