@@ -4,6 +4,7 @@ Custom model manager for finance entities.
 """
 from django.db import models
 from search.utils import phrase_to_q_series
+from fuzzywuzzy import fuzz
 
 class EntityQuerySet(models.QuerySet):
     """
@@ -59,6 +60,12 @@ class FinanceEntityManager(models.Manager):
         :rtype: Individual FinanceEntity model. None if no match.
         """
 
+        def check_sane_name(entity, name_string):
+            if fuzz.ratio(entity.name.upper(), name_string.upper()) > 95:
+                return True
+            else:
+                return False
+
         query_set = self.get_query_set()
 
         if 'e_type' in kwargs:
@@ -73,13 +80,15 @@ class FinanceEntityManager(models.Manager):
             if qs_new_count == 1:
                 # If this is the only result, we can be reasonably confident it's right.
                 # In the future, we'll add address filtering for edge cases.
-                return query_set_new[0]
+                if check_sane_name(query_set_new[0], name_string):
+                    return query_set_new[0]
             else:
                 # If we have no results, we'll filter again, this time on prior names.
                 query_set_new = query_set.filter(phrase_to_q_series(name_string, column_name='extras__priors'))
                 qs_new_count = query_set_new.count()
                 if qs_new_count == 1:
-                    return query_set_new[0]
+                    if check_sane_name(query_set_new[0], name_string):
+                        return query_set_new[0]
                 elif qs_new_count < 1:
                     # Now, at this point, if nothing has worked, but they provided a name,
                     # it's time to assume we can't be confident.
