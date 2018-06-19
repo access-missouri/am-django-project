@@ -8,8 +8,8 @@ from datetime import datetime
 from general.models import AMBaseModel
 from django.db import models
 from general.models import Person, Organization
-
 from django.utils.encoding import python_2_unicode_compatible
+from .managers import FinanceEntityManager
 
 
 @python_2_unicode_compatible
@@ -17,6 +17,9 @@ class FinanceEntity(AMBaseModel):
     """
     A person or thing spending or taking money in Missouri politics.
     """
+
+    objects = models.Manager()
+    entities = FinanceEntityManager()
 
     mec_id = models.CharField(
         max_length=128,
