@@ -68,6 +68,12 @@ class FinanceEntityManager(models.Manager):
 
         query_set = self.get_query_set()
 
+        if 'mec_id' in kwargs:
+            query_set_new = query_set.filter(mec_id=kwargs['mec_id'])
+            qs_new_count = query_set_new.count()
+            if qs_new_count == 1:
+                return query_set_new[0]
+
         if 'e_type' in kwargs:
             query_set = query_set.filter(e_type = kwargs['e_type'])
 
