@@ -21,3 +21,5 @@ am/scrape_cache
 am/zappa_settings.json
 
 am/static/
+
+docs/_build
