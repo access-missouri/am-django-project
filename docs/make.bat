@@ -32,5 +32,9 @@ goto end
 :help
 %SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
 
+
+livehtml:
+    sphinx-autobuild -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+
 :end
 popd

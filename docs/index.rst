@@ -13,6 +13,8 @@ This is the technical documentation for Access Missouri's inner workings and mec
    :maxdepth: 2
    :caption: Contents:
 
+   apps
+
 
 
 Indices and tables
