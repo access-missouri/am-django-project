@@ -1,6 +1,7 @@
 am-django-project
 =================
 
+[![Documentation Status](https://readthedocs.org/projects/access-missouri/badge/?version=latest)](https://access-missouri.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/access-missouri/am-django-project.svg?branch=master)](https://travis-ci.org/access-missouri/am-django-project)
 [![Coverage Status](https://coveralls.io/repos/github/access-missouri/am-django-project/badge.svg?branch=master)](https://coveralls.io/github/access-missouri/am-django-project?branch=master)
 
