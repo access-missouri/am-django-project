@@ -56,6 +56,12 @@ class Person(AMBaseModel):
         help_text="Concatenated name for search purposes."
     )
 
+    flavor_text = models.CharField(
+        max_length=2000,
+        blank=True,
+        help_text="Just like on a trading card, this is the text to give someone an idea of a person's character."
+    )
+
     def get_full_name(self):
         """
         Gets a person object's generated full name.
