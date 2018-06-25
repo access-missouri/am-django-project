@@ -34,7 +34,7 @@ def replicate_all_body_memberships_into_session(source, destination):
     """
     memberships_created = 0
 
-    for membership_old in source.body_memberships:
+    for membership_old in source.body_memberships.all():
         membership_new, created = get_or_copy_body_membership_to_session(membership_old,
                                                                          destination)
         if created:
