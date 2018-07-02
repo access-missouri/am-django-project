@@ -13,4 +13,5 @@ def phrase_to_index_name_q_search(phrase):
     :return:
     """
 
+    # This logic was redundant.
     return phrase_to_q_series(phrase=phrase,column_name="index_name")
