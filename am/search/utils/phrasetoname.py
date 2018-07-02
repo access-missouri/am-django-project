@@ -5,6 +5,7 @@ Access Missouri search tools - phrase to index name Q search.
 import re
 from django.db.models import Q
 import operator
+from .phrasetoqseries import phrase_to_q_series
 
 def phrase_to_index_name_q_search(phrase):
     """
@@ -12,16 +13,4 @@ def phrase_to_index_name_q_search(phrase):
     :return:
     """
 
-    q_stack_words = []
-
-    for word in phrase.split():
-        filter_dict = {}
-        filter_dict["__".join(["index_name", "icontains"])] = word
-        q_stack_words.append(Q(**filter_dict))
-
-    q_full = q_stack_words.pop()
-
-    for q in q_stack_words:
-        q_full &= q
-
-    return q_full
+    return phrase_to_q_series(phrase=phrase,column_name="index_name")

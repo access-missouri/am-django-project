@@ -8,6 +8,8 @@ bootstrap:
 	python am/manage.py runserver
 
 test:
-	coverage run am/manage.py test senate_scraper
-	coverage run am/manage.py test house_scraper
+	coverage run am/manage.py test general
+	coverage run am/manage.py test legislative
+	coverage run am/manage.py test finance
+	coverage run am/manage.py test search
 	coverage report -m
