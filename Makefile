@@ -13,3 +13,15 @@ test:
 	coverage run am/manage.py test finance
 	coverage run am/manage.py test search
 	coverage report -m
+
+activatedb_local:
+	rm am/am/settings_local.py
+	cp am/am/settings_local.py.local am/am/settings_local.py
+
+activatedb_stage:
+	rm am/am/settings_local.py
+	cp am/am/settings_local.py.stage am/am/settings_local.py
+
+activatedb_prod:
+	rm am/am/settings_local.py
+	cp am/am/settings_local.py.prod am/am/settings_local.py

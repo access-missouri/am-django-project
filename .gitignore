@@ -8,6 +8,9 @@
 .static
 .idea
 settings_local.py
+settings_local.py.local
+settings_local.py.stage
+settings_local.py.prod
 .python-version
 
 am/static/admin
