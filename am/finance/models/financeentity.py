@@ -117,18 +117,18 @@ class FinanceEntity(AMBaseModel):
         return top_donors
 
     def get_total_spent(self):
-        sum = self.spending.aggregate(models.Sum('amount'))['amount__sum']
-        return sum if sum else 0
+        summed = self.spending.aggregate(models.Sum('amount'))['amount__sum']
+        return summed if summed else 0
 
     def get_total_income(self):
-        sum = self.income.aggregate(models.Sum('amount'))['amount__sum']
-        return sum if sum else 0
+        summed = self.income.aggregate(models.Sum('amount'))['amount__sum']
+        return summed if summed else 0
 
     def get_total_income_from_type(self, type):
-        sum = self.income.filter(
+        summed = self.income.filter(
             t_from__e_type=type
         ).aggregate(models.Sum('amount'))['amount__sum']
-        return sum if sum else 0
+        return summed if summed else 0
 
     def get_total_income_from_comm(self):
         return self.get_total_income_from_type('comm')
@@ -139,11 +139,11 @@ class FinanceEntity(AMBaseModel):
     def get_total_income_from_people(self):
         return self.get_total_income_from_type('person')
 
-    def get_total_spending_to_type(self, type):
-        sum = self.spending.filter(
-            t_to__e_type=type
+    def get_total_spending_to_type(self, e_type):
+        summed = self.spending.filter(
+            t_to__e_type=e_type
         ).aggregate(models.Sum('amount'))['amount__sum']
-        return sum if sum else 0
+        return summed if summed else 0
 
     def get_total_spending_to_comm(self):
         return self.get_total_spending_to_type('comm')

@@ -1,36 +1,36 @@
-var gulp = require('gulp'),
-	gutil = require('gulp-util'),
-	compass = require('gulp-compass'),
-	shell = require('gulp-shell'),
-	webserver = require('gulp-webserver'),
-	flatten = require('gulp-flatten'),
-	babel = require('gulp-babel')
-    uglify = require('gulp-uglify'),
-	path = require('path');
+var gulp = require("gulp"),
+	gutil = require("gulp-util"),
+	compass = require("gulp-compass"),
+	shell = require("gulp-shell"),
+	webserver = require("gulp-webserver"),
+	flatten = require("gulp-flatten"),
+	babel = require("gulp-babel"),
+    uglify = require("gulp-uglify"),
+	path = require("path");
 
-gulp.task('test', function(){
-	gutil.log('This is a test.');
+gulp.task("test", function(){
+	gutil.log("This is a test.");
 });
 
-gulp.task('sass', function(){
-	gulp.src('./static-components/sass/*.scss')
+gulp.task("sass", function(){
+	gulp.src("./static-components/sass/*.scss")
 		.pipe(compass({
-			project: path.join(__dirname, 'static-components'),
-			css: 'css',
-			sass: 'sass',
-			require: ['susy']
+			project: path.join(__dirname, "static-components"),
+			css: "css",
+			sass: "sass",
+			require: ["susy"]
 		}))
 		.pipe(flatten())
-		.pipe(gulp.dest('static/css'));
+		.pipe(gulp.dest("static/css"));
 });
 
-gulp.task('js', function(){
-	return gulp.src('./static-components/js/**/*.js')
+gulp.task("js", function(){
+	return gulp.src("./static-components/js/**/*.js")
 		.pipe(babel({
-			presets: ['es2015', 'react']
+			presets: ["es2015", "react"]
 		}))
 		// .pipe(uglify())
-	.pipe(gulp.dest('./static/js'));
+	.pipe(gulp.dest("./static/js"));
 });
 
 

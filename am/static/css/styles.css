@@ -247,10 +247,7 @@ table td.sub-item {
 
 ul.block-list li.block-list-item {
   margin-top: 1rem;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 1em 10px;
   background-color: #f7f7f9;
 }
 ul.block-list li.block-list-item p a {
@@ -698,10 +695,7 @@ div.bill-search div.search-fields {
   margin-top: 2rem;
 }
 div.bill-search div.search-fields form {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1.5rem 1rem;
   background-color: #fafafa;
   font-size: 1.2rem;
 }
@@ -803,10 +797,7 @@ div.people-search div.search-fields {
   margin-top: 2rem;
 }
 div.people-search div.search-fields form {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1.5rem 1rem;
   background-color: #fafafa;
   font-size: 1.2rem;
 }
@@ -1082,10 +1073,7 @@ ul.tag-cloud li {
   padding: 1em 5px;
 }
 ul.tag-cloud li a {
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 5px;
   margin-bottom: 5px;
   margin-right: 5px;
   background-color: #d3d6d9;
@@ -1185,10 +1173,7 @@ div.timeline {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 1.5rem;
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 1.3rem 10px;
 }
 div.timeline div.update {
   margin-bottom: 1em;
@@ -1271,10 +1256,7 @@ div.quick-search-mechanics div.search-window-controls button {
 div.quick-search-mechanics div.search-window-box {
   margin-top: 1em;
   margin-bottom: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 1em 10px;
   background-color: rgba(41, 43, 44, 0.5);
 }
 div.quick-search-mechanics div.search-window-box input {

@@ -4,7 +4,7 @@
 Import a folder (~/bills) full of bill JSON from Legiscan to the database.
 """
 from django.core.management.base import BaseCommand
-from legislative.models import Bill, LegislativeSession, BillAction, BillSponsorship, BodyMembership, BillText
+from legislative.models import Bill, LegislativeSession, BillAction, BillSponsorship, BillText
 from ls_importer.models import LSIDBill, LSIDPerson
 import json
 from datetime import datetime
@@ -36,8 +36,8 @@ class Command(BaseCommand):
             bill_history_arr = bill_json['bill']['history']
             bill_sponsors_arr = bill_json['bill']['sponsors']
             bill_text_arr = bill_json['bill']['texts']
-            bill_origin_chamber = bill_json['bill']['body']
-            bill_current_chamber = bill_json['bill']['current_body']
+            # bill_origin_chamber = bill_json['bill']['body']
+            # bill_current_chamber = bill_json['bill']['current_body']
 
             bill_session_name = bill_session_json['session_name']
             bill_session_type_code = ''
@@ -46,14 +46,14 @@ class Command(BaseCommand):
             else:
                 bill_session_type_code = 'R'
 
-            session_object, session_created = (
+            session_object, _ = (
                 LegislativeSession.objects
                     .get_or_create(
                     name=bill_session_name,
                     classification=bill_session_type_code,
                 ))
 
-            bill_object, bill_created = Bill.objects.get_or_create(
+            bill_object, _ = Bill.objects.get_or_create(
                 identifier=bill_number,
                 legislative_session=session_object,
             )

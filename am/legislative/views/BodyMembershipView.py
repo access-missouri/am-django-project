@@ -4,7 +4,7 @@ Legislative views.
 """
 from __future__ import unicode_literals
 
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView
 from legislative.models import BodyMembership
 
 class BodyMembershipView(DetailView):
@@ -39,7 +39,7 @@ class BodyMembershipBillSponsorshipsView(DetailView):
         """
         if self.kwargs['id']:
             return BodyMembership.objects.get(id=self.kwargs['id'])
-        return super(BodyMembershipView, self).get_objects()
+        return super(BodyMembershipBillSponsorshipsView, self).get_object()
 
 class BodyMembershipVotesView(DetailView):
     model = BodyMembership
@@ -52,7 +52,7 @@ class BodyMembershipVotesView(DetailView):
         """
         if self.kwargs['id']:
             return BodyMembership.objects.get(id=self.kwargs['id'])
-        return super(BodyMembershipView, self).get_object()
+        return super(BodyMembershipVotesView, self).get_object()
 
     def get_context_data(self, **kwargs):
         context = super(BodyMembershipVotesView, self).get_context_data(**kwargs)
