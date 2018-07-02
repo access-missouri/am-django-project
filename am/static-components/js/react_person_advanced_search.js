@@ -85,10 +85,10 @@ class PersonAdvancedSearch extends React.Component {
 
     parseQuery(queryString) {
         let query = {};
-        let pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+        let pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
         for (let i = 0; i < pairs.length; i++) {
-            let pair = pairs[i].split('=');
-            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+            let pair = pairs[i].split("=");
+            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] ||"");
         }
         return query;
     }
@@ -103,7 +103,7 @@ class PersonAdvancedSearch extends React.Component {
         if (assignArr){
             return `?${assignArr.join('&')}`;
         }
-        return '';
+        return "";
     }
 
 
@@ -250,7 +250,7 @@ class PersonAdvancedSearch extends React.Component {
                 }
 
             </div>
-        )
+        );
     }
 }
 

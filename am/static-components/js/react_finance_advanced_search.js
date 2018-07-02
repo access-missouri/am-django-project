@@ -39,12 +39,12 @@ class FinanceAdvancedSearch extends React.Component {
         let componentWillSearchOnMount = false;
         let toSetState = {};
 
-        if (queryObj['page']){
-            toSetState['page'] = queryObj['page'];
+        if (queryObj["page"]){
+            toSetState["page"] = queryObj["page"];
         }
 
-        if (queryObj['name']) {
-            this.refs.p_name.value = queryObj['name'];
+        if (queryObj["name"]) {
+            this.refs.p_name.value = queryObj["name"];
             componentWillSearchOnMount = true;
         }
 
@@ -63,12 +63,12 @@ class FinanceAdvancedSearch extends React.Component {
             else {
                 let queryObj = this.parseQuery(window.location.search.substring(1));
                 let componentWillSearchOnMount = false;
-                if (queryObj['page']){
-                    toSetState['page'] = queryObj['page'];
+                if (queryObj["page"]){
+                    toSetState["page"] = queryObj["page"];
                 }
 
-                if (queryObj['name']) {
-                    this.refs.p_name.value = queryObj['name'];
+                if (queryObj["name"]) {
+                    this.refs.p_name.value = queryObj["name"];
                     componentWillSearchOnMount = true;
                 }
 
@@ -85,10 +85,10 @@ class FinanceAdvancedSearch extends React.Component {
 
     parseQuery(queryString) {
         let query = {};
-        let pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+        let pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
         for (let i = 0; i < pairs.length; i++) {
-            let pair = pairs[i].split('=');
-            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+            let pair = pairs[i].split("=");
+            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || "");
         }
         return query;
     }
@@ -101,9 +101,9 @@ class FinanceAdvancedSearch extends React.Component {
         });
 
         if (assignArr){
-            return `?${assignArr.join('&')}`;
+            return `?${assignArr.join("&")}`;
         }
-        return '';
+        return "";
     }
 
 
@@ -123,11 +123,11 @@ class FinanceAdvancedSearch extends React.Component {
 
 
         if (this.state.page){
-            searchQuery['page'] = this.state.page;
+            searchQuery["page"] = this.state.page;
         }
 
-        if (this.state.query['name']){
-            searchQuery['name_search'] = this.state.query.name;
+        if (this.state.query["name"]){
+            searchQuery["name_search"] = this.state.query.name;
         }
 
         let requestUrl = (`${this.state.origin}/api/financeentities/${this.createSearchQueryString(searchQuery)}`);
@@ -144,7 +144,7 @@ class FinanceAdvancedSearch extends React.Component {
         }).then((data) => {
 
             this.setState({
-                searchResults: data['results'],
+                searchResults: data["results"],
                 searchReturned: true
             });
             history.pushState(this.state.query,
@@ -160,7 +160,7 @@ class FinanceAdvancedSearch extends React.Component {
         let toSetQuery = {};
 
         if (this.refs.p_name.value){
-            toSetQuery['name'] = this.refs.p_name.value;
+            toSetQuery["name"] = this.refs.p_name.value;
         }
 
         this.setState({
@@ -179,7 +179,7 @@ class FinanceAdvancedSearch extends React.Component {
     resetForm(e){
         e.preventDefault();
 
-        this.refs.p_name.value = '';
+        this.refs.p_name.value = "";
 
         this.componentRefsToQueryState();
 

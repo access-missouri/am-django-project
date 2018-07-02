@@ -35,13 +35,13 @@ gulp.task("js", function(){
 
 
 
-gulp.task('build', ['js', 'sass']);
+gulp.task("build", ["js", "sass"]);
 
-gulp.task('deploy', ['build', 'upload']);
+gulp.task("deploy", ["build", "upload"]);
 
-gulp.task('watch',function(){
-	gutil.log('Gulp will say that this task has finished, but don\'t believe its dirty lies.');
-	gutil.log('Hit \^c to actually exit watch mode.');
-	gulp.watch('static-components/**/*.js',['js']);
-    gulp.watch('static-components/**/*.scss',['sass']);
+gulp.task("watch",function(){
+	gutil.log("Gulp will say that this task has finished, but don't believe its dirty lies.");
+	gutil.log("Hit \^c to actually exit watch mode.");
+	gulp.watch("static-components/**/*.js",["js"]);
+    gulp.watch("static-components/**/*.scss",["sass"]);
 });
