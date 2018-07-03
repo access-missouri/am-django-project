@@ -3,6 +3,7 @@
 <head>
     {% load static %}
     {% load react %}
+    {% load local_db_warning %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,7 @@
 
 </head>
 <body>
+{% local_db_warning %}
 <nav class="am-navbar">
     <div class="nav-container">
         <div class="nav-left">

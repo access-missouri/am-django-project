@@ -1,0 +1,19 @@
+{% if local_db %}
+    <style>
+        div.local-db-warning{
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(197, 18, 54, 0.8);
+            color: white;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 14px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <div class="local-db-warning">
+        Local Database
+    </div>
+{% endif %}
