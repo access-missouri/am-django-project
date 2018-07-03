@@ -26,3 +26,5 @@ am/zappa_settings.json
 am/static/
 
 docs/_build
+
+coverage.xml

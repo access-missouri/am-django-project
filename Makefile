@@ -13,6 +13,7 @@ test:
 	coverage run am/manage.py test finance
 	coverage run am/manage.py test search
 	coverage report -m
+	coverage xml
 
 activatedb_local:
 	rm am/am/settings_local.py

@@ -10,11 +10,13 @@ python:
 
 env:
   - DJANGO_VERSION=1.11.*
+  - CODACY_PROJECT_TOKEN=b31441a7f46b40a98b7fca4e921de479
 
 install:
  - pip install -r requirements.txt
  - pip uninstall -y Django
  - pip install -q Django==$DJANGO_VERSION
+ - pip install codacy-coverage
  - pip list
 
 before_script:
@@ -27,6 +29,7 @@ script:
 
 after_success:
   - coveralls
+  - python-codacy-coverage -r coverage.xml
 
 addons:
   postgresql: "9.4"
