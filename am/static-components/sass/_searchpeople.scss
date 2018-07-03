@@ -4,10 +4,7 @@ div.people-search{
     margin-top: 2rem;
     $form-font-size: 1.2rem;
     form {
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding: 1.5rem 1rem;
       background-color: darken($project-background-light, 2%);
 
       font-size: $form-font-size;

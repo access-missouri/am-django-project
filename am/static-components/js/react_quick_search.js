@@ -19,7 +19,7 @@ class QuickSearchResult extends React.Component {
     render() {
         return(<div className="result">
             {
-                (this.props.result.type == 'bill') &&
+                (this.props.result.type === 'bill') &&
                 (
                     <span>
                         <h3 className="type-bill">Bill</h3>
@@ -29,7 +29,7 @@ class QuickSearchResult extends React.Component {
                 )
             }
             {
-                (this.props.result.type == 'person') &&
+                (this.props.result.type === 'person') &&
                 (
                     <span>
                         <h3 className="type-person">Person</h3>
@@ -38,7 +38,7 @@ class QuickSearchResult extends React.Component {
                 )
             }
             {
-                (this.props.result.type == 'finance') &&
+                (this.props.result.type === 'finance') &&
                 (
                     <span>
                         <h3 className="type-finance">Finance Entity</h3>
@@ -66,7 +66,7 @@ class AMQuickSearch extends React.Component {
     openSearch(){
         this.setState({
             searchIsOpen: true
-        })
+        });
     }
     closeSearch(){
         this.setState({
@@ -77,7 +77,6 @@ class AMQuickSearch extends React.Component {
 
     submitSearch(){
         let query = this.refs.searchQuery.value;
-        console.log(this.refs.searchQuery.value);
 
         this.setState({
             searchResults:[]
@@ -161,10 +160,10 @@ class AMQuickSearch extends React.Component {
             // handle network error
         }).then((data) => {
 
-            let financeResults = data['results'].slice(0,4).map(
+            let financeResults = data["results"].slice(0,4).map(
                 function(result){
                     return {
-                        type: 'finance',
+                        type: "finance",
                         name: result.name,
                         url: `/finance/entities/${result.id}`
                     }

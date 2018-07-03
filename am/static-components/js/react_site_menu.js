@@ -5,7 +5,7 @@ class SiteMenu extends React.Component {
 
         this.state =  {
             menuIsOpen: false
-        }
+        };
     }
 
     toggleMenu(){

@@ -35,8 +35,7 @@ class EntityDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EntityDetailView, self).get_context_data(**kwargs)
-        self.get_object = self.get_object()
-        this = self.get_object
+        this = self.get_object()
         context['top_donors'] = this.income.values('t_from__name','t_from__id', 't_from__e_type').annotate(amount=Sum('amount')).order_by('-amount')[:5]
         context['top_targets'] = this.spending.values('t_to__name','t_to__id', 't_to__e_type').annotate(amount=Sum('amount')).order_by('-amount')[:5]
         return context
@@ -73,7 +72,7 @@ class EntityDetailSpendingListView(DetailView):
         """
         if self.kwargs['id']:
             return FinanceEntity.objects.get(id=self.kwargs['id'])
-        return super(EntityDetailView, self).get_objects()
+        return super(EntityDetailSpendingListView, self).get_object()
 
 class EntityDetailIncomeListView(DetailView):
     """
@@ -90,4 +89,4 @@ class EntityDetailIncomeListView(DetailView):
         """
         if self.kwargs['id']:
             return FinanceEntity.objects.get(id=self.kwargs['id'])
-        return super(EntityDetailView, self).get_objects()
+        return super(EntityDetailIncomeListView, self).get_object()
