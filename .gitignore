@@ -28,3 +28,4 @@ am/static/
 docs/_build
 
 coverage.xml
+am/am/settings_local.py.prod.template
