@@ -23,3 +23,6 @@ am/zappa_settings.json
 am/static/
 
 docs/_build
+am/am/settings_local.py.prod
+
+am/am/settings_local.py.prod.template
