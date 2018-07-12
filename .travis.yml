@@ -12,7 +12,7 @@ env:
   global:
     - CODACY_PROJECT_TOKEN=b31441a7f46b40a98b7fca4e921de479
   matrix:
-    - DJANGO_VERSION=1.11.*
+    - DJANGO_VERSION="1.11.*"
 
 install:
  - pip install -r requirements.txt
