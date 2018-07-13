@@ -55,7 +55,7 @@ class District(RepresentationMixin, AMBaseModel):
         return self.name
 
     def get_absolute_url(self):
-        return "/geo/districts/{}".format(self.id)
+        return "/geo/districts/{}/".format(self.id)
 
     def to_react_representation(self, context={}):
         return {

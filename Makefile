@@ -12,6 +12,7 @@ test:
 	coverage run am/manage.py test legislative
 	coverage run am/manage.py test finance
 	coverage run am/manage.py test search
+	coverage run am/manage.py test geo
 	coverage report -m
 	coverage xml
 

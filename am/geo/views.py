@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
 from django.views.generic import DetailView
 from geo import models
+from django.db.models import ObjectDoesNotExist
+from django.http import Http404
 
 # Create your views here.
 
@@ -20,6 +21,8 @@ class DistrictDetailView(DetailView):
         """
         Retrieves object based on ID.
         """
-        if self.kwargs['id']:
-            return models.District.objects.get(id=self.kwargs['id'])
-        return super(DistrictDetailView, self).get_objects()
+        try:
+            if self.kwargs['id']:
+                return models.District.objects.get(id=self.kwargs['id'])
+        except ObjectDoesNotExist:
+            raise Http404
