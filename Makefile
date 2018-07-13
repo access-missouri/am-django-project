@@ -16,13 +16,13 @@ test:
 	coverage xml
 
 activatedb_local:
-	rm am/am/settings_local.py
+	rm -f am/am/settings_local.py
 	cp am/am/settings_local.py.local am/am/settings_local.py
 
 activatedb_stage:
-	rm am/am/settings_local.py
+	rm -f am/am/settings_local.py
 	cp am/am/settings_local.py.stage am/am/settings_local.py
 
 activatedb_prod:
-	rm am/am/settings_local.py
+	rm -f am/am/settings_local.py
 	cp am/am/settings_local.py.prod am/am/settings_local.py
