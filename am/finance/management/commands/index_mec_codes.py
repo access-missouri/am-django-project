@@ -8,6 +8,7 @@ import os
 from tqdm import tqdm
 
 from finance.models import FinanceEntity, FinanceTransaction, MecLink
+from finance.management import merge_entities
 
 
 class Command(BaseCommand):
@@ -33,10 +34,19 @@ class Command(BaseCommand):
             if entity.mec_id:
                 link, created = MecLink.objects.get_or_create(
                     mec_id=entity.mec_id,
-                    entity=entity
+                    defaults={
+                     'entity': entity,
+                    }
                 )
                 if created:
                     total_links_created += 1
+                    tqdm.write("Link created.")
+                # If the MEC entity is not the same, merge them.
+                elif link.entity.id != entity.id:
+                    merge_entities.merge_entity(entity_from=entity, entity_into=link.entity)
+                    tqdm.write("Merged {} to {}.".format(entity.name, link.entity.name))
+                else:
+                    tqdm.write("Link already exists.")
 
             if 'priors' in entity.extras:
                 for prior in 'priors':
