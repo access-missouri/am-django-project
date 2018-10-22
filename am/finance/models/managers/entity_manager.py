@@ -78,22 +78,22 @@ class FinanceEntityManager(models.Manager):
             query_set = query_set.filter(e_type = kwargs['e_type'])
 
         if 'name' in kwargs:
-            name_string = kwargs['name']
-            query_set_new = query_set.filter(phrase_to_q_series(name_string, column_name='name'))
+            name_in = kwargs['name']
+            query_set_new = query_set.filter(phrase_to_q_series(name_in, column_name='name'))
 
             # Test if there are actually any results here.
             qs_new_count = query_set_new.count()
             if qs_new_count == 1:
                 # If this is the only result, we can be reasonably confident it's right.
                 # In the future, we'll add address filtering for edge cases.
-                if check_sane_name(query_set_new[0], name_string):
+                if check_sane_name(query_set_new[0], name_in):
                     return query_set_new[0]
             else:
                 # If we have no results, we'll filter again, this time on prior names.
-                query_set_new = query_set.filter(phrase_to_q_series(name_string, column_name='extras__priors'))
+                query_set_new = query_set.filter(phrase_to_q_series(name_in, column_name='extras__priors'))
                 qs_new_count = query_set_new.count()
                 if qs_new_count == 1:
-                    if check_sane_name(query_set_new[0], name_string):
+                    if check_sane_name(query_set_new[0], name_in):
                         return query_set_new[0]
                 elif qs_new_count < 1:
                     # Now, at this point, if nothing has worked, but they provided a name,

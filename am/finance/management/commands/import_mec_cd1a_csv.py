@@ -50,13 +50,24 @@ class Command(BaseCommand):
                 t_amount = row["Amount"]
                 t_con_type = row["Contribution Type"]
 
-                to_obj, to_created = FinanceEntity.objects.get_or_create(
+                # Avoid object or transaction duplication
+                # by looking for confident matches of the given info.
+                to_obj = FinanceEntity.entities.get_closest_confident_match(
                     name=to_committee_name,
-                    type="comm",
-                    defaults={
-                        "mec_id": to_mec_id,
-                    }
+                    e_type="comm",
+                    mec_id=to_mec_id
                 )
+
+                # If there are none,
+                # proceed to do things the old way.
+                if not to_obj:
+                    to_obj, to_created = FinanceEntity.objects.get_or_create(
+                        name=to_committee_name,
+                        e_type="comm",
+                        defaults={
+                            "mec_id": to_mec_id,
+                        }
+                    )
 
                 fr_obj, fr_created = None, None
 
@@ -70,16 +81,26 @@ class Command(BaseCommand):
                             "occupation": fr_occupation,
                         }
 
+                # For now, we only do confidence matching
+                # on committees in the "from" area.
                 if fr_comm_name:
-                    fr_obj, fr_created = FinanceEntity.objects.get_or_create(
+                    fr_obj = FinanceEntity.entities.get_closest_confident_match(
                         name=fr_comm_name,
-                        type="comm",
+                        e_type="comm",
                         defaults=fr_defaults
                     )
+                    # If there are no smart matches,
+                    # proceed to do things the old way.
+                    if not fr_obj:
+                        fr_obj, fr_created = FinanceEntity.objects.get_or_create(
+                            name=fr_comm_name,
+                            e_type="comm",
+                            defaults=fr_defaults
+                        )
                 elif fr_corp_name:
                     fr_obj, fr_created = FinanceEntity.objects.get_or_create(
                         name=fr_corp_name,
-                        type="corp",
+                        e_type="corp",
                         defaults=fr_defaults
                     )
                 elif fr_first_name or fr_last_name:
@@ -88,19 +109,23 @@ class Command(BaseCommand):
                         first_name=fr_first_name,
                         last_name=fr_last_name,
                         address_first=fr_addr_one,
-                        type="person",
+                        e_type="person",
                         defaults=fr_defaults
                     )
+
+                t_str = "{} to {} in amount {}.".format(str(fr_obj), str(to_obj), str(t_amount))
+
+                tqdm.write(t_str)
 
                 t_obj, t_created = FinanceTransaction.objects.get_or_create(
                     t_from=fr_obj,
                     t_to=to_obj,
-                    type=t_con_type,
+                    e_type=t_con_type,
                     amount=t_amount,
                     date=t_date
                 )
 
-
+                tqdm.write("Created." if t_created else "Already exists.")
 
 
 
