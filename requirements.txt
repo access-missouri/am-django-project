@@ -15,7 +15,7 @@ configparser==3.5.0
 coverage==4.3.4
 coveralls==1.1
 cssselect==1.0.1
-Django==1.11
+Django==1.11.15
 django-braces==1.11.0
 django-filter==1.1.0
 django-markdownify==0.3.0
