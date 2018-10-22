@@ -25,15 +25,17 @@ class FinanceEntity(AMBaseModel):
         max_length=128,
         help_text='Missouri Ethics Commission ID number.',
         blank=True,
+        db_index=True
     )
     name = models.CharField(
         max_length=300,
-        help_text='Readable name if Company or Committee.'
+        help_text='Readable name if Company or Committee.',
+        db_index=True
     )
     ENTITY_TYPE_CHOICES = (
         ('corp', 'Company'),
         ('comm', 'Committee'),
-        ('person', 'Person'),
+        ('person', 'Person')
     )
     e_type = models.CharField(
         max_length=8,
