@@ -1,23 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Import a folder (~/mec) full of MEC CSV files to the database.
+Import a single MEC CSV file to the database.
 """
 from django.core.management.base import BaseCommand
 import os
 from tqdm import tqdm
-from csv import DictReader
+from unicodecsv import DictReader
 from datetime import datetime
-
+import io
 from finance.models import FinanceEntity, FinanceTransaction
 
 
 class Command(BaseCommand):
     """
-    Import a folder (~/mec) full of MEC CSV files to the database.
+    Import a single MEC CSV file to the database.
     """
 
-    help = 'Import a folder full of MEC CSV files to the database.'
+    def add_arguments(self, parser):
+        parser.add_argument('files', nargs="*", type=str)
+        parser.add_argument('--start_10k', dest="start_tenk", action='store_true')
+
+    help = 'Import MEC CSV files to the database.'
 
     def handle(self, *args, **options):
         """
@@ -26,9 +30,17 @@ class Command(BaseCommand):
 
         def csv_to_db(csv_path):
             csv_data = open(csv_path)
-            csv = DictReader(csv_data)
+            csv = DictReader(csv_data, encoding="utf-8")
 
-            for row in tqdm(csv, total=len(open(csv_path).readlines())):
+            c_iter = 0
+            for row in tqdm(csv, total=len(io.open(csv_path, encoding="utf-8").readlines())):
+
+                # Do you start 10k in or not?
+                c_iter += 1
+                if (options["start_tenk"]):
+                    if(c_iter < 11000):
+                        continue
+
                 to_mec_id = row[" MECID"]
                 to_committee_name = row["Committee Name"]
 
@@ -113,7 +125,7 @@ class Command(BaseCommand):
                         defaults=fr_defaults
                     )
 
-                t_str = "{} to {} in amount {}.".format(str(fr_obj), str(to_obj), str(t_amount))
+                t_str = u"{} to {} in amount {}.".format(fr_obj, to_obj, t_amount)
 
                 tqdm.write(t_str)
 
