@@ -29,7 +29,9 @@ class Contest(AMUUIDModel):
     )
     election = models.ForeignKey(
         Election,
-        help_text='The full slate of contests this contest is or was a part of.'
+        related_name="Elections",
+        related_query_name="Election",
+        help_text="The full slate of contests this contest is or was a part of."
     )
 
     def __str__(self):

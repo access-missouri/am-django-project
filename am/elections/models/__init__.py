@@ -9,5 +9,5 @@ from .contest import Contest
 
 __all__ = (
     'Election',
-    'Contest'
+    'Contest',
 )
