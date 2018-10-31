@@ -5,6 +5,7 @@ Abstract base models which other Access Missouri models subclass.
 """
 from django.db import models
 from django.contrib.postgres.fields import JSONField
+import uuid
 
 
 class AMBaseModel(models.Model):
@@ -26,6 +27,18 @@ class AMBaseModel(models.Model):
         help_text='Key-value store suitable for storing arbitrary information '
                   'not covered elsewhere.',
     )
+
+    class Meta:
+        """
+        Model options.
+        """
+
+        abstract = True
+
+
+class AMUUIDModel(AMBaseModel):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     class Meta:
         """
