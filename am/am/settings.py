@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'scraper',
     'modelbills',
     'tags',
+    'elections',
 ]
 
 MIDDLEWARE = [
