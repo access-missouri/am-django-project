@@ -7,16 +7,11 @@ from __future__ import unicode_literals
 from general.models import AMUUIDModel
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from .election import Election
-
 
 @python_2_unicode_compatible
-class Contest(AMUUIDModel):
+class BallotMeasure(AMUUIDModel):
     """
-    Base table: An individual race or contest.
-
-    In variance from OCDEP 20,
-    this model is designed and intended to be downcast on use.
+    A measure to be decided by the public in a contest.
 
     See: OCDEP 20 -- Elections:
         https://opencivicdata.readthedocs.io/en/latest/proposals/0020.html
@@ -24,14 +19,15 @@ class Contest(AMUUIDModel):
 
     name = models.CharField(
         max_length=300,
-        help_text='Human-friendly name of the contest or race.',
-        db_index=True
+        help_text='Name of the measure, as referred to on the ballot.'
     )
-    election = models.ForeignKey(
-        Election,
-        related_name="Elections",
-        related_query_name="Election",
-        help_text="The full slate of contests this contest is or was a part of."
+    ballot_title = models.TextField(
+        blank=True,
+        help_text="The way the measure will be explained to constituents above their vote."
+    )
+    ballot_summary = models.TextField(
+        blank=True,
+        help_text="The extended summary available to constituents on election day."
     )
 
     def __str__(self):
