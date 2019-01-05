@@ -3,7 +3,6 @@
 """
 Scraper for requesting, caching and parsing http://house.mo.gov/billlist.aspx.
 """
-import os
 from scraper.interpreters import BaseInterpreter
 
 
@@ -38,5 +37,5 @@ class HouseBillListInterpreter(BaseInterpreter):
             except TypeError:
                 urls.append(None)
 
-        # Remove the nonetypes from the empty table rows
+        # Remove the nones from the empty table rows
         return filter(lambda item: item is not None, urls)
