@@ -7,8 +7,8 @@ from django.core.management.base import BaseCommand
 
 from tqdm import tqdm
 
-from modelbills.scrapers.interpreters.alec_list import AlecListScraper
-from modelbills.scrapers.interpreters.alec_bill import AlecBillScraper
+from modelbills.scrapers.interpreters.alec_list import AlecListInterpreter
+from modelbills.scrapers.interpreters.alec_bill import AlecBillInterpreter
 from general.models import Organization
 from modelbills.models import  ModelBill
 
@@ -30,6 +30,6 @@ class Command(BaseCommand):
                                          text="")
         for bill in tqdm(iterable=query,
                         total=query.count()):
-            bill_page = AlecBillScraper(bill.source_url)
+            bill_page = AlecBillInterpreter(bill.source_url)
             bill.text = bill_page.text
             bill.save()

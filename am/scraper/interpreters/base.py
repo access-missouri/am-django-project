@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from time import sleep
 
 
-class BaseScraper(object):
+class BaseInterpreter(object):
     """
     Base class with properties and classes common to all Scraper subclasses.
     """

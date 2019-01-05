@@ -7,8 +7,8 @@ from django.core.management.base import BaseCommand
 
 from tqdm import tqdm
 
-from modelbills.scrapers.interpreters.alec_list import AlecListScraper
-from modelbills.scrapers.interpreters.alec_bill import AlecBillScraper
+from modelbills.scrapers.interpreters.alec_list import AlecListInterpreter
+from modelbills.scrapers.interpreters.alec_bill import AlecBillInterpreter
 from general.models import Organization
 from modelbills.models import  ModelBill
 
@@ -27,11 +27,11 @@ class Command(BaseCommand):
         org, org_created = Organization.objects.get_or_create(name="American Legislative Exchange Council")
 
         # Loop through all the ALEC model bills index pages, scraping down the urls to further bills.
-        alec_page_first = AlecListScraper(url="https://www.alec.org/model-policy/")
+        alec_page_first = AlecListInterpreter(url="https://www.alec.org/model-policy/")
         model_bill_urls = alec_page_first.bill_urls
         list_page = 2
         while True:
-            alec_list_page = AlecListScraper(url="https://www.alec.org/model-policy/page/{}/".format(list_page))
+            alec_list_page = AlecListInterpreter(url="https://www.alec.org/model-policy/page/{}/".format(list_page))
             if alec_list_page.response.status_code != 200:
                 break
             for url in alec_list_page.bill_urls:
@@ -40,7 +40,7 @@ class Command(BaseCommand):
             list_page += 1
         print("Finished pulling bill URLS. {} total.".format(len(model_bill_urls)))
         for url in tqdm(model_bill_urls):
-            bill_page = AlecBillScraper(url)
+            bill_page = AlecBillInterpreter(url)
             bill, bill_created = ModelBill.objects.get_or_create(
                 source_url=url,
                 origin=org,

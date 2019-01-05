@@ -4,16 +4,16 @@
 Scraper for requesting, caching and parsing http://house.mo.gov/billlist.aspx.
 """
 import os
-from scraper.interpreters import BaseScraper
+from scraper.interpreters import BaseInterpreter
 
 
-class AlecListScraper(BaseScraper):
+class AlecListInterpreter(BaseInterpreter):
 
     def __init__(self, url, **kwargs):
         """
         Initialize an object for scraping the bills list page.
         """
-        super(AlecListScraper, self).__init__(
+        super(AlecListInterpreter, self).__init__(
             url=url,
             sleep_count=1,
             **kwargs
