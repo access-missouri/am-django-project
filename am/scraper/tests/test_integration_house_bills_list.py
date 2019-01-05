@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Integration tests around template rendering for geo.
+Integration tests around House Bill List scraping.
 """
 
 from django.test import TestCase
