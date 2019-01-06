@@ -3,10 +3,10 @@
 """
 Base class with properties and classes common to all Scraper subclasses.
 """
-import requests
-from requests.compat import urlparse, urljoin
-from bs4 import BeautifulSoup
 from time import sleep
+
+import requests
+from bs4 import BeautifulSoup
 
 
 class BaseInterpreter(object):

@@ -4,7 +4,6 @@
 Scraper for requesting, caching and parsing house.mo.gov lists.
 """
 from scraper.interpreters import BaseInterpreter
-from scraper.url_helpers import house_url
 
 
 class HouseBillPageContentInterpreter(BaseInterpreter):

@@ -3,11 +3,10 @@
 """
 General models app admins.
 """
-from django.contrib import admin # NOQA
-
-from .models import Organization, Post, Person, Tag
+from django.contrib import admin  # NOQA
 
 from legislative.models import BodyMembership
+from .models import Organization, Post, Person, Tag
 
 admin.site.register(Organization)
 admin.site.register(Post)

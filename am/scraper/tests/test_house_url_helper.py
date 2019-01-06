@@ -5,6 +5,7 @@ Unit tests around house URL format helper.
 """
 
 from django.test import TestCase
+
 from scraper.url_helpers import house_url
 
 

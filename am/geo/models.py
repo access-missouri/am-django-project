@@ -4,10 +4,12 @@
 Geographic models.
 """
 from __future__ import unicode_literals
-from general.models import AMBaseModel
+
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django_react_templatetags.mixins import RepresentationMixin
+
+from general.models import AMBaseModel
 
 
 @python_2_unicode_compatible

@@ -3,16 +3,17 @@
 """
 Imports districts from the Open Civic Data API.
 """
-from django.core.management.base import BaseCommand
-from geo.models import District
-from tqdm import tqdm
-import requests
-from time import sleep
-from os import getenv
 import json
-from search.utils import phrase_to_index_name_q_search
+from os import getenv
+
+import requests
+from django.core.management.base import BaseCommand
+from tqdm import tqdm
+
 from general.models import Person
+from geo.models import District
 from legislative.models import BodyMembership, LegislativeSession
+from search.utils import phrase_to_index_name_q_search
 
 
 class Command(BaseCommand):

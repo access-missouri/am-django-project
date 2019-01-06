@@ -3,13 +3,15 @@
 """
 Imports district bounding boxes from the Open Civic Data API.
 """
-from django.core.management.base import BaseCommand
-from geo.models import District
-from tqdm import tqdm
-import requests
-from time import sleep
-from os import getenv
 import json
+from os import getenv
+from time import sleep
+
+import requests
+from django.core.management.base import BaseCommand
+from tqdm import tqdm
+
+from geo.models import District
 
 
 class Command(BaseCommand):

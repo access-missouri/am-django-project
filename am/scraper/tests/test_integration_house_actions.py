@@ -4,9 +4,11 @@
 Integration tests around House Bill List scraping.
 """
 
-from django.test import TestCase
-from scraper.interpreters import HouseBillPageActionsInterpreter
 from datetime import datetime
+
+from django.test import TestCase
+
+from scraper.interpreters import HouseBillPageActionsInterpreter
 
 
 class HouseBillActionsInterpreterTestCase(TestCase):

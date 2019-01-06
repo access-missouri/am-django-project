@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.views.generic import DetailView
-from geo import models
 from django.db.models import ObjectDoesNotExist
 from django.http import Http404
+from django.views.generic import DetailView
+
+from geo import models
+
 
 # Create your views here.
 

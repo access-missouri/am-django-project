@@ -5,6 +5,7 @@ Integration tests around House Bill List scraping.
 """
 
 from django.test import TestCase
+
 from scraper.interpreters import HouseBillListInterpreter
 
 

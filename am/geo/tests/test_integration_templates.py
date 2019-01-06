@@ -4,8 +4,9 @@
 Integration tests around template rendering for geo.
 """
 
-from django.test import TestCase
 from django.test import Client
+from django.test import TestCase
+
 
 class DistrictIntegrationTestCase(TestCase):
     fixtures = ['geo.json']
