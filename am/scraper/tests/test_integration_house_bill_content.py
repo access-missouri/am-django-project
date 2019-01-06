@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Integration tests around House Bill List scraping.
+Integration tests around House Bill "content" scraping.
 """
 
 from django.test import TestCase

@@ -37,11 +37,7 @@ class HouseBillPageContentInterpreter(BaseInterpreter):
 
     @property
     def bill_actions_page_url(self):
-        links = self.soup.find_all("a")
-        for link in links:
-            if "BillActions" in link["href"]:
-                return link["href"]
-        return None
+        return self.get_first_url_containing("BillActions")
 
     @property
     def actions_interpreter(self):

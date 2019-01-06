@@ -50,3 +50,14 @@ class BaseInterpreter(object):
         self._soup = BeautifulSoup(content, 'html5lib')
 
         return self._soup
+
+    def get_first_url_containing(self, search):
+        """
+        Return first URL containing a string.
+        :return: URL string containing thing or none object.
+        """
+        links = self.soup.find_all("a")
+        for link in links:
+            if search in link["href"]:
+                return link["href"]
+        return None
