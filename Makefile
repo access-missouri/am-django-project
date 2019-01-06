@@ -13,6 +13,7 @@ test:
 	coverage run am/manage.py test finance
 	coverage run am/manage.py test search
 	coverage run am/manage.py test geo
+	coverage run am/manage.py test scraper
 	coverage report -m
 	coverage xml
 
