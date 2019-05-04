@@ -47,7 +47,7 @@ class Command(BaseCommand):
 
                 to_obj, to_created = FinanceEntity.objects.update_or_create(
                     name__iexact=to_comm_name,
-                    type="comm",
+                    e_type="comm",
                     defaults={
                         "name": to_comm_name,
                         "address_first": to_addr_one,
@@ -61,7 +61,7 @@ class Command(BaseCommand):
 
                 fr_obj, fr_created = FinanceEntity.objects.get_or_create(
                     name__iexact=from_committee_name,
-                    type="comm",
+                    e_type="comm",
                     defaults={
                         "name": from_committee_name,
                     }
@@ -70,7 +70,7 @@ class Command(BaseCommand):
                 t_obj, t_created = FinanceTransaction.objects.get_or_create(
                     t_from=fr_obj,
                     t_to=to_obj,
-                    type=t_con_type,
+                    e_type=t_con_type,
                     amount=t_amount,
                     date=t_date
                 )
